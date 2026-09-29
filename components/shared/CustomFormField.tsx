@@ -1,44 +1,44 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-'use client';
+"use client";
 
-import { Field, FieldLabel, FieldError } from '@/components/ui/field';
+import { Field, FieldLabel, FieldError } from "@/components/ui/field";
 
-import { Input } from '@/components/ui/input';
+import { Input } from "@/components/ui/input";
 
-import { Control, FieldValues, Path, useController } from 'react-hook-form';
+import { Control, FieldValues, Path, useController } from "react-hook-form";
 
-import { E164Number } from 'libphonenumber-js/core';
-import 'react-phone-number-input/style.css';
-import PhoneInput from 'react-phone-number-input';
+import { E164Number } from "libphonenumber-js/core";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 
-import { Select, SelectContent, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Select, SelectContent, SelectTrigger, SelectValue } from "@/components/ui/select";
 
-import { Textarea } from '@/components/ui/textarea';
-import { Checkbox } from '@/components/ui/checkbox';
+import { Textarea } from "@/components/ui/textarea";
+import { Checkbox } from "@/components/ui/checkbox";
 
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 
-import { CalendarIcon } from 'lucide-react';
+import { CalendarIcon } from "lucide-react";
 
-import { Calendar } from '@/components/ui/calendar';
+import { Calendar } from "@/components/ui/calendar";
 
-import { format } from 'date-fns';
+import { format } from "date-fns";
 
-import ComboboxField from '@/components/common/ComboboxField';
-import { FrameworkT } from '@/types/global';
+import ComboboxField from "@/components/common/ComboboxField";
+import { FrameworkT } from "@/types/global";
 
 export enum FormFieldType {
-  INPUT = 'input',
-  TEXTAREA = 'textarea',
-  PHONE_INPUT = 'phoneInput',
-  CHECKBOX = 'checkbox',
-  DATE_PICKER = 'datePicker',
-  SELECT = 'select',
-  COMBOBOX = 'combobox',
-  RADIO = 'radio',
-  DATE = 'date',
+  INPUT = "input",
+  TEXTAREA = "textarea",
+  PHONE_INPUT = "phoneInput",
+  CHECKBOX = "checkbox",
+  DATE_PICKER = "datePicker",
+  SELECT = "select",
+  COMBOBOX = "combobox",
+  RADIO = "radio",
+  DATE = "date",
 }
 
 interface CustomProps<T extends FieldValues = FieldValues> {
@@ -83,9 +83,7 @@ const RenderInput = <T extends FieldValues>({
     case FormFieldType.INPUT:
       return (
         <div className="flex items-center rounded border border-primary relative transition-colors focus-within:border-primary focus-within:ring-1 focus-within:ring-primary">
-          {props.leftIcon && (
-            <div className="absolute mb-1 left-3 cursor-pointer z-10">{props.leftIcon}</div>
-          )}
+          {props.leftIcon && <div className="absolute mb-1 left-3 cursor-pointer z-10">{props.leftIcon}</div>}
 
           <Input
             placeholder={props.placeholder}
@@ -94,17 +92,15 @@ const RenderInput = <T extends FieldValues>({
             readOnly={props.readOnly}
             disabled={props.disabled}
             className={`${props.variant} h-11 w-full text-16 placeholder:text-16 rounded-[5px] border-0 bg-gray-50 text-gray-900 placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0 ${
-              props.leftIcon ? 'pl-10' : ''
-            } ${props.rightIcon ? 'pr-10' : ''}`}
+              props.leftIcon ? "pl-10" : ""
+            } ${props.rightIcon ? "pr-10" : ""}`}
             onChange={(e) => {
               field.onChange(e);
               props.onChange?.(e);
             }}
           />
 
-          {props.rightIcon && (
-            <div className="absolute mb-1 right-3 cursor-pointer z-10">{props.rightIcon}</div>
-          )}
+          {props.rightIcon && <div className="absolute mb-1 right-3 cursor-pointer z-10">{props.rightIcon}</div>}
         </div>
       );
 
@@ -114,9 +110,9 @@ const RenderInput = <T extends FieldValues>({
           className="phone-input-wrapper flex items-center rounded-md border border-primary overflow-hidden transition-colors focus-within:border-primary focus-within:ring-1 focus-within:ring-primary [&_.PhoneInputCountry]:px-3 [&_.PhoneInputCountry]:border-r [&_.PhoneInputCountry]:border-primary"
           style={
             {
-              '--PhoneInputCountrySelect-marginRight': '0',
-              '--PhoneInputCountrySelectArrow-opacity': '1',
-              '--PhoneInputCountrySelectArrow-color': '#374151',
+              "--PhoneInputCountrySelect-marginRight": "0",
+              "--PhoneInputCountrySelectArrow-opacity": "1",
+              "--PhoneInputCountrySelectArrow-color": "#374151",
             } as React.CSSProperties
           }
         >
@@ -127,13 +123,12 @@ const RenderInput = <T extends FieldValues>({
             onChange={field.onChange}
             className="flex w-full items-stretch"
             countrySelectProps={{
-              className:
-                'h-11 bg-input-background text-sm text-gray-900 focus:outline-none cursor-pointer',
+              className: "h-11 bg-input-background text-sm text-gray-900 focus:outline-none cursor-pointer",
             }}
             numberInputProps={{
               placeholder: props.placeholder,
               className:
-                'flex h-11 w-full rounded-none border-0 bg-input-background px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none text-gray-900',
+                "flex h-11 w-full rounded-none border-0 bg-input-background px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none text-gray-900",
             }}
           />
         </div>
@@ -151,12 +146,8 @@ const RenderInput = <T extends FieldValues>({
 
     case FormFieldType.SELECT:
       return (
-        <div className="flex items-center rounded border border-primary relative transition-colors  focus-within:border-primary focus-within:ring-1 focus-within:ring-primary has-data-[state=open]:border-primary has-data-[state=open]:ring-1 has-data-[state=open]:ring-primary">
-          <Select
-            defaultValue={props.defaultValue}
-            onValueChange={field.onChange}
-            value={field.value ?? props.defaultValue ?? ''}
-          >
+        <div className="flex items-center rounded border border-primary relative transition-colors focus-within:border-primary focus-within:ring-1 focus-within:ring-primary has-data-popup-open:border-primary has-data-popup-open:ring-1 has-data-popup-open:ring-primary">
+          <Select defaultValue={props.defaultValue} onValueChange={field.onChange} value={field.value || null}>
             <SelectTrigger
               className={`${props.variant} w-full h-11! border-0 cursor-pointer text-16 placeholder:text-16 rounded-[5px] bg-gray-50 text-gray-500 placeholder:text-gray-500 focus:ring-2 focus:ring-offset-0`}
               disabled={props.disabled}
@@ -164,7 +155,11 @@ const RenderInput = <T extends FieldValues>({
               <SelectValue placeholder={props.placeholder} />
             </SelectTrigger>
 
-            <SelectContent className="text-16 bg-input-background border-primary text-gray-900">
+            <SelectContent
+              alignItemWithTrigger={false}
+              sideOffset={4}
+              className="z-100 text-16 bg-input-background border-primary text-gray-900"
+            >
               {props.children}
             </SelectContent>
           </Select>
@@ -202,26 +197,21 @@ const RenderInput = <T extends FieldValues>({
             render={
               <Button
                 variant="outline"
-                className={`${props.variant ?? ''} h-11! w-full justify-start rounded-[5px] border-primary bg-gray-50 pl-3 text-16 text-left font-normal text-gray-900 hover:bg-gray-50 ${!field.value && 'text-gray-500'}`}
+                className={`${props.variant ?? ""} h-11! w-full justify-start rounded-[5px] border-primary bg-gray-50 pl-3 text-16 text-left font-normal text-gray-900 hover:bg-gray-50 ${!field.value && "text-gray-500"}`}
               />
             }
           >
             {field.value ? (
-              format(field.value, props.dateFormat || 'PPP')
+              format(field.value, props.dateFormat || "PPP")
             ) : (
-              <span>{props.placeholder || 'Pick a date'}</span>
+              <span>{props.placeholder || "Pick a date"}</span>
             )}
 
             <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
           </PopoverTrigger>
 
           <PopoverContent className="w-auto p-0" align="start">
-            <Calendar
-              mode="single"
-              selected={field.value}
-              onSelect={field.onChange}
-              disabled={props.disabledDates}
-            />
+            <Calendar mode="single" selected={field.value} onSelect={field.onChange} disabled={props.disabledDates} />
           </PopoverContent>
         </Popover>
       );
@@ -248,17 +238,10 @@ const CustomFormField = <T extends FieldValues>(props: CustomProps<T>) => {
   return (
     <Field className="flex-1" data-invalid={!!error}>
       {props.fieldType !== FormFieldType.CHECKBOX && label && (
-        <FieldLabel className="text-14 w-full max-w-70 font-medium text-description">
-          {label}
-        </FieldLabel>
+        <FieldLabel className="text-14 w-full max-w-70 font-medium text-description">{label}</FieldLabel>
       )}
 
-      <RenderInput
-        field={field}
-        props={props}
-        options={options}
-        searchPlaceholder={searchPlaceholder}
-      />
+      <RenderInput field={field} props={props} options={options} searchPlaceholder={searchPlaceholder} />
 
       {error?.message && <FieldError className="text-red-500">{String(error.message)}</FieldError>}
     </Field>

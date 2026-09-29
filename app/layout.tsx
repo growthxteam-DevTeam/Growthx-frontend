@@ -33,7 +33,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // const runtimeEnv = getRuntimeEnv();
+  const runtimeEnv = getRuntimeEnv();
 
 
   return (
