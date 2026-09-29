@@ -33,18 +33,18 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const runtimeEnv = getRuntimeEnv();
+  // const runtimeEnv = getRuntimeEnv();
 
 
   return (
     <html lang="en" className={`${googleSansFlex.variable}  antialiased`}>
       <body className="min-h-full flex flex-col">
-         <script
+         {/* <script
           id="runtime-env"
           dangerouslySetInnerHTML={{
             __html: `window.__ENV__ = ${JSON.stringify(runtimeEnv).replace(/</g, '\\u003c')};`,
           }}
-        />
+        /> */}
         <Providers>{children}</Providers>
         </body>
     </html>
