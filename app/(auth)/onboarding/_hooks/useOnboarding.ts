@@ -168,6 +168,9 @@ export const useOnboarding = () => {
     formData.append("challengeAndSkillGap", whoYouAre.challengeAndSkillGap);
     formData.append("cohortMotivation", whoYouAre.cohortMotivation);
     formData.append("hasAccessibilityNeeds", accessibilitySupport.hasAccessibilityNeeds);
+    if (accessibilitySupport.hasAccessibilityNeeds === "yes" && accessibilitySupport.accessibilityNeed) {
+      formData.append("accessibilityNeed", accessibilitySupport.accessibilityNeed);
+    }
 
     if (values.passportPhoto) formData.append("passportPhoto", values.passportPhoto);
 

@@ -43,10 +43,9 @@ export const businessBasicsSchema = z.object({
     ["less-than-6-months", "6-months-to-1-year", "1-3-years", "3-5-years", "more-than-5-years"],
     { error: "Select how long you've been operating" },
   ),
-  averageRevenue: z.enum(
-    ["no-revenue-yet", "early-revenue", "growing-revenue", "significant-revenue"],
-    { error: "Select your average revenue" },
-  ),
+  averageRevenue: z.enum(["no-revenue-yet", "early-revenue", "growing-revenue", "significant-revenue"], {
+    error: "Select your average revenue",
+  }),
   fullTimeCommitment: z.enum(["full-time", "not-yet"], { error: "Select an option" }),
 });
 
@@ -75,9 +74,35 @@ export const whoYouAreSchema = z.object({
   cohortMotivation: z.string().trim().min(10, "Tell us more about why now and what outcome you want"),
 });
 
-export const accessibilitySupportSchema = z.object({
-  hasAccessibilityNeeds: z.enum(["yes", "no"], { error: "Please select an option" }),
-});
+export const ACCESSIBILITY_NEED_VALUES = [
+  "vision",
+  "hearing",
+  "mobility",
+  "cognitive",
+  "speech",
+  "other",
+  "undisclosed",
+] as const;
+
+export const accessibilitySupportSchema = z
+  .object({
+    hasAccessibilityNeeds: z.enum(["yes", "no"], { error: "Please select an option" }),
+    accessibilityNeed: z.enum(ACCESSIBILITY_NEED_VALUES).optional(),
+  })
+  .refine((values) => values.hasAccessibilityNeeds !== "yes" || !!values.accessibilityNeed, {
+    message: "Please select an option",
+    path: ["accessibilityNeed"],
+  });
+
+export const ACCESSIBILITY_NEED_OPTIONS: FrameworkT[] = [
+  { label: "Vision (blind or low vision)", value: "vision" },
+  { label: "Hearing (deaf or hard of hearing)", value: "hearing" },
+  { label: "Mobility or Motor differences", value: "mobility" },
+  { label: "Cognitive or learning differences", value: "cognitive" },
+  { label: "Speech (limited or no speech)", value: "speech" },
+  { label: "Something else not listed here", value: "other" },
+  { label: "Prefer not to say", value: "undisclosed" },
+];
 
 export const ACCESSIBILITY_OPTIONS: FrameworkT[] = [
   { label: "Yes, I have accessibility needs", value: "yes" },
@@ -101,12 +126,7 @@ export const APPLICATION_META = {
   deadline: "19/09/26",
 };
 
-export type OnboardingTabId =
-  | "personal-info"
-  | "business-basics"
-  | "who-you-are"
-  | "accessibility-support"
-  | "submit";
+export type OnboardingTabId = "personal-info" | "business-basics" | "who-you-are" | "accessibility-support" | "submit";
 
 export interface OnboardingTabConfig {
   id: OnboardingTabId;
