@@ -158,7 +158,7 @@ const RenderInput = <T extends FieldValues>({
             <SelectContent
               alignItemWithTrigger={false}
               sideOffset={4}
-              className="z-100 text-16 bg-input-background border-primary text-gray-900"
+              className="z-100 text-16 border-primary text-gray-900"
             >
               {props.children}
             </SelectContent>

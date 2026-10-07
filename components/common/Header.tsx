@@ -11,8 +11,6 @@ const Header = () => {
       <Container className="flex items-center justify-between py-4">
         <Link href="/" className="flex items-center flex-col">
           <Image src="/img/logo.svg" alt="Growth-X" width={166} height={43} className="h-9 w-auto" />
-
-          <span className="text-xs font-medium text-primary">Growth space</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">
