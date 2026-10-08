@@ -5,6 +5,8 @@ export interface ActionCardConfig {
   description: string;
   buttonLabel: string;
   icon: LucideIcon;
+  /** When set, the button navigates here; otherwise it does nothing yet. */
+  href?: string;
   comingSoon?: boolean;
 }
 

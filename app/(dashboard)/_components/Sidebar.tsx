@@ -21,12 +21,12 @@ const Sidebar = () => {
   return (
     <aside className="flex w-24 shrink-0 flex-col items-center gap-2 bg-[#f0dfae] px-2 py-6">
       <Link href="/dashboard" className="mb-6">
-        <Image src="/img/logo.svg" alt="Growth Space" width={166} height={43} className="h-auto w-16" />
+        <Image src="/img/logo.svg" alt="Growth Space" width={166} height={43} loading="eager" className="h-auto w-16" />
       </Link>
 
       <nav className="flex w-full flex-col gap-2">
-        {SIDEBAR_LINKS.map(({ label, href, icon: Icon }) => {
-          const isActive = pathname === href;
+        {SIDEBAR_LINKS.map(({ label, href, icon: Icon, alsoActiveOn = [] }) => {
+          const isActive = pathname === href || alsoActiveOn.includes(pathname);
           return (
             <Link
               key={label}

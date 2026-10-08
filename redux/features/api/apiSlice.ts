@@ -24,7 +24,7 @@ const baseQueryWithReauth: BaseQueryFn<FetchArgs | string, unknown, FetchBaseQue
   if (result.error?.status === 401 && api.endpoint !== "login") {
     api.dispatch(logout());
     if (typeof window !== "undefined") {
-      window.location.href = "/admin/login";
+      window.location.href = "/login";
     }
   }
 

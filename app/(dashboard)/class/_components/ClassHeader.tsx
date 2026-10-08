@@ -1,14 +1,14 @@
 "use client";
 
 import Avatar from "../../_components/Avatar";
-import { useDashboard } from "../_hooks/useDashboard";
+import { useDashboard } from "../../dashboard/_hooks/useDashboard";
 
-const DashboardHeader = () => {
-  const { name, firstName, profilePicture } = useDashboard();
+const ClassHeader = () => {
+  const { name, profilePicture } = useDashboard();
 
   return (
     <header className="flex items-start justify-between">
-      <h1 className="font-serif text-xl font-bold text-primary">Welcome {firstName}</h1>
+      <h1 className="font-serif text-xl font-bold text-primary">Welcome to Class</h1>
 
       <div className="flex flex-col items-center gap-1">
         <Avatar name={name} src={profilePicture} />
@@ -18,4 +18,4 @@ const DashboardHeader = () => {
   );
 };
 
-export default DashboardHeader;
+export default ClassHeader;

@@ -18,6 +18,7 @@ export const ACTION_CARDS: ActionCardConfig[] = [
     description: "Your next class is: Business Acumen",
     buttonLabel: "Go to Class",
     icon: AlarmClockCheck,
+    href: "/class",
   },
   {
     title: "My Modules",

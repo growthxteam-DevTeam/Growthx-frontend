@@ -1,8 +1,13 @@
-import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
+import { Button, buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 import type { ActionCardConfig } from "../_types";
 
-const ActionCard = ({ title, description, buttonLabel, icon: Icon, comingSoon }: ActionCardConfig) => (
+const buttonClassName = "mt-4 h-8 w-full border-primary text-xs font-semibold text-primary hover:bg-transparent";
+
+const ActionCard = ({ title, description, buttonLabel, icon: Icon, href, comingSoon }: ActionCardConfig) => (
   <article className="flex flex-col overflow-hidden rounded-lg border border-border bg-white shadow-sm">
     <div className="relative flex h-28 items-center justify-center bg-[#f5f4fc]">
       {comingSoon && (
@@ -16,13 +21,15 @@ const ActionCard = ({ title, description, buttonLabel, icon: Icon, comingSoon }:
     <div className="flex flex-1 flex-col gap-1 p-4">
       <h3 className="font-serif text-base font-bold text-primary">{title}</h3>
       <p className="flex-1 text-xs text-muted-foreground">{description}</p>
-      <Button
-        type="button"
-        variant="outline"
-        className="mt-4 h-8 w-full border-primary text-xs font-semibold text-primary hover:bg-transparent"
-      >
-        {buttonLabel}
-      </Button>
+      {href ? (
+        <Link href={href} className={cn(buttonVariants({ variant: "outline" }), buttonClassName)}>
+          {buttonLabel}
+        </Link>
+      ) : (
+        <Button type="button" variant="outline" className={buttonClassName}>
+          {buttonLabel}
+        </Button>
+      )}
     </div>
   </article>
 );

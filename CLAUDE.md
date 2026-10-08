@@ -33,15 +33,28 @@ What exists:
 - `app/page.tsx` renders `AnnouncementBanner` + `Header` + `OnboardingWizard` directly (the wizard is the
   home page). `app/(auth)/layout.tsx` also wraps children in banner + header, so don't nest both.
 - `app/(auth)/onboarding/` — the one fully built feature (multi-step application form, see below).
+- `app/(auth)/create-password/` and `app/(auth)/login/` — emailed GS code -> set password -> log in; a login
+  stores the JWT with `setCredentials` and redirects to `/dashboard`.
+- `app/(dashboard)/` — logged-in area. `layout.tsx` -> `DashboardShell` (redirects to `/login` when
+  `auth.token` is empty, which also handles logout) + `Sidebar`. `dashboard/` is the home page; its content
+  (program, schedule, announcements, progress) is placeholder data in `dashboard/_constants`, and the badge and
+  to-do illustrations are lucide stand-ins until the artwork exists.
+- `app/(dashboard)/class/` — "Go to Class" target: YouTube embed (`CURRENT_CLASS.videoUrl` in
+  `class/_constants`; `_lib/youtube.ts` only accepts YouTube hosts), a polling discussion forum
+  (`useDiscussion` + `redux/features/discussion/discussionApi.ts`, JWT-protected backend routes), and modules /
+  previous-classes / assignment cards that are placeholder data (the assignment buttons don't upload anything yet).
+  `CURRENT_CLASS.id` is the discussion thread key. `(dashboard)/_components/Avatar.tsx` is the shared avatar.
 - `app/(root)/example/` — empty skeleton folders only, no `page.tsx`; a template for new slices.
-- Redux has only `auth` (persisted via redux-persist) and `apiSlice`. Endpoints: `authApi` (`adminLogin`),
-  `applicationsApi` (`submitApplication`), `adminBannerApi` (banner CRUD). The admin login/banner side has
-  no UI or backend route yet.
+- Redux has only `auth` (persisted via redux-persist) and `apiSlice`. Endpoints: `authApi` (`login`,
+  `adminLogin`), `applicationsApi` (`submitApplication`, `createPassword`), `discussionApi` (comments, likes),
+  `adminBannerApi` (banner CRUD). A 401 from any endpoint except `login` clears the session and sends the user to
+  `/login`. The admin login/banner side has no UI or backend route yet.
 - Metadata in `app/layout.tsx` is still create-next-app defaults; `README.md` is the create-next-app default.
 
 The matching backend is [../growth-x-be](../growth-x-be/CLAUDE.md); it exposes `POST /applications`,
 `POST /applications/create-password` (used by `app/(auth)/create-password`) and `POST /auth/login` (used by
-`app/(auth)/login`, which stores the JWT via `setCredentials`).
+`app/(auth)/login`, which stores the JWT via `setCredentials`) plus the JWT-protected `/discussions/*` routes
+(used by `app/(dashboard)/class`).
 
 ## Architecture
 

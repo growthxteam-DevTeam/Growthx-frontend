@@ -8,12 +8,8 @@ export const useDashboard = () => {
   const nameParts = (user?.name ?? "").trim().split(/\s+/).filter(Boolean);
 
   return {
+    name: user?.name ?? "",
     firstName: nameParts[0] ?? "",
-    initials: nameParts
-      .slice(0, 2)
-      .map((part) => part[0])
-      .join("")
-      .toUpperCase(),
     profilePicture: user?.profilePicture ?? null,
   };
 };
