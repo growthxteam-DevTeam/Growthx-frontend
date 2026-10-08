@@ -2,13 +2,11 @@ import { RootState } from "@/redux/app/store";
 import { createApi, fetchBaseQuery, BaseQueryFn, FetchArgs, FetchBaseQueryError } from "@reduxjs/toolkit/query/react";
 import { logout } from "../auth/authSlice";
 
-
 const baseQueryWithReauth: BaseQueryFn<FetchArgs | string, unknown, FetchBaseQueryError> = async (
   args,
   api,
   extraOptions,
 ) => {
-
   const rawBaseQuery = fetchBaseQuery({
     baseUrl: process.env.NEXT_PUBLIC_BASE_URL,
     prepareHeaders: (headers, { getState }) => {
@@ -22,7 +20,8 @@ const baseQueryWithReauth: BaseQueryFn<FetchArgs | string, unknown, FetchBaseQue
 
   const result = await rawBaseQuery(args, api, extraOptions);
 
-  if (result.error?.status === 401) {
+  // A failed login is also a 401 — let the login form show the error instead of redirecting.
+  if (result.error?.status === 401 && api.endpoint !== "login") {
     api.dispatch(logout());
     if (typeof window !== "undefined") {
       window.location.href = "/admin/login";

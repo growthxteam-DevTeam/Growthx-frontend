@@ -24,27 +24,12 @@ const CreatePasswordForm = ({ gsCode }: CreatePasswordFormProps) => {
     form,
     onSubmit,
     isSubmitting,
-    isPasswordCreated,
     requirements,
     showPassword,
     toggleShowPassword,
     showConfirmPassword,
     toggleShowConfirmPassword,
   } = useCreatePassword(gsCode);
-
-  if (isPasswordCreated) {
-    return (
-      <div className="mx-auto w-full max-w-3xl px-6 py-16">
-        <div className="flex flex-col items-center rounded-2xl border border-border bg-white px-6 py-16 text-center">
-          <div className="flex size-20 items-center justify-center rounded-full bg-emerald-50">
-            <Check className="size-8 text-emerald-600" strokeWidth={3} />
-          </div>
-          <h1 className="mt-6 font-serif text-3xl font-bold text-primary">Password created</h1>
-          <p className="mt-2 text-sm text-muted-foreground">Your Growth Space account is now secured.</p>
-        </div>
-      </div>
-    );
-  }
 
   return (
     <div className="mx-auto w-full max-w-3xl px-6 py-16">

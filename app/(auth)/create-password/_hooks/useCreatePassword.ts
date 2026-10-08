@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useRouter } from "next/navigation";
 import { useForm, useWatch } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -13,9 +14,9 @@ import { PASSWORD_REQUIREMENTS, createPasswordSchema } from "../_constants";
 import type { CreatePasswordValues } from "../_types";
 
 export const useCreatePassword = (initialGsCode: string) => {
+  const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [isPasswordCreated, setIsPasswordCreated] = useState(false);
 
   const [createPassword, { isLoading }] = useCreatePasswordMutation();
 
@@ -38,7 +39,8 @@ export const useCreatePassword = (initialGsCode: string) => {
   const onSubmit = form.handleSubmit(async ({ gsCode, password: newPassword }) => {
     try {
       await createPassword({ gsCode, password: newPassword }).unwrap();
-      setIsPasswordCreated(true);
+      toast.success("Password created. Please log in.");
+      router.push("/login");
     } catch (error) {
       toast.error(getApiErrorMessage(error, "Something went wrong creating your password. Please try again."));
     }
@@ -48,7 +50,6 @@ export const useCreatePassword = (initialGsCode: string) => {
     form,
     onSubmit,
     isSubmitting: isLoading,
-    isPasswordCreated,
     requirements,
     showPassword,
     toggleShowPassword: () => setShowPassword((prev) => !prev),
