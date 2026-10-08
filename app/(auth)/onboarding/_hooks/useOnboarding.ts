@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
+import { getApiErrorMessage } from "@/lib/api-error";
 import { useSubmitApplicationMutation, type ApplicationRecord } from "@/redux/features/applications/applicationsApi";
 
 import {
@@ -27,20 +28,6 @@ import type {
   SubmitStepValues,
   WhoYouAreValues,
 } from "../_types";
-
-// Extracts a displayable message from a NestJS ValidationPipe error response
-// ({ message: string | string[] }) surfaced through RTK Query's error shape.
-const getSubmitErrorMessage = (error: unknown): string => {
-  if (error && typeof error === "object" && "data" in error) {
-    const data = (error as { data?: unknown }).data;
-    if (data && typeof data === "object" && "message" in data) {
-      const message = (data as { message?: unknown }).message;
-      if (Array.isArray(message)) return message.join(", ");
-      if (typeof message === "string") return message;
-    }
-  }
-  return "Something went wrong submitting your application. Please try again.";
-};
 
 export const useOnboarding = () => {
   const [wizardStep, setWizardStep] = useState<OnboardingWizardStep>("portal");
@@ -179,7 +166,7 @@ export const useOnboarding = () => {
       setSubmittedApplication(application);
       setWizardStep("success");
     } catch (error) {
-      toast.error(getSubmitErrorMessage(error));
+      toast.error(getApiErrorMessage(error, "Something went wrong submitting your application. Please try again."));
     }
   });
 

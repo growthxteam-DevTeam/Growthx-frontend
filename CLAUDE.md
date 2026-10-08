@@ -39,7 +39,8 @@ What exists:
   no UI or backend route yet.
 - Metadata in `app/layout.tsx` is still create-next-app defaults; `README.md` is the create-next-app default.
 
-The matching backend is [../growth-x-be](../growth-x-be/CLAUDE.md); only `POST /applications` exists there.
+The matching backend is [../growth-x-be](../growth-x-be/CLAUDE.md); it exposes `POST /applications` and
+`POST /applications/create-password` (used by `app/(auth)/create-password`).
 
 ## Architecture
 
