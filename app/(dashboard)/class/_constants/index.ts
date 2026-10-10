@@ -8,7 +8,7 @@ export const CURRENT_CLASS = {
   id: "week-1-pricing-your-product",
   title: "Week 1: Pricing your product",
   // Swap for the class recording. youtube.com/watch, youtu.be and /embed links all work.
-  videoUrl: "https://www.youtube.com/watch?v=jNQXAC9IVRw",
+  videoUrl: "https://www.youtube.com/watch?v=qgYuwG6JZq8",
 };
 
 export const MODULES: ClassModule[] = [
@@ -20,9 +20,21 @@ export const MODULES: ClassModule[] = [
 ];
 
 export const PREVIOUS_CLASSES: PreviousClass[] = [
-  { title: "Week 1: Pricing your product", meta: "Posted 2 days ago", videoUrl: CURRENT_CLASS.videoUrl },
-  { title: "Week 1: Pricing your product", meta: "Posted 2 days ago", videoUrl: CURRENT_CLASS.videoUrl },
-  { title: "Week 1: Pricing your product", meta: "Posted 2 days ago", videoUrl: CURRENT_CLASS.videoUrl },
+  {
+    title: "Week 1: Pricing your product",
+    meta: "Posted 2 days ago",
+    videoUrl: "https://www.youtube.com/watch?v=qgYuwG6JZq8",
+  },
+  {
+    title: "Week 1: Pricing your product",
+    meta: "Posted 2 days ago",
+    videoUrl: "https://www.youtube.com/watch?v=mkeo6Ff3798",
+  },
+  {
+    title: "Week 1: Pricing your product",
+    meta: "Posted 2 days ago",
+    videoUrl: "https://www.youtube.com/watch?v=AYRYu3DgVk8",
+  },
 ];
 
 export const ASSIGNMENT_CARDS: AssignmentCardConfig[] = [
