@@ -26,12 +26,12 @@ export const PREVIOUS_CLASSES: PreviousClass[] = [
     videoUrl: "https://www.youtube.com/watch?v=qgYuwG6JZq8",
   },
   {
-    title: "Week 1: Pricing your product",
+    title: "Week 2: Pricing your product",
     meta: "Posted 2 days ago",
     videoUrl: "https://www.youtube.com/watch?v=mkeo6Ff3798",
   },
   {
-    title: "Week 1: Pricing your product",
+    title: "Week 3: Pricing your product",
     meta: "Posted 2 days ago",
     videoUrl: "https://www.youtube.com/watch?v=AYRYu3DgVk8",
   },
