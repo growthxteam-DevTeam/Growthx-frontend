@@ -179,12 +179,12 @@
       "removePhoto": "Supprimer la photo",
       "startCamera": "Démarrer la caméra",
       "chooseFile": "Choisir un fichier",
-      "fileHint": "JPEG ou PNG . 2 Mo maximum",
+      "fileHint": "JPEG ou PNG . 10 Mo maximum",
       "submit": "Soumettre la candidature",
       "submitting": "Envoi en cours...",
       "errors": {
         "invalidType": "Veuillez téléverser une image JPEG ou PNG",
-        "tooLarge": "Le fichier ne doit pas dépasser 2 Mo",
+        "tooLarge": "Le fichier ne doit pas dépasser 10 Mo",
         "submitFailed": "Une erreur est survenue lors de l'envoi de votre candidature. Veuillez réessayer."
       }
     },

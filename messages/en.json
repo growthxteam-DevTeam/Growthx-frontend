@@ -179,12 +179,12 @@
       "removePhoto": "Remove photo",
       "startCamera": "Start Camera",
       "chooseFile": "Choose file",
-      "fileHint": "Jpeg or PNG . Max 2 MB",
+      "fileHint": "Jpeg or PNG . Max 10 MB",
       "submit": "Submit Application",
       "submitting": "Submitting...",
       "errors": {
         "invalidType": "Please upload a Jpeg or PNG image",
-        "tooLarge": "File must be 2 MB or smaller",
+        "tooLarge": "File must be 10 MB or smaller",
         "submitFailed": "Something went wrong submitting your application. Please try again."
       }
     },

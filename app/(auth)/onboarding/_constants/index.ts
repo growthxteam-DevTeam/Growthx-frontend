@@ -121,7 +121,7 @@ export const submitStepSchema = z.object({
 });
 
 export const PASSPORT_PHOTO_ACCEPT = ["image/jpeg", "image/png"];
-export const PASSPORT_PHOTO_MAX_BYTES = 2 * 1024 * 1024; // 2 MB
+export const PASSPORT_PHOTO_MAX_BYTES = 10 * 1024 * 1024; // 10 MB
 
 // TODO: this is application metadata that should come from the step-1
 // submission (and eventually an API) once that response shape is defined.

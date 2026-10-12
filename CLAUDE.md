@@ -95,7 +95,7 @@ use before adding more public env vars.
 - `_constants/index.ts` holds the zod schemas **and** the slice's static option arrays; `_types/index.ts` holds
   `z.infer` types. Site-wide copy goes in root `constants/index.ts` (`NAV_LINKS`, `ANNOUNCEMENT_MESSAGE`).
 - The onboarding form uses one `useForm` per step and builds a single multipart `FormData` on the final submit
-  (passport photo: JPEG/PNG, 2 MB — mirrors the backend's multer limits). Backend validation errors are
+  (passport photo: JPEG/PNG, 10 MB — mirrors the backend's multer limits). Backend validation errors are
   unwrapped from the NestJS `ValidationPipe` shape by `getSubmitErrorMessage()`.
 - `ApplicationForm` switches on the active tab with an `assertNever` exhaustiveness guard — add new tabs to
   `OnboardingTabId` and the switch together.

@@ -37,7 +37,7 @@ const CommentItem = ({ comment, onReply, onLike }: CommentItemProps) => {
             {formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}
           </span>
         </p>
-        <p className="mt-0.5 break-words text-xs text-foreground">{comment.content}</p>
+        <p className="mt-0.5 wrap-break-word text-xs text-foreground">{comment.content}</p>
 
         <div className="mt-1 flex items-center gap-4 text-[10px] text-muted-foreground">
           {onReply && (
