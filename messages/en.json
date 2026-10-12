@@ -1,0 +1,252 @@
+{
+  "Common": {
+    "pickDate": "Pick a date"
+  },
+  "Header": {
+    "language": "Change language",
+    "nav": {
+      "programs": "Programs",
+      "services": "Services",
+      "contact": "Contact Us"
+    }
+  },
+  "Announcement": {
+    "message": "Admissions are now open! Apply today (Deadline 19/09/2026)"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "description": "The page you're looking for doesn't exist or may have been moved.",
+    "back": "Back to home"
+  },
+  "Login": {
+    "title": "Welcome back",
+    "subtitle": "Log in to your Growth Space account to continue your journey.",
+    "email": "Email Address",
+    "password": "Password",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "rememberMe": "Remember me",
+    "forgotPassword": "Forgot password?",
+    "submit": "Log in",
+    "submitting": "Logging in...",
+    "noAccount": "Don't have an account yet?",
+    "apply": "Apply to Growth Space",
+    "welcomeToast": "Welcome back",
+    "error": "Something went wrong logging you in. Please try again."
+  },
+  "CreatePassword": {
+    "congrats": "Congratulations on your acceptance to the Cohort",
+    "title": "Create password",
+    "subtitle": "Set a strong password to secure your Growth Space account.",
+    "gsCode": "Enter your GS Code",
+    "gsCodeHint": "This was sent to you in your acceptance email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "requirementsTitle": "Password requirements",
+    "requirements": {
+      "length": "At least 8 characters long",
+      "number": "Contains at least one number",
+      "uppercase": "Contains at least one uppercase letter",
+      "special": "Contains at least one special character"
+    },
+    "submit": "Create password",
+    "submitting": "Creating...",
+    "success": "Password created. Please log in.",
+    "error": "Something went wrong creating your password. Please try again."
+  },
+  "Validation": {
+    "emailInvalid": "Enter a valid email address",
+    "passwordRequired": "Password is required",
+    "gsCodeRequired": "GS code is required",
+    "passwordMin": "Password must be at least 8 characters",
+    "passwordNumber": "Password must contain a number",
+    "passwordUppercase": "Password must contain an uppercase letter",
+    "passwordSpecial": "Password must contain a special character",
+    "confirmPasswordRequired": "Confirm your password",
+    "passwordsMismatch": "Passwords do not match",
+    "fullNameRequired": "Full name is required",
+    "programRequired": "Select a program",
+    "surnameRequired": "Surname is required",
+    "firstNameRequired": "First name is required",
+    "businessNameRequired": "Business name is required",
+    "dateOfBirthRequired": "Date of birth is required",
+    "genderRequired": "Select a gender",
+    "businessDescriptionMin": "Tell us more about your business",
+    "operatingDurationRequired": "Select how long you've been operating",
+    "averageRevenueRequired": "Select your average revenue",
+    "optionRequired": "Select an option",
+    "pleaseSelectOption": "Please select an option",
+    "challengeAndSkillGapMin": "Tell us more — both the win and the gap",
+    "cohortMotivationMin": "Tell us more about why now and what outcome you want"
+  },
+  "Onboarding": {
+    "common": {
+      "back": "Back",
+      "continue": "Continue",
+      "saving": "Saving...",
+      "textareaPlaceholder": "We help small logistic companies in Lagos..."
+    },
+    "tabs": {
+      "personal-info": "Personal info",
+      "business-basics": "Business Basics",
+      "who-you-are": "Who You Are",
+      "accessibility-support": "Accessibility & Support",
+      "submit": "Submit"
+    },
+    "form": {
+      "title": "Application for {program}",
+      "applicationNumber": "Application Number:",
+      "cohort": "Cohort:",
+      "programFee": "Program fee (If selected):",
+      "deadline": "Deadline:"
+    },
+    "portal": {
+      "title": "Application Portal",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "your name",
+      "email": "Email address",
+      "emailPlaceholder": "your email",
+      "program": "Program",
+      "programPlaceholder": "select",
+      "cohort": "Cohort",
+      "cohortPlaceholder": "choose",
+      "submit": "Start Screening",
+      "submitting": "Starting..."
+    },
+    "personalInfo": {
+      "title": "Personal Information",
+      "description": "Update your personal details for the application",
+      "titleLabel": "Title",
+      "titlePlaceholder": "Mr",
+      "surname": "Surname",
+      "firstName": "First Name",
+      "businessName": "Business Name",
+      "dateOfBirth": "Date of Birth",
+      "dateOfBirthPlaceholder": "dd/mm/yyyy",
+      "gender": "Gender",
+      "genderPlaceholder": "select"
+    },
+    "businessBasics": {
+      "description": {
+        "title": "What does your business do, and whom does it serve?",
+        "description": "Write in plain language, imagine explaining it to a smart friend who has never heard of it"
+      },
+      "operatingDuration": {
+        "title": "How long have you been operating?",
+        "description": "From the date you started building or selling, not your official registration date."
+      },
+      "averageRevenue": {
+        "title": "What is your average revenue?",
+        "description": "This helps us match you with the right cohort peers."
+      },
+      "fullTimeCommitment": {
+        "title": "Are you working on this business full-time?",
+        "description": "There's no wrong answer, we just need to understand your situation to set the right expectations."
+      }
+    },
+    "whoYouAre": {
+      "challenge": {
+        "title": "What's the most impressive or difficult thing you've done to build this business, and what's the one skill gap holding you back the most right now?",
+        "description": "Be specific on both sides. A real story of a challenge you pushed through, plus an honest read on what you don't yet know how to do, tells us far more than a list of achievements, and helps us match you with the right peers."
+      },
+      "motivation": {
+        "title": "Why do you want to join this cohort now, what specific outcome would make it worth it for you?",
+        "description": "Think about where you want your business to be in 6 months. What needs to be true?"
+      }
+    },
+    "accessibility": {
+      "choice": {
+        "title": "Do you have any accessibility needs we should know about?",
+        "description": "This has no bearing on your acceptance into the program, it only help us to support you."
+      },
+      "need": {
+        "title": "What is your accessibility need?"
+      }
+    },
+    "submit": {
+      "title": "Upload a Passport photograph of yourself (optional)",
+      "previewAlt": "Passport preview",
+      "removePhoto": "Remove photo",
+      "startCamera": "Start Camera",
+      "chooseFile": "Choose file",
+      "fileHint": "Jpeg or PNG . Max 2 MB",
+      "submit": "Submit Application",
+      "submitting": "Submitting...",
+      "errors": {
+        "invalidType": "Please upload a Jpeg or PNG image",
+        "tooLarge": "File must be 2 MB or smaller",
+        "submitFailed": "Something went wrong submitting your application. Please try again."
+      }
+    },
+    "submitted": {
+      "title": "Application Submitted",
+      "description": "We review every application personally. If selected, you will hear from us within 5 business days with guidance on next steps.",
+      "toastTitle": "Application submitted",
+      "toastDescription": "We'll review it and be in touch within 5 business days.",
+      "rows": {
+        "business": "Business",
+        "operating": "Operating",
+        "revenue": "Revenue",
+        "accessibility": "Accessibility",
+        "fullTime": "Full-time",
+        "keyOutcome": "Key Outcome"
+      },
+      "accessibility": {
+        "yes": "Has accessibility needs",
+        "no": "No accessibility needs"
+      },
+      "fullTime": {
+        "full-time": "Yes",
+        "not-yet": "Not yet"
+      }
+    },
+    "options": {
+      "program": {
+        "product-design": "Product Design",
+        "software-engineering": "Software Engineering",
+        "data-analytics": "Data Analytics"
+      },
+      "cohort": {
+        "cohort-1": "Cohort 1 (Jan 2026)",
+        "cohort-2": "Cohort 2 (Apr 2026)"
+      },
+      "gender": {
+        "male": "Male",
+        "female": "Female",
+        "undisclosed": "Prefer not to say"
+      },
+      "operatingDuration": {
+        "less-than-6-months": "Less than 6 months",
+        "6-months-to-1-year": "6 months to 1 year",
+        "1-3-years": "1-3 years",
+        "3-5-years": "3-5 years",
+        "more-than-5-years": "More than 5 years"
+      },
+      "averageRevenue": {
+        "no-revenue-yet": "No revenue yet, but have paying interest or pilots",
+        "early-revenue": "Early revenue (under ₦500k/month)",
+        "growing-revenue": "Growing revenue (₦500k – ₦5m/month)",
+        "significant-revenue": "Significant revenue (above ₦5m/month)"
+      },
+      "fullTimeCommitment": {
+        "full-time": "Yes, Full-Time",
+        "not-yet": "Not Yet, planning to be"
+      },
+      "accessibilityNeed": {
+        "vision": "Vision (blind or low vision)",
+        "hearing": "Hearing (deaf or hard of hearing)",
+        "mobility": "Mobility or Motor differences",
+        "cognitive": "Cognitive or learning differences",
+        "speech": "Speech (limited or no speech)",
+        "other": "Something else not listed here",
+        "undisclosed": "Prefer not to say"
+      },
+      "hasAccessibilityNeeds": {
+        "yes": "Yes, I have accessibility needs",
+        "no": "No, I don't have accessibility needs"
+      }
+    }
+  }
+}

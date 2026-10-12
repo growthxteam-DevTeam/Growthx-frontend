@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
 
@@ -18,6 +19,7 @@ import type { LoginValues } from "../_types";
 export const useLogin = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
+  const t = useTranslations("Login");
   const [login, { isLoading }] = useLoginMutation();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -40,10 +42,10 @@ export const useLogin = () => {
           user: { ...data.user, role: { title: "Applicant" } },
         }),
       );
-      toast.success("Welcome back");
+      toast.success(t("welcomeToast"));
       router.push("/dashboard");
     } catch (error) {
-      toast.error(getApiErrorMessage(error, "Something went wrong logging you in. Please try again."));
+      toast.error(getApiErrorMessage(error, t("error")));
     }
   });
 

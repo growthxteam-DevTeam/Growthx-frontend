@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useTranslations } from "next-intl";
 import type { UseFormReturn } from "react-hook-form";
 
 import CustomFormField, { FormFieldType } from "@/components/shared/CustomFormField";
@@ -11,11 +12,8 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import type { FrameworkT } from "@/types/global";
 
-import {
-  AVERAGE_REVENUE_OPTIONS,
-  FULL_TIME_COMMITMENT_OPTIONS,
-  OPERATING_DURATION_OPTIONS,
-} from "../_constants";
+import { AVERAGE_REVENUE_OPTIONS, FULL_TIME_COMMITMENT_OPTIONS, OPERATING_DURATION_OPTIONS } from "../_constants";
+import { useOptions } from "../_hooks/useOptions";
 import type { BusinessBasicsValues } from "../_types";
 
 interface BusinessBasicsStepProps {
@@ -26,11 +24,7 @@ interface BusinessBasicsStepProps {
 
 // Four screens under one tab: the tab only advances ("who-you-are") once
 // every field on this schema is filled, not after the first question.
-type BusinessBasicsScreen =
-  | "description"
-  | "operating-duration"
-  | "average-revenue"
-  | "full-time-commitment";
+type BusinessBasicsScreen = "description" | "operating-duration" | "average-revenue" | "full-time-commitment";
 
 const RadioCardGroup = ({
   value,
@@ -65,6 +59,9 @@ const RadioCardGroup = ({
 
 const BusinessBasicsStep = ({ form, onSubmit, isSubmitting }: BusinessBasicsStepProps) => {
   const [screen, setScreen] = useState<BusinessBasicsScreen>("description");
+  const t = useTranslations("Onboarding.businessBasics");
+  const tc = useTranslations("Onboarding.common");
+  const toOptions = useOptions();
 
   const goToOperatingDuration = async () => {
     const isValid = await form.trigger("businessDescription");
@@ -84,12 +81,8 @@ const BusinessBasicsStep = ({ form, onSubmit, isSubmitting }: BusinessBasicsStep
   if (screen === "operating-duration") {
     return (
       <div className="rounded-xl border border-border bg-white p-8">
-        <h2 className="font-serif text-2xl font-bold text-primary">
-          How long have you been operating?
-        </h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          From the date you started building or selling, not your official registration date.
-        </p>
+        <h2 className="font-serif text-2xl font-bold text-primary">{t("operatingDuration.title")}</h2>
+        <p className="mt-1 text-sm text-muted-foreground">{t("operatingDuration.description")}</p>
 
         <div className="mt-8">
           <CustomFormField
@@ -98,7 +91,9 @@ const BusinessBasicsStep = ({ form, onSubmit, isSubmitting }: BusinessBasicsStep
             name="operatingDuration"
             render={(field) => {
               const { value, onChange } = field as { value?: string; onChange: (value: string) => void };
-              return <RadioCardGroup value={value} onChange={onChange} options={OPERATING_DURATION_OPTIONS} />;
+              return (
+                <RadioCardGroup value={value} onChange={onChange} options={toOptions(OPERATING_DURATION_OPTIONS)} />
+              );
             }}
           />
 
@@ -110,11 +105,11 @@ const BusinessBasicsStep = ({ form, onSubmit, isSubmitting }: BusinessBasicsStep
               className="h-11! gap-2 rounded-md border-primary px-6 text-sm font-medium text-primary hover:bg-transparent"
             >
               <ArrowLeft className="size-4" />
-              Back
+              {tc("back")}
             </Button>
 
             <SubmitButton type="button" clickFn={goToAverageRevenue} className="flex w-fit items-center px-6">
-              Continue
+              {tc("continue")}
               <span className="flex size-5 items-center justify-center rounded bg-white/20">
                 <ArrowRight className="size-3.5" />
               </span>
@@ -128,10 +123,8 @@ const BusinessBasicsStep = ({ form, onSubmit, isSubmitting }: BusinessBasicsStep
   if (screen === "average-revenue") {
     return (
       <div className="rounded-xl border border-border bg-white p-8">
-        <h2 className="font-serif text-2xl font-bold text-primary">What is your average revenue?</h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          This helps us match you with the right cohort peers.
-        </p>
+        <h2 className="font-serif text-2xl font-bold text-primary">{t("averageRevenue.title")}</h2>
+        <p className="mt-1 text-sm text-muted-foreground">{t("averageRevenue.description")}</p>
 
         <div className="mt-8">
           <CustomFormField
@@ -140,7 +133,7 @@ const BusinessBasicsStep = ({ form, onSubmit, isSubmitting }: BusinessBasicsStep
             name="averageRevenue"
             render={(field) => {
               const { value, onChange } = field as { value?: string; onChange: (value: string) => void };
-              return <RadioCardGroup value={value} onChange={onChange} options={AVERAGE_REVENUE_OPTIONS} />;
+              return <RadioCardGroup value={value} onChange={onChange} options={toOptions(AVERAGE_REVENUE_OPTIONS)} />;
             }}
           />
 
@@ -152,15 +145,11 @@ const BusinessBasicsStep = ({ form, onSubmit, isSubmitting }: BusinessBasicsStep
               className="h-11! gap-2 rounded-md border-primary px-6 text-sm font-medium text-primary hover:bg-transparent"
             >
               <ArrowLeft className="size-4" />
-              Back
+              {tc("back")}
             </Button>
 
-            <SubmitButton
-              type="button"
-              clickFn={goToFullTimeCommitment}
-              className="flex w-fit items-center px-6"
-            >
-              Continue
+            <SubmitButton type="button" clickFn={goToFullTimeCommitment} className="flex w-fit items-center px-6">
+              {tc("continue")}
               <span className="flex size-5 items-center justify-center rounded bg-white/20">
                 <ArrowRight className="size-3.5" />
               </span>
@@ -174,13 +163,8 @@ const BusinessBasicsStep = ({ form, onSubmit, isSubmitting }: BusinessBasicsStep
   if (screen === "full-time-commitment") {
     return (
       <div className="rounded-xl border border-border bg-white p-8">
-        <h2 className="font-serif text-2xl font-bold text-primary">
-          Are you working on this business full-time?
-        </h2>
-        <p className="mt-1 text-sm text-muted-foreground">
-          There&apos;s no wrong answer, we just need to understand your situation to set the right
-          expectations.
-        </p>
+        <h2 className="font-serif text-2xl font-bold text-primary">{t("fullTimeCommitment.title")}</h2>
+        <p className="mt-1 text-sm text-muted-foreground">{t("fullTimeCommitment.description")}</p>
 
         <form onSubmit={onSubmit} className="mt-8">
           <CustomFormField
@@ -193,7 +177,7 @@ const BusinessBasicsStep = ({ form, onSubmit, isSubmitting }: BusinessBasicsStep
                 <RadioCardGroup
                   value={value}
                   onChange={onChange}
-                  options={FULL_TIME_COMMITMENT_OPTIONS}
+                  options={toOptions(FULL_TIME_COMMITMENT_OPTIONS)}
                   layout="grid"
                 />
               );
@@ -208,15 +192,11 @@ const BusinessBasicsStep = ({ form, onSubmit, isSubmitting }: BusinessBasicsStep
               className="h-11! gap-2 rounded-md border-primary px-6 text-sm font-medium text-primary hover:bg-transparent"
             >
               <ArrowLeft className="size-4" />
-              Back
+              {tc("back")}
             </Button>
 
-            <SubmitButton
-              isLoading={isSubmitting}
-              loadingText="Saving..."
-              className="flex w-fit items-center px-6"
-            >
-              Continue
+            <SubmitButton isLoading={isSubmitting} loadingText={tc("saving")} className="flex w-fit items-center px-6">
+              {tc("continue")}
               <span className="flex size-5 items-center justify-center rounded bg-white/20">
                 <ArrowRight className="size-3.5" />
               </span>
@@ -229,19 +209,15 @@ const BusinessBasicsStep = ({ form, onSubmit, isSubmitting }: BusinessBasicsStep
 
   return (
     <div className="rounded-xl border border-border bg-white p-8">
-      <h2 className="font-serif text-2xl font-bold text-primary">
-        What does your business do, and whom does it serve?
-      </h2>
-      <p className="mt-1 text-sm text-muted-foreground">
-        Write in plain language, imagine explaining it to a smart friend who has never heard of it
-      </p>
+      <h2 className="font-serif text-2xl font-bold text-primary">{t("description.title")}</h2>
+      <p className="mt-1 text-sm text-muted-foreground">{t("description.description")}</p>
 
       <div className="mt-8">
         <CustomFormField
           fieldType={FormFieldType.TEXTAREA}
           control={form.control}
           name="businessDescription"
-          placeholder="We help small logistic companies in Lagos..."
+          placeholder={tc("textareaPlaceholder")}
           variant="min-h-40 bg-gray-50"
         />
 
@@ -250,7 +226,7 @@ const BusinessBasicsStep = ({ form, onSubmit, isSubmitting }: BusinessBasicsStep
           clickFn={goToOperatingDuration}
           className="ml-auto mt-10 flex w-fit items-center px-6"
         >
-          Continue
+          {tc("continue")}
           <span className="flex size-5 items-center justify-center rounded bg-white/20">
             <ArrowRight className="size-3.5" />
           </span>

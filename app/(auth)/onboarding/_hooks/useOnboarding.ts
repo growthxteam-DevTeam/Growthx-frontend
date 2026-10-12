@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { getApiErrorMessage } from "@/lib/api-error";
@@ -30,6 +31,7 @@ import type {
 } from "../_types";
 
 export const useOnboarding = () => {
+  const t = useTranslations("Onboarding.submit");
   const [wizardStep, setWizardStep] = useState<OnboardingWizardStep>("portal");
   const [activeTab, setActiveTab] = useState<OnboardingTabId>(ONBOARDING_TABS[0].id);
   const [submittedApplication, setSubmittedApplication] = useState<ApplicationRecord | null>(null);
@@ -166,7 +168,7 @@ export const useOnboarding = () => {
       setSubmittedApplication(application);
       setWizardStep("success");
     } catch (error) {
-      toast.error(getApiErrorMessage(error, "Something went wrong submitting your application. Please try again."));
+      toast.error(getApiErrorMessage(error, t("errors.submitFailed")));
     }
   });
 

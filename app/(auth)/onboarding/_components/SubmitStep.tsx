@@ -1,6 +1,7 @@
 "use client";
 
 import { ArrowLeft, ArrowRight, Camera, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState } from "react";
 import { useController, type UseFormReturn } from "react-hook-form";
 
@@ -18,6 +19,8 @@ interface SubmitStepProps {
 }
 
 const SubmitStep = ({ form, onSubmit, isSubmitting, onBack }: SubmitStepProps) => {
+  const t = useTranslations("Onboarding.submit");
+  const tc = useTranslations("Onboarding.common");
   const {
     field: { value: photoFile, onChange: setPhotoFile },
   } = useController({ control: form.control, name: "passportPhoto" });
@@ -39,11 +42,11 @@ const SubmitStep = ({ form, onSubmit, isSubmitting, onBack }: SubmitStepProps) =
     if (!file) return;
 
     if (!PASSPORT_PHOTO_ACCEPT.includes(file.type)) {
-      setFileError("Please upload a Jpeg or PNG image");
+      setFileError(t("errors.invalidType"));
       return;
     }
     if (file.size > PASSPORT_PHOTO_MAX_BYTES) {
-      setFileError("File must be 2 MB or smaller");
+      setFileError(t("errors.tooLarge"));
       return;
     }
 
@@ -60,20 +63,14 @@ const SubmitStep = ({ form, onSubmit, isSubmitting, onBack }: SubmitStepProps) =
 
   return (
     <div className="rounded-xl border border-border bg-white p-8">
-      <h2 className="font-serif text-2xl font-bold text-primary">
-        Upload a Passport photograph of yourself (optional)
-      </h2>
+      <h2 className="font-serif text-2xl font-bold text-primary">{t("title")}</h2>
 
       <form onSubmit={onSubmit} className="mt-8">
         <div className="flex flex-col items-center justify-center gap-3 rounded-xl border border-dashed border-border bg-gray-50 px-6 py-14 text-center">
           {previewUrl ? (
             <div className="flex flex-col items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element -- transient client-side object URL, not an optimizable asset */}
-              <img
-                src={previewUrl}
-                alt="Passport preview"
-                className="size-24 rounded-full object-cover"
-              />
+              <img src={previewUrl} alt={t("previewAlt")} className="size-24 rounded-full object-cover" />
               <p className="text-sm text-muted-foreground">{photoFile?.name}</p>
               <Button
                 type="button"
@@ -82,7 +79,7 @@ const SubmitStep = ({ form, onSubmit, isSubmitting, onBack }: SubmitStepProps) =
                 className="gap-1.5 text-sm text-muted-foreground"
               >
                 <X className="size-3.5" />
-                Remove photo
+                {t("removePhoto")}
               </Button>
             </div>
           ) : (
@@ -90,7 +87,7 @@ const SubmitStep = ({ form, onSubmit, isSubmitting, onBack }: SubmitStepProps) =
               {/* TODO: live webcam capture (getUserMedia) isn't wired up yet —
                   this is a placeholder until that's explicitly built. */}
               <Camera className="size-10 text-muted-foreground" />
-              <p className="text-muted-foreground">Start Camera</p>
+              <p className="text-muted-foreground">{t("startCamera")}</p>
 
               <Button
                 type="button"
@@ -98,7 +95,7 @@ const SubmitStep = ({ form, onSubmit, isSubmitting, onBack }: SubmitStepProps) =
                 onClick={() => fileInputRef.current?.click()}
                 className="border-primary text-primary"
               >
-                Choose file
+                {t("chooseFile")}
               </Button>
               <input
                 ref={fileInputRef}
@@ -108,7 +105,7 @@ const SubmitStep = ({ form, onSubmit, isSubmitting, onBack }: SubmitStepProps) =
                 onChange={handleFileChange}
               />
 
-              <p className="text-xs text-muted-foreground">Jpeg or PNG . Max 2 MB</p>
+              <p className="text-xs text-muted-foreground">{t("fileHint")}</p>
             </>
           )}
         </div>
@@ -123,15 +120,11 @@ const SubmitStep = ({ form, onSubmit, isSubmitting, onBack }: SubmitStepProps) =
             className="h-11! gap-2 rounded-md border-primary px-6 text-sm font-medium text-primary hover:bg-transparent"
           >
             <ArrowLeft className="size-4" />
-            Back
+            {tc("back")}
           </Button>
 
-          <SubmitButton
-            isLoading={isSubmitting}
-            loadingText="Submitting..."
-            className="flex w-fit items-center px-6"
-          >
-            Submit Application
+          <SubmitButton isLoading={isSubmitting} loadingText={t("submitting")} className="flex w-fit items-center px-6">
+            {t("submit")}
             <span className="flex size-5 items-center justify-center rounded bg-white/20">
               <ArrowRight className="size-3.5" />
             </span>

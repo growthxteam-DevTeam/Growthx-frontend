@@ -1,37 +1,40 @@
 import { Check } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import type { ApplicationRecord } from "@/redux/features/applications/applicationsApi";
 import type { FrameworkT } from "@/types/global";
 
 import { AVERAGE_REVENUE_OPTIONS, OPERATING_DURATION_OPTIONS } from "../_constants";
+import { useOptions } from "../_hooks/useOptions";
 
 interface ApplicationSubmittedStepProps {
   application: ApplicationRecord;
 }
-
-const ACCESSIBILITY_LABELS: Record<ApplicationRecord["accessibilitySupport"]["hasAccessibilityNeeds"], string> = {
-  yes: "Has accessibility needs",
-  no: "No accessibility needs",
-};
-
-const FULL_TIME_LABELS: Record<ApplicationRecord["businessBasics"]["fullTimeCommitment"], string> = {
-  "full-time": "Yes",
-  "not-yet": "Not yet",
-};
 
 const labelFor = (options: FrameworkT[], value: string) =>
   options.find((option) => option.value === value)?.label ?? value;
 
 const ApplicationSubmittedStep = ({ application }: ApplicationSubmittedStepProps) => {
   const { businessBasics, whoYouAre, accessibilitySupport } = application;
+  const t = useTranslations("Onboarding.submitted");
+  const toOptions = useOptions();
 
   const summaryRows = [
-    { label: "Business", value: businessBasics.businessDescription },
-    { label: "Operating", value: labelFor(OPERATING_DURATION_OPTIONS, businessBasics.operatingDuration) },
-    { label: "Revenue", value: labelFor(AVERAGE_REVENUE_OPTIONS, businessBasics.averageRevenue) },
-    { label: "Accessibility", value: ACCESSIBILITY_LABELS[accessibilitySupport.hasAccessibilityNeeds] },
-    { label: "Full-time", value: FULL_TIME_LABELS[businessBasics.fullTimeCommitment] },
-    { label: "Key Outcome", value: whoYouAre.cohortMotivation },
+    { label: t("rows.business"), value: businessBasics.businessDescription },
+    {
+      label: t("rows.operating"),
+      value: labelFor(toOptions(OPERATING_DURATION_OPTIONS), businessBasics.operatingDuration),
+    },
+    {
+      label: t("rows.revenue"),
+      value: labelFor(toOptions(AVERAGE_REVENUE_OPTIONS), businessBasics.averageRevenue),
+    },
+    {
+      label: t("rows.accessibility"),
+      value: t(`accessibility.${accessibilitySupport.hasAccessibilityNeeds}`),
+    },
+    { label: t("rows.fullTime"), value: t(`fullTime.${businessBasics.fullTimeCommitment}`) },
+    { label: t("rows.keyOutcome"), value: whoYouAre.cohortMotivation },
   ];
 
   return (
@@ -42,11 +45,8 @@ const ApplicationSubmittedStep = ({ application }: ApplicationSubmittedStepProps
             <Check className="size-10 text-emerald-600" strokeWidth={3} />
           </div>
 
-          <h1 className="mt-6 font-serif text-3xl font-bold text-primary">Application Submitted</h1>
-          <p className="mt-3 max-w-md text-muted-foreground">
-            We review every application personally. If selected, you will hear from us within 5 business days with
-            guidance on next steps.
-          </p>
+          <h1 className="mt-6 font-serif text-3xl font-bold text-primary">{t("title")}</h1>
+          <p className="mt-3 max-w-md text-muted-foreground">{t("description")}</p>
         </div>
 
         <div className="mt-10 divide-y divide-border rounded-xl bg-[#f5f4fc]">

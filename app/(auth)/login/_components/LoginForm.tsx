@@ -1,6 +1,7 @@
 "use client";
 
 import { Eye, EyeOff, Mail } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 import CustomFormField, { FormFieldType } from "@/components/shared/CustomFormField";
@@ -16,15 +17,14 @@ const FieldLabelText = ({ title }: { title: string }) => (
 
 const LoginForm = () => {
   const { form, onSubmit, isSubmitting, showPassword, toggleShowPassword } = useLogin();
+  const t = useTranslations("Login");
 
   return (
     <div className="mx-auto w-full max-w-3xl px-6 py-6">
       <div className="rounded-2xl border border-border bg-white px-6 py-8">
         <div className="text-center">
-          <h1 className="font-serif text-2xl font-bold text-primary">Welcome back</h1>
-          <p className="mt-2 text-xs text-muted-foreground">
-            Log in to your Growth Space account to continue your journey.
-          </p>
+          <h1 className="font-serif text-2xl font-bold text-primary">{t("title")}</h1>
+          <p className="mt-2 text-xs text-muted-foreground">{t("subtitle")}</p>
         </div>
 
         <form onSubmit={onSubmit} className="mx-auto mt-6 flex w-full max-w-md flex-col gap-4">
@@ -34,7 +34,7 @@ const LoginForm = () => {
             name="email"
             type="email"
             placeholder="name@example.com"
-            label={<FieldLabelText title="Email Address" />}
+            label={<FieldLabelText title={t("email")} />}
             leftIcon={<Mail className="size-4 text-muted-foreground" />}
           />
 
@@ -43,12 +43,12 @@ const LoginForm = () => {
             control={form.control}
             name="password"
             type={showPassword ? "text" : "password"}
-            label={<FieldLabelText title="Password" />}
+            label={<FieldLabelText title={t("password")} />}
             rightIcon={
               <button
                 type="button"
                 onClick={toggleShowPassword}
-                aria-label={showPassword ? "Hide password" : "Show password"}
+                aria-label={showPassword ? t("hidePassword") : t("showPassword")}
               >
                 {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
               </button>
@@ -60,21 +60,21 @@ const LoginForm = () => {
               fieldType={FormFieldType.CHECKBOX}
               control={form.control}
               name="rememberMe"
-              label="Remember me"
+              label={t("rememberMe")}
             />
             {/* TODO: no password-reset flow exists yet. */}
             <Link href="#" className="shrink-0 text-xs font-medium text-primary hover:opacity-80">
-              Forgot password?
+              {t("forgotPassword")}
             </Link>
           </div>
 
-          <SubmitButton isLoading={isSubmitting} loadingText="Logging in..." className="w-full">
-            Log in
+          <SubmitButton isLoading={isSubmitting} loadingText={t("submitting")} className="w-full">
+            {t("submit")}
           </SubmitButton>
 
-          <p className="text-center text-xs text-muted-foreground">Don&apos;t have an account yet?</p>
+          <p className="text-center text-xs text-muted-foreground">{t("noAccount")}</p>
           <Link href="/onboarding" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "-mt-2 w-full")}>
-            Apply to Growth X
+            {t("apply")}
           </Link>
         </form>
       </div>

@@ -1,0 +1,252 @@
+{
+  "Common": {
+    "pickDate": "Choisir une date"
+  },
+  "Header": {
+    "language": "Changer de langue",
+    "nav": {
+      "programs": "Programmes",
+      "services": "Services",
+      "contact": "Nous contacter"
+    }
+  },
+  "Announcement": {
+    "message": "Les admissions sont ouvertes ! Postulez dès aujourd'hui (date limite : 19/09/2026)"
+  },
+  "NotFound": {
+    "title": "Page introuvable",
+    "description": "La page que vous recherchez n'existe pas ou a été déplacée.",
+    "back": "Retour à l'accueil"
+  },
+  "Login": {
+    "title": "Bon retour",
+    "subtitle": "Connectez-vous à votre compte Growth Space pour poursuivre votre parcours.",
+    "email": "Adresse e-mail",
+    "password": "Mot de passe",
+    "showPassword": "Afficher le mot de passe",
+    "hidePassword": "Masquer le mot de passe",
+    "rememberMe": "Se souvenir de moi",
+    "forgotPassword": "Mot de passe oublié ?",
+    "submit": "Se connecter",
+    "submitting": "Connexion en cours...",
+    "noAccount": "Vous n'avez pas encore de compte ?",
+    "apply": "Postuler à Growth Space",
+    "welcomeToast": "Bon retour",
+    "error": "Une erreur est survenue lors de la connexion. Veuillez réessayer."
+  },
+  "CreatePassword": {
+    "congrats": "Félicitations pour votre admission à la cohorte",
+    "title": "Créer un mot de passe",
+    "subtitle": "Définissez un mot de passe robuste pour sécuriser votre compte Growth Space.",
+    "gsCode": "Saisissez votre code GS",
+    "gsCodeHint": "Ce code vous a été envoyé dans votre e-mail d'admission",
+    "password": "Mot de passe",
+    "confirmPassword": "Confirmer le mot de passe",
+    "showPassword": "Afficher le mot de passe",
+    "hidePassword": "Masquer le mot de passe",
+    "requirementsTitle": "Exigences du mot de passe",
+    "requirements": {
+      "length": "Au moins 8 caractères",
+      "number": "Contient au moins un chiffre",
+      "uppercase": "Contient au moins une lettre majuscule",
+      "special": "Contient au moins un caractère spécial"
+    },
+    "submit": "Créer le mot de passe",
+    "submitting": "Création en cours...",
+    "success": "Mot de passe créé. Veuillez vous connecter.",
+    "error": "Une erreur est survenue lors de la création de votre mot de passe. Veuillez réessayer."
+  },
+  "Validation": {
+    "emailInvalid": "Saisissez une adresse e-mail valide",
+    "passwordRequired": "Le mot de passe est obligatoire",
+    "gsCodeRequired": "Le code GS est obligatoire",
+    "passwordMin": "Le mot de passe doit contenir au moins 8 caractères",
+    "passwordNumber": "Le mot de passe doit contenir un chiffre",
+    "passwordUppercase": "Le mot de passe doit contenir une lettre majuscule",
+    "passwordSpecial": "Le mot de passe doit contenir un caractère spécial",
+    "confirmPasswordRequired": "Confirmez votre mot de passe",
+    "passwordsMismatch": "Les mots de passe ne correspondent pas",
+    "fullNameRequired": "Le nom complet est obligatoire",
+    "programRequired": "Sélectionnez un programme",
+    "surnameRequired": "Le nom de famille est obligatoire",
+    "firstNameRequired": "Le prénom est obligatoire",
+    "businessNameRequired": "Le nom de l'entreprise est obligatoire",
+    "dateOfBirthRequired": "La date de naissance est obligatoire",
+    "genderRequired": "Sélectionnez un genre",
+    "businessDescriptionMin": "Dites-nous-en plus sur votre entreprise",
+    "operatingDurationRequired": "Sélectionnez depuis combien de temps vous exercez votre activité",
+    "averageRevenueRequired": "Sélectionnez votre revenu moyen",
+    "optionRequired": "Sélectionnez une option",
+    "pleaseSelectOption": "Veuillez sélectionner une option",
+    "challengeAndSkillGapMin": "Dites-nous-en plus — à la fois sur la réussite et sur la lacune",
+    "cohortMotivationMin": "Dites-nous-en plus sur les raisons de votre démarche actuelle et le résultat que vous souhaitez"
+  },
+  "Onboarding": {
+    "common": {
+      "back": "Retour",
+      "continue": "Continuer",
+      "saving": "Enregistrement...",
+      "textareaPlaceholder": "Nous aidons les petites entreprises de logistique à Lagos..."
+    },
+    "tabs": {
+      "personal-info": "Informations personnelles",
+      "business-basics": "Bases de l'entreprise",
+      "who-you-are": "Qui vous êtes",
+      "accessibility-support": "Accessibilité et accompagnement",
+      "submit": "Soumettre"
+    },
+    "form": {
+      "title": "Candidature pour {program}",
+      "applicationNumber": "Numéro de candidature :",
+      "cohort": "Cohorte :",
+      "programFee": "Frais du programme (en cas de sélection) :",
+      "deadline": "Date limite :"
+    },
+    "portal": {
+      "title": "Portail de candidature",
+      "fullName": "Nom complet",
+      "fullNamePlaceholder": "votre nom",
+      "email": "Adresse e-mail",
+      "emailPlaceholder": "votre adresse e-mail",
+      "program": "Programme",
+      "programPlaceholder": "sélectionner",
+      "cohort": "Cohorte",
+      "cohortPlaceholder": "choisir",
+      "submit": "Commencer l'évaluation",
+      "submitting": "Démarrage..."
+    },
+    "personalInfo": {
+      "title": "Informations personnelles",
+      "description": "Mettez à jour vos informations personnelles pour la candidature",
+      "titleLabel": "Civilité",
+      "titlePlaceholder": "M.",
+      "surname": "Nom de famille",
+      "firstName": "Prénom",
+      "businessName": "Nom de l'entreprise",
+      "dateOfBirth": "Date de naissance",
+      "dateOfBirthPlaceholder": "jj/mm/aaaa",
+      "gender": "Genre",
+      "genderPlaceholder": "sélectionner"
+    },
+    "businessBasics": {
+      "description": {
+        "title": "Que fait votre entreprise et à qui s'adresse-t-elle ?",
+        "description": "Écrivez dans un langage simple, comme si vous l'expliquiez à un ami avisé qui n'en a jamais entendu parler"
+      },
+      "operatingDuration": {
+        "title": "Depuis combien de temps exercez-vous votre activité ?",
+        "description": "À compter de la date à laquelle vous avez commencé à créer ou à vendre, et non de votre date d'immatriculation officielle."
+      },
+      "averageRevenue": {
+        "title": "Quel est votre revenu moyen ?",
+        "description": "Cela nous aide à vous associer aux bons pairs au sein de la cohorte."
+      },
+      "fullTimeCommitment": {
+        "title": "Travaillez-vous à plein temps sur cette entreprise ?",
+        "description": "Il n'y a pas de mauvaise réponse, nous avons simplement besoin de comprendre votre situation afin de définir les bonnes attentes."
+      }
+    },
+    "whoYouAre": {
+      "challenge": {
+        "title": "Quelle est la chose la plus impressionnante ou la plus difficile que vous ayez accomplie pour bâtir cette entreprise, et quelle est la principale lacune de compétences qui vous freine le plus actuellement ?",
+        "description": "Soyez précis sur ces deux aspects. L'histoire concrète d'un défi que vous avez surmonté, associée à un constat honnête de ce que vous ne savez pas encore faire, nous en apprend bien plus qu'une liste de réalisations et nous aide à vous associer aux bons pairs."
+      },
+      "motivation": {
+        "title": "Pourquoi souhaitez-vous rejoindre cette cohorte maintenant, et quel résultat précis en vaudrait la peine pour vous ?",
+        "description": "Pensez à l'endroit où vous voulez que votre entreprise se trouve dans 6 mois. Que faut-il pour y parvenir ?"
+      }
+    },
+    "accessibility": {
+      "choice": {
+        "title": "Avez-vous des besoins en matière d'accessibilité dont nous devrions être informés ?",
+        "description": "Cela n'a aucune incidence sur votre admission au programme, cela nous permet uniquement de mieux vous accompagner."
+      },
+      "need": {
+        "title": "Quel est votre besoin en matière d'accessibilité ?"
+      }
+    },
+    "submit": {
+      "title": "Téléversez une photo d'identité de vous-même (facultatif)",
+      "previewAlt": "Aperçu de la photo d'identité",
+      "removePhoto": "Supprimer la photo",
+      "startCamera": "Démarrer la caméra",
+      "chooseFile": "Choisir un fichier",
+      "fileHint": "JPEG ou PNG . 2 Mo maximum",
+      "submit": "Soumettre la candidature",
+      "submitting": "Envoi en cours...",
+      "errors": {
+        "invalidType": "Veuillez téléverser une image JPEG ou PNG",
+        "tooLarge": "Le fichier ne doit pas dépasser 2 Mo",
+        "submitFailed": "Une erreur est survenue lors de l'envoi de votre candidature. Veuillez réessayer."
+      }
+    },
+    "submitted": {
+      "title": "Candidature envoyée",
+      "description": "Nous examinons chaque candidature personnellement. Si vous êtes sélectionné(e), vous aurez de nos nouvelles sous 5 jours ouvrés avec des indications sur les prochaines étapes.",
+      "toastTitle": "Candidature envoyée",
+      "toastDescription": "Nous l'examinerons et reviendrons vers vous sous 5 jours ouvrés.",
+      "rows": {
+        "business": "Entreprise",
+        "operating": "Ancienneté",
+        "revenue": "Revenus",
+        "accessibility": "Accessibilité",
+        "fullTime": "Temps plein",
+        "keyOutcome": "Résultat clé"
+      },
+      "accessibility": {
+        "yes": "A des besoins d'accessibilité",
+        "no": "Aucun besoin d'accessibilité"
+      },
+      "fullTime": {
+        "full-time": "Oui",
+        "not-yet": "Pas encore"
+      }
+    },
+    "options": {
+      "program": {
+        "product-design": "Design produit",
+        "software-engineering": "Génie logiciel",
+        "data-analytics": "Analyse de données"
+      },
+      "cohort": {
+        "cohort-1": "Cohorte 1 (janv. 2026)",
+        "cohort-2": "Cohorte 2 (avr. 2026)"
+      },
+      "gender": {
+        "male": "Homme",
+        "female": "Femme",
+        "undisclosed": "Je préfère ne pas répondre"
+      },
+      "operatingDuration": {
+        "less-than-6-months": "Moins de 6 mois",
+        "6-months-to-1-year": "De 6 mois à 1 an",
+        "1-3-years": "1 à 3 ans",
+        "3-5-years": "3 à 5 ans",
+        "more-than-5-years": "Plus de 5 ans"
+      },
+      "averageRevenue": {
+        "no-revenue-yet": "Pas encore de revenus, mais des clients prêts à payer ou des pilotes en cours",
+        "early-revenue": "Revenus naissants (moins de ₦500k/mois)",
+        "growing-revenue": "Revenus en croissance (₦500k – ₦5m/mois)",
+        "significant-revenue": "Revenus significatifs (plus de ₦5m/mois)"
+      },
+      "fullTimeCommitment": {
+        "full-time": "Oui, à plein temps",
+        "not-yet": "Pas encore, je prévois de l'être"
+      },
+      "accessibilityNeed": {
+        "vision": "Vision (aveugle ou malvoyant(e))",
+        "hearing": "Audition (sourd(e) ou malentendant(e))",
+        "mobility": "Mobilité ou différences motrices",
+        "cognitive": "Différences cognitives ou d'apprentissage",
+        "speech": "Parole (limitée ou absente)",
+        "other": "Autre besoin non listé ici",
+        "undisclosed": "Je préfère ne pas répondre"
+      },
+      "hasAccessibilityNeeds": {
+        "yes": "Oui, j'ai des besoins d'accessibilité",
+        "no": "Non, je n'ai pas de besoins d'accessibilité"
+      }
+    }
+  }
+}

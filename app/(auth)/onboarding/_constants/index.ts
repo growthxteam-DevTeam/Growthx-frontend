@@ -1,77 +1,81 @@
 import { z } from "zod";
 
-import type { FrameworkT } from "@/types/global";
+// `labelKey` is a key under the `Onboarding.options` messages namespace; `value` is sent to the backend.
+export interface OptionConfig {
+  value: string;
+  labelKey: string;
+}
 
 export const applicationPortalSchema = z.object({
-  fullName: z.string().trim().min(2, "Full name is required"),
-  email: z.email("Enter a valid email address").trim(),
-  program: z.string().min(1, "Select a program"),
+  fullName: z.string().trim().min(2, "fullNameRequired"),
+  email: z.email("emailInvalid").trim(),
+  program: z.string().min(1, "programRequired"),
   cohort: z.string().optional(),
 });
 
 // TODO: placeholder values — swap for the real program/cohort list.
-export const PROGRAM_OPTIONS: FrameworkT[] = [
-  { label: "Product Design", value: "product-design" },
-  { label: "Software Engineering", value: "software-engineering" },
-  { label: "Data Analytics", value: "data-analytics" },
+export const PROGRAM_OPTIONS: OptionConfig[] = [
+  { labelKey: "program.product-design", value: "product-design" },
+  { labelKey: "program.software-engineering", value: "software-engineering" },
+  { labelKey: "program.data-analytics", value: "data-analytics" },
 ];
 
-export const COHORT_OPTIONS: FrameworkT[] = [
-  { label: "Cohort 1 (Jan 2026)", value: "cohort-1" },
-  { label: "Cohort 2 (Apr 2026)", value: "cohort-2" },
+export const COHORT_OPTIONS: OptionConfig[] = [
+  { labelKey: "cohort.cohort-1", value: "cohort-1" },
+  { labelKey: "cohort.cohort-2", value: "cohort-2" },
 ];
 
 export const personalInfoSchema = z.object({
   title: z.string().optional(),
-  surname: z.string().trim().min(1, "Surname is required"),
-  firstName: z.string().trim().min(1, "First name is required"),
-  businessName: z.string().trim().min(1, "Business name is required"),
-  dateOfBirth: z.date({ error: "Date of birth is required" }),
-  gender: z.string().min(1, "Select a gender"),
+  surname: z.string().trim().min(1, "surnameRequired"),
+  firstName: z.string().trim().min(1, "firstNameRequired"),
+  businessName: z.string().trim().min(1, "businessNameRequired"),
+  dateOfBirth: z.date({ error: "dateOfBirthRequired" }),
+  gender: z.string().min(1, "genderRequired"),
 });
 
 // TODO: placeholder values — swap for the real options list.
-export const GENDER_OPTIONS: FrameworkT[] = [
-  { label: "Male", value: "male" },
-  { label: "Female", value: "female" },
-  { label: "Prefer not to say", value: "undisclosed" },
+export const GENDER_OPTIONS: OptionConfig[] = [
+  { labelKey: "gender.male", value: "male" },
+  { labelKey: "gender.female", value: "female" },
+  { labelKey: "gender.undisclosed", value: "undisclosed" },
 ];
 
 export const businessBasicsSchema = z.object({
-  businessDescription: z.string().trim().min(10, "Tell us more about your business"),
+  businessDescription: z.string().trim().min(10, "businessDescriptionMin"),
   operatingDuration: z.enum(
     ["less-than-6-months", "6-months-to-1-year", "1-3-years", "3-5-years", "more-than-5-years"],
-    { error: "Select how long you've been operating" },
+    { error: "operatingDurationRequired" },
   ),
   averageRevenue: z.enum(["no-revenue-yet", "early-revenue", "growing-revenue", "significant-revenue"], {
-    error: "Select your average revenue",
+    error: "averageRevenueRequired",
   }),
-  fullTimeCommitment: z.enum(["full-time", "not-yet"], { error: "Select an option" }),
+  fullTimeCommitment: z.enum(["full-time", "not-yet"], { error: "optionRequired" }),
 });
 
-export const OPERATING_DURATION_OPTIONS: FrameworkT[] = [
-  { label: "Less than 6 months", value: "less-than-6-months" },
-  { label: "6 months to 1 year", value: "6-months-to-1-year" },
-  { label: "1-3 years", value: "1-3-years" },
-  { label: "3-5 years", value: "3-5-years" },
-  { label: "More than 5 years", value: "more-than-5-years" },
+export const OPERATING_DURATION_OPTIONS: OptionConfig[] = [
+  { labelKey: "operatingDuration.less-than-6-months", value: "less-than-6-months" },
+  { labelKey: "operatingDuration.6-months-to-1-year", value: "6-months-to-1-year" },
+  { labelKey: "operatingDuration.1-3-years", value: "1-3-years" },
+  { labelKey: "operatingDuration.3-5-years", value: "3-5-years" },
+  { labelKey: "operatingDuration.more-than-5-years", value: "more-than-5-years" },
 ];
 
-export const AVERAGE_REVENUE_OPTIONS: FrameworkT[] = [
-  { label: "No revenue yet, but have paying interest or pilots", value: "no-revenue-yet" },
-  { label: "Early revenue (under ₦500k/month)", value: "early-revenue" },
-  { label: "Growing revenue (₦500k – ₦5m/month)", value: "growing-revenue" },
-  { label: "Significant revenue (above ₦5m/month)", value: "significant-revenue" },
+export const AVERAGE_REVENUE_OPTIONS: OptionConfig[] = [
+  { labelKey: "averageRevenue.no-revenue-yet", value: "no-revenue-yet" },
+  { labelKey: "averageRevenue.early-revenue", value: "early-revenue" },
+  { labelKey: "averageRevenue.growing-revenue", value: "growing-revenue" },
+  { labelKey: "averageRevenue.significant-revenue", value: "significant-revenue" },
 ];
 
-export const FULL_TIME_COMMITMENT_OPTIONS: FrameworkT[] = [
-  { label: "Yes, Full-Time", value: "full-time" },
-  { label: "Not Yet, planning to be", value: "not-yet" },
+export const FULL_TIME_COMMITMENT_OPTIONS: OptionConfig[] = [
+  { labelKey: "fullTimeCommitment.full-time", value: "full-time" },
+  { labelKey: "fullTimeCommitment.not-yet", value: "not-yet" },
 ];
 
 export const whoYouAreSchema = z.object({
-  challengeAndSkillGap: z.string().trim().min(10, "Tell us more — both the win and the gap"),
-  cohortMotivation: z.string().trim().min(10, "Tell us more about why now and what outcome you want"),
+  challengeAndSkillGap: z.string().trim().min(10, "challengeAndSkillGapMin"),
+  cohortMotivation: z.string().trim().min(10, "cohortMotivationMin"),
 });
 
 export const ACCESSIBILITY_NEED_VALUES = [
@@ -86,27 +90,27 @@ export const ACCESSIBILITY_NEED_VALUES = [
 
 export const accessibilitySupportSchema = z
   .object({
-    hasAccessibilityNeeds: z.enum(["yes", "no"], { error: "Please select an option" }),
+    hasAccessibilityNeeds: z.enum(["yes", "no"], { error: "pleaseSelectOption" }),
     accessibilityNeed: z.enum(ACCESSIBILITY_NEED_VALUES).optional(),
   })
   .refine((values) => values.hasAccessibilityNeeds !== "yes" || !!values.accessibilityNeed, {
-    message: "Please select an option",
+    message: "pleaseSelectOption",
     path: ["accessibilityNeed"],
   });
 
-export const ACCESSIBILITY_NEED_OPTIONS: FrameworkT[] = [
-  { label: "Vision (blind or low vision)", value: "vision" },
-  { label: "Hearing (deaf or hard of hearing)", value: "hearing" },
-  { label: "Mobility or Motor differences", value: "mobility" },
-  { label: "Cognitive or learning differences", value: "cognitive" },
-  { label: "Speech (limited or no speech)", value: "speech" },
-  { label: "Something else not listed here", value: "other" },
-  { label: "Prefer not to say", value: "undisclosed" },
+export const ACCESSIBILITY_NEED_OPTIONS: OptionConfig[] = [
+  { labelKey: "accessibilityNeed.vision", value: "vision" },
+  { labelKey: "accessibilityNeed.hearing", value: "hearing" },
+  { labelKey: "accessibilityNeed.mobility", value: "mobility" },
+  { labelKey: "accessibilityNeed.cognitive", value: "cognitive" },
+  { labelKey: "accessibilityNeed.speech", value: "speech" },
+  { labelKey: "accessibilityNeed.other", value: "other" },
+  { labelKey: "accessibilityNeed.undisclosed", value: "undisclosed" },
 ];
 
-export const ACCESSIBILITY_OPTIONS: FrameworkT[] = [
-  { label: "Yes, I have accessibility needs", value: "yes" },
-  { label: "No, I don't have accessibility needs", value: "no" },
+export const ACCESSIBILITY_OPTIONS: OptionConfig[] = [
+  { labelKey: "hasAccessibilityNeeds.yes", value: "yes" },
+  { labelKey: "hasAccessibilityNeeds.no", value: "no" },
 ];
 
 export const submitStepSchema = z.object({
@@ -130,16 +134,15 @@ export type OnboardingTabId = "personal-info" | "business-basics" | "who-you-are
 
 export interface OnboardingTabConfig {
   id: OnboardingTabId;
-  label: string;
   progress: number;
   /** false until that tab's design and fields are known. */
   enabled: boolean;
 }
 
 export const ONBOARDING_TABS: OnboardingTabConfig[] = [
-  { id: "personal-info", label: "Personal info", progress: 15, enabled: true },
-  { id: "business-basics", label: "Business Basics", progress: 25, enabled: true },
-  { id: "who-you-are", label: "Who You Are", progress: 65, enabled: true },
-  { id: "accessibility-support", label: "Accessibility & Support", progress: 95, enabled: true },
-  { id: "submit", label: "Submit", progress: 65, enabled: true },
+  { id: "personal-info", progress: 15, enabled: true },
+  { id: "business-basics", progress: 25, enabled: true },
+  { id: "who-you-are", progress: 65, enabled: true },
+  { id: "accessibility-support", progress: 95, enabled: true },
+  { id: "submit", progress: 65, enabled: true },
 ];

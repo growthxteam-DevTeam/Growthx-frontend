@@ -1,5 +1,6 @@
 "use client";
 
+import { useTranslations } from "next-intl";
 import type { UseFormReturn } from "react-hook-form";
 
 import { Progress } from "@/components/ui/progress";
@@ -62,6 +63,7 @@ const ApplicationForm = ({
   onSubmitApplication,
   isSubmitStepSubmitting,
 }: ApplicationFormProps) => {
+  const t = useTranslations("Onboarding");
   const activeTabConfig = ONBOARDING_TABS.find((tab) => tab.id === activeTab) ?? ONBOARDING_TABS[0];
 
   // One case per OnboardingTabId. TS errors on this switch if a tab is added
@@ -127,7 +129,7 @@ const ApplicationForm = ({
       <div className="rounded-2xl border border-border bg-white p-8">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <h1 className="font-serif text-3xl font-bold text-primary">
-            Application for {APPLICATION_META.programTitle}
+            {t("form.title", { program: APPLICATION_META.programTitle })}
           </h1>
 
           <div className="relative flex w-40 items-center gap-3">
@@ -136,30 +138,28 @@ const ApplicationForm = ({
               className="absolute top-1/2 size-1.5 -translate-y-1/2 rounded-full bg-primary"
               style={{ left: `calc(${activeTabConfig.progress}% - 3px)` }}
             />
-            <span className="text-sm font-semibold text-foreground">
-              {activeTabConfig.progress}%
-            </span>
+            <span className="text-sm font-semibold text-foreground">{activeTabConfig.progress}%</span>
           </div>
         </div>
 
         <div className="mt-4 space-y-1 text-sm">
           <p>
-            <span className="text-muted-foreground">Application Number: </span>
+            <span className="text-muted-foreground">{t("form.applicationNumber")} </span>
             <span className="font-semibold text-primary">{APPLICATION_META.applicationNumber}</span>
           </p>
           <p>
-            <span className="text-muted-foreground">Cohort: </span>
+            <span className="text-muted-foreground">{t("form.cohort")} </span>
             <span className="font-semibold text-primary">{APPLICATION_META.cohortLabel}</span>
           </p>
         </div>
 
         <div className="mt-6 flex flex-wrap gap-x-16 gap-y-2 text-sm">
           <p>
-            <span className="text-muted-foreground">Program fee (If selected): </span>
+            <span className="text-muted-foreground">{t("form.programFee")} </span>
             <span className="font-semibold text-primary">{APPLICATION_META.programFee}</span>
           </p>
           <p>
-            <span className="text-muted-foreground">Deadline: </span>
+            <span className="text-muted-foreground">{t("form.deadline")} </span>
             <span className="font-semibold text-primary">{APPLICATION_META.deadline}</span>
           </p>
         </div>
@@ -177,7 +177,7 @@ const ApplicationForm = ({
                 disabled={!tab.enabled}
                 className="h-auto flex-none rounded-lg border-0 px-4 py-2 text-sm font-semibold text-muted-foreground data-active:bg-primary data-active:text-primary-foreground data-active:shadow-none"
               >
-                {tab.label}
+                {t(`tabs.${tab.id}`)}
               </TabsTrigger>
             ))}
           </TabsList>

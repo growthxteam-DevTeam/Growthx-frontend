@@ -5,6 +5,7 @@ import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm, useWatch } from "react-hook-form";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { getApiErrorMessage } from "@/lib/api-error";
@@ -15,6 +16,7 @@ import type { CreatePasswordValues } from "../_types";
 
 export const useCreatePassword = (initialGsCode: string) => {
   const router = useRouter();
+  const t = useTranslations("CreatePassword");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -31,7 +33,7 @@ export const useCreatePassword = (initialGsCode: string) => {
 
   const password = useWatch({ control: form.control, name: "password" });
   const requirements = PASSWORD_REQUIREMENTS.map((requirement) => ({
-    label: requirement.label,
+    key: requirement.key,
     met: requirement.pattern.test(password),
   }));
 
@@ -39,10 +41,10 @@ export const useCreatePassword = (initialGsCode: string) => {
   const onSubmit = form.handleSubmit(async ({ gsCode, password: newPassword }) => {
     try {
       await createPassword({ gsCode, password: newPassword }).unwrap();
-      toast.success("Password created. Please log in.");
+      toast.success(t("success"));
       router.push("/login");
     } catch (error) {
-      toast.error(getApiErrorMessage(error, "Something went wrong creating your password. Please try again."));
+      toast.error(getApiErrorMessage(error, t("error")));
     }
   });
 

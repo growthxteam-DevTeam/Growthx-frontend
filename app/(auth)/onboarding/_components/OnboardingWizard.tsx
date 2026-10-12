@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslations } from "next-intl";
+
 import ToastNotification from "@/components/shared/ToastNotification";
 import { assertNever } from "@/lib/utils";
 
@@ -9,6 +11,7 @@ import ApplicationPortalStep from "./ApplicationPortalStep";
 import ApplicationSubmittedStep from "./ApplicationSubmittedStep";
 
 const OnboardingWizard = () => {
+  const t = useTranslations("Onboarding.submitted");
   const {
     wizardStep,
     activeTab,
@@ -37,9 +40,7 @@ const OnboardingWizard = () => {
 
   switch (wizardStep) {
     case "portal":
-      return (
-        <ApplicationPortalStep form={portalForm} onSubmit={onSubmitPortal} isSubmitting={isPortalSubmitting} />
-      );
+      return <ApplicationPortalStep form={portalForm} onSubmit={onSubmitPortal} isSubmitting={isPortalSubmitting} />;
 
     case "application":
       return (
@@ -71,11 +72,7 @@ const OnboardingWizard = () => {
       // breath — this guard is just to satisfy the type checker.
       return submittedApplication ? (
         <>
-          <ToastNotification
-            title="Application submitted"
-            description="We'll review it and be in touch within 5 business days."
-            type="success"
-          />
+          <ToastNotification title={t("toastTitle")} description={t("toastDescription")} type="success" />
           <ApplicationSubmittedStep application={submittedApplication} />
         </>
       ) : null;

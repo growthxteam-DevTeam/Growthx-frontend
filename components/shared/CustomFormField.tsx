@@ -25,6 +25,7 @@ import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 
 import { format } from "date-fns";
+import { useTranslations } from "next-intl";
 
 import ComboboxField from "@/components/common/ComboboxField";
 import { FrameworkT } from "@/types/global";
@@ -79,6 +80,8 @@ const RenderInput = <T extends FieldValues>({
   options?: FrameworkT[];
   searchPlaceholder?: string;
 }) => {
+  const tc = useTranslations("Common");
+
   switch (props.fieldType) {
     case FormFieldType.INPUT:
       return (
@@ -147,7 +150,12 @@ const RenderInput = <T extends FieldValues>({
     case FormFieldType.SELECT:
       return (
         <div className="flex items-center rounded border border-primary relative transition-colors focus-within:border-primary focus-within:ring-1 focus-within:ring-primary has-data-popup-open:border-primary has-data-popup-open:ring-1 has-data-popup-open:ring-primary">
-          <Select defaultValue={props.defaultValue} onValueChange={field.onChange} value={field.value || null}>
+          <Select
+            defaultValue={props.defaultValue}
+            onValueChange={field.onChange}
+            value={field.value || null}
+            items={options}
+          >
             <SelectTrigger
               className={`${props.variant} w-full h-11! border-0 cursor-pointer text-16 placeholder:text-16 rounded-[5px] bg-gray-50 text-gray-500 placeholder:text-gray-500 focus:ring-2 focus:ring-offset-0`}
               disabled={props.disabled}
@@ -204,7 +212,7 @@ const RenderInput = <T extends FieldValues>({
             {field.value ? (
               format(field.value, props.dateFormat || "PPP")
             ) : (
-              <span>{props.placeholder || "Pick a date"}</span>
+              <span>{props.placeholder || tc("pickDate")}</span>
             )}
 
             <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
@@ -226,6 +234,7 @@ const RenderInput = <T extends FieldValues>({
 
 const CustomFormField = <T extends FieldValues>(props: CustomProps<T>) => {
   const { control, name, label, options, searchPlaceholder } = props;
+  const tv = useTranslations("Validation");
 
   const {
     field,
@@ -235,6 +244,9 @@ const CustomFormField = <T extends FieldValues>(props: CustomProps<T>) => {
     control,
   });
 
+  // Schemas carry message keys; anything else (e.g. zod defaults) is shown as-is.
+  const errorMessage = error?.message ? (tv.has(error.message) ? tv(error.message) : String(error.message)) : undefined;
+
   return (
     <Field className="flex-1" data-invalid={!!error}>
       {props.fieldType !== FormFieldType.CHECKBOX && label && (
@@ -243,7 +255,7 @@ const CustomFormField = <T extends FieldValues>(props: CustomProps<T>) => {
 
       <RenderInput field={field} props={props} options={options} searchPlaceholder={searchPlaceholder} />
 
-      {error?.message && <FieldError className="text-red-500">{String(error.message)}</FieldError>}
+      {errorMessage && <FieldError className="text-red-500">{errorMessage}</FieldError>}
     </Field>
   );
 };

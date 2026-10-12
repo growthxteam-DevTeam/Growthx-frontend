@@ -1,6 +1,7 @@
 "use client";
 
 import { Check, Eye, EyeOff } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import CustomFormField, { FormFieldType } from "@/components/shared/CustomFormField";
 import SubmitButton from "@/components/shared/SubmitButton";
@@ -30,16 +31,15 @@ const CreatePasswordForm = ({ gsCode }: CreatePasswordFormProps) => {
     showConfirmPassword,
     toggleShowConfirmPassword,
   } = useCreatePassword(gsCode);
+  const t = useTranslations("CreatePassword");
 
   return (
     <div className="mx-auto w-full max-w-3xl px-6 py-16">
       <div className="rounded-2xl border border-border bg-white px-6 py-12">
         <div className="text-center">
-          <p className="font-serif text-lg font-bold text-primary">Congratulations on your acceptance to the Cohort</p>
-          <h1 className="mt-3 font-serif text-3xl font-bold text-primary">Create password</h1>
-          <p className="mt-2 text-xs text-muted-foreground">
-            Set a strong password to secure your Growth Space account.
-          </p>
+          <p className="font-serif text-lg font-bold text-primary">{t("congrats")}</p>
+          <h1 className="mt-3 font-serif text-3xl font-bold text-primary">{t("title")}</h1>
+          <p className="mt-2 text-xs text-muted-foreground">{t("subtitle")}</p>
         </div>
 
         <form onSubmit={onSubmit} className="mx-auto mt-10 flex w-full max-w-md flex-col gap-6">
@@ -48,7 +48,7 @@ const CreatePasswordForm = ({ gsCode }: CreatePasswordFormProps) => {
             control={form.control}
             name="gsCode"
             type="text"
-            label={<FieldLabelText title="Enter your GS Code" hint="This was sent to you in your acceptance email" />}
+            label={<FieldLabelText title={t("gsCode")} hint={t("gsCodeHint")} />}
           />
 
           <CustomFormField
@@ -56,12 +56,12 @@ const CreatePasswordForm = ({ gsCode }: CreatePasswordFormProps) => {
             control={form.control}
             name="password"
             type={showPassword ? "text" : "password"}
-            label={<FieldLabelText title="Password" />}
+            label={<FieldLabelText title={t("password")} />}
             rightIcon={
               <button
                 type="button"
                 onClick={toggleShowPassword}
-                aria-label={showPassword ? "Hide password" : "Show password"}
+                aria-label={showPassword ? t("hidePassword") : t("showPassword")}
               >
                 {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
               </button>
@@ -73,12 +73,12 @@ const CreatePasswordForm = ({ gsCode }: CreatePasswordFormProps) => {
             control={form.control}
             name="confirmPassword"
             type={showConfirmPassword ? "text" : "password"}
-            label={<FieldLabelText title="Confirm password" />}
+            label={<FieldLabelText title={t("confirmPassword")} />}
             rightIcon={
               <button
                 type="button"
                 onClick={toggleShowConfirmPassword}
-                aria-label={showConfirmPassword ? "Hide password" : "Show password"}
+                aria-label={showConfirmPassword ? t("hidePassword") : t("showPassword")}
               >
                 {showConfirmPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
               </button>
@@ -86,25 +86,25 @@ const CreatePasswordForm = ({ gsCode }: CreatePasswordFormProps) => {
           />
 
           <div>
-            <p className="text-[10px] text-muted-foreground">Password requirements</p>
+            <p className="text-[10px] text-muted-foreground">{t("requirementsTitle")}</p>
             <ul className="mt-3 space-y-0.5">
               {requirements.map((requirement) => (
                 <li
-                  key={requirement.label}
+                  key={requirement.key}
                   className={cn(
                     "flex items-center gap-1 text-[10px]",
                     requirement.met ? "text-emerald-600" : "text-muted-foreground",
                   )}
                 >
                   <Check className={cn("size-3", !requirement.met && "opacity-30")} />
-                  {requirement.label}
+                  {t(`requirements.${requirement.key}`)}
                 </li>
               ))}
             </ul>
           </div>
 
-          <SubmitButton isLoading={isSubmitting} loadingText="Creating..." className="mx-auto w-fit px-6">
-            Create password
+          <SubmitButton isLoading={isSubmitting} loadingText={t("submitting")} className="mx-auto w-fit px-6">
+            {t("submit")}
           </SubmitButton>
         </form>
       </div>
