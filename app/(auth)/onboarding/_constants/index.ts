@@ -13,16 +13,19 @@ export const applicationPortalSchema = z.object({
   cohort: z.string().optional(),
 });
 
-// TODO: placeholder values — swap for the real program/cohort list.
 export const PROGRAM_OPTIONS: OptionConfig[] = [
-  { labelKey: "program.product-design", value: "product-design" },
-  { labelKey: "program.software-engineering", value: "software-engineering" },
-  { labelKey: "program.data-analytics", value: "data-analytics" },
+  { labelKey: "program.zero-to-launch", value: "zero-to-launch" },
+  { labelKey: "program.build-for-funding", value: "build-for-funding" },
+  { labelKey: "program.scale-your-sales", value: "scale-your-sales" },
+  { labelKey: "program.price-for-profit", value: "price-for-profit" },
+  { labelKey: "program.lead-your-team", value: "lead-your-team" },
 ];
 
 export const COHORT_OPTIONS: OptionConfig[] = [
   { labelKey: "cohort.cohort-1", value: "cohort-1" },
   { labelKey: "cohort.cohort-2", value: "cohort-2" },
+  { labelKey: "cohort.cohort-3", value: "cohort-3" },
+  { labelKey: "cohort.cohort-4", value: "cohort-4" },
 ];
 
 export const personalInfoSchema = z.object({

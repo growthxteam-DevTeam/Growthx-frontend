@@ -13,6 +13,14 @@
   "Announcement": {
     "message": "Admissions are now open! Apply today (Deadline 19/09/2026)"
   },
+  "Sidebar": {
+    "dashboard": "Dashboard",
+    "discussion": "Discussion",
+    "community": "Community",
+    "resourceVault": "Resource Vault",
+    "coworkingLab": "Coworking Lab",
+    "logout": "Logout"
+  },
   "NotFound": {
     "title": "Page not found",
     "description": "The page you're looking for doesn't exist or may have been moved.",
@@ -204,13 +212,17 @@
     },
     "options": {
       "program": {
-        "product-design": "Product Design",
-        "software-engineering": "Software Engineering",
-        "data-analytics": "Data Analytics"
+        "zero-to-launch": "Zero to Launch (6 weeks)",
+        "build-for-funding": "Build for Funding (8 weeks)",
+        "scale-your-sales": "Scale your Sales (6 weeks)",
+        "price-for-profit": "Price for Profit (4 weeks)",
+        "lead-your-team": "Lead your Team (6 weeks)"
       },
       "cohort": {
-        "cohort-1": "Cohort 1 (Jan 2026)",
-        "cohort-2": "Cohort 2 (Apr 2026)"
+        "cohort-1": "Cohort 1",
+        "cohort-2": "Cohort 2",
+        "cohort-3": "Cohort 3",
+        "cohort-4": "Cohort 4"
       },
       "gender": {
         "male": "Male",

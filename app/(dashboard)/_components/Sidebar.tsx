@@ -1,6 +1,7 @@
 "use client";
 
 import { LogOut } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -15,6 +16,7 @@ const itemClassName =
   "flex w-full cursor-pointer flex-col items-center gap-1 rounded-lg px-1 py-3 text-center text-[10px] font-medium leading-tight transition-colors";
 
 const Sidebar = () => {
+  const t = useTranslations("Sidebar");
   const pathname = usePathname();
   const dispatch = useAppDispatch();
 
@@ -25,16 +27,16 @@ const Sidebar = () => {
       </Link>
 
       <nav className="flex w-full flex-col gap-2">
-        {SIDEBAR_LINKS.map(({ label, href, icon: Icon, alsoActiveOn = [] }) => {
+        {SIDEBAR_LINKS.map(({ labelKey, href, icon: Icon, alsoActiveOn = [] }) => {
           const isActive = pathname === href || alsoActiveOn.includes(pathname);
           return (
             <Link
-              key={label}
+              key={labelKey}
               href={href}
               className={cn(itemClassName, isActive ? "bg-primary text-white" : "text-primary hover:bg-white/40")}
             >
               <Icon className="size-5" />
-              {label}
+              {t(labelKey)}
             </Link>
           );
         })}
@@ -45,7 +47,7 @@ const Sidebar = () => {
           className={cn(itemClassName, "text-primary hover:bg-white/40")}
         >
           <LogOut className="size-5" />
-          Logout
+          {t("logout")}
         </button>
       </nav>
     </aside>
