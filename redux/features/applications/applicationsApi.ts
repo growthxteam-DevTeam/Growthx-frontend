@@ -30,6 +30,7 @@ export interface ApplicationRecord {
   accessibilitySupport: {
     hasAccessibilityNeeds: "yes" | "no";
     accessibilityNeed?: string;
+    accessibilityNotes?: string;
   };
   submit: {
     passportPhotoUrl?: string;

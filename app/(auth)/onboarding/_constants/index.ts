@@ -91,10 +91,13 @@ export const ACCESSIBILITY_NEED_VALUES = [
   "undisclosed",
 ] as const;
 
+export const ACCESSIBILITY_NOTES_MAX_LENGTH = 1000;
+
 export const accessibilitySupportSchema = z
   .object({
     hasAccessibilityNeeds: z.enum(["yes", "no"], { error: "pleaseSelectOption" }),
     accessibilityNeed: z.enum(ACCESSIBILITY_NEED_VALUES).optional(),
+    accessibilityNotes: z.string().trim().max(ACCESSIBILITY_NOTES_MAX_LENGTH, "accessibilityNotesMax").optional(),
   })
   .refine((values) => values.hasAccessibilityNeeds !== "yes" || !!values.accessibilityNeed, {
     message: "pleaseSelectOption",

@@ -86,6 +86,7 @@
     "averageRevenueRequired": "Sélectionnez votre revenu moyen",
     "optionRequired": "Sélectionnez une option",
     "pleaseSelectOption": "Veuillez sélectionner une option",
+    "accessibilityNotesMax": "Veuillez rester sous 1000 caractères",
     "challengeAndSkillGapMin": "Dites-nous-en plus — à la fois sur la réussite et sur la lacune",
     "cohortMotivationMin": "Dites-nous-en plus sur les raisons de votre démarche actuelle et le résultat que vous souhaitez"
   },
@@ -170,7 +171,9 @@
         "description": "Cela n'a aucune incidence sur votre admission au programme, cela nous permet uniquement de mieux vous accompagner."
       },
       "need": {
-        "title": "Quel est votre besoin en matière d'accessibilité ?"
+        "title": "Quel est votre besoin en matière d'accessibilité ?",
+        "notesLabel": "Y a-t-il quelque chose de précis que nous pourrions aménager pour vous ? (facultatif)",
+        "notesPlaceholder": "J'utilise un lecteur d'écran, donc les PDF me conviennent mieux"
       }
     },
     "submit": {

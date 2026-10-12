@@ -41,6 +41,7 @@ const AccessibilityStep = ({ form, onSubmit, isSubmitting, onBack }: Accessibili
     }
 
     form.setValue("accessibilityNeed", undefined);
+    form.setValue("accessibilityNotes", undefined);
     await onSubmit();
   };
 
@@ -77,6 +78,17 @@ const AccessibilityStep = ({ form, onSubmit, isSubmitting, onBack }: Accessibili
               );
             }}
           />
+
+          <div className="mt-8">
+            <CustomFormField
+              fieldType={FormFieldType.TEXTAREA}
+              control={form.control}
+              name="accessibilityNotes"
+              label={<span className="sm:whitespace-nowrap">{t("need.notesLabel")}</span>}
+              placeholder={t("need.notesPlaceholder")}
+              variant="min-h-40 bg-gray-50"
+            />
+          </div>
 
           <div className="mt-10 flex items-center justify-between">
             <Button

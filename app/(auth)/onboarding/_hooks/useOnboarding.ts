@@ -160,6 +160,9 @@ export const useOnboarding = () => {
     if (accessibilitySupport.hasAccessibilityNeeds === "yes" && accessibilitySupport.accessibilityNeed) {
       formData.append("accessibilityNeed", accessibilitySupport.accessibilityNeed);
     }
+    if (accessibilitySupport.hasAccessibilityNeeds === "yes" && accessibilitySupport.accessibilityNotes) {
+      formData.append("accessibilityNotes", accessibilitySupport.accessibilityNotes);
+    }
 
     if (values.passportPhoto) formData.append("passportPhoto", values.passportPhoto);
 
