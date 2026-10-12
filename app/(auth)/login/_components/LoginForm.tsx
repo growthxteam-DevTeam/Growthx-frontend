@@ -5,6 +5,8 @@ import Link from "next/link";
 
 import CustomFormField, { FormFieldType } from "@/components/shared/CustomFormField";
 import SubmitButton from "@/components/shared/SubmitButton";
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 import { useLogin } from "../_hooks/useLogin";
 
@@ -16,8 +18,8 @@ const LoginForm = () => {
   const { form, onSubmit, isSubmitting, showPassword, toggleShowPassword } = useLogin();
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-6 py-16">
-      <div className="rounded-2xl border border-border bg-white px-6 py-12">
+    <div className="mx-auto w-full max-w-3xl px-6 py-6">
+      <div className="rounded-2xl border border-border bg-white px-6 py-8">
         <div className="text-center">
           <h1 className="font-serif text-2xl font-bold text-primary">Welcome back</h1>
           <p className="mt-2 text-xs text-muted-foreground">
@@ -25,7 +27,7 @@ const LoginForm = () => {
           </p>
         </div>
 
-        <form onSubmit={onSubmit} className="mx-auto mt-10 flex w-full max-w-md flex-col gap-6">
+        <form onSubmit={onSubmit} className="mx-auto mt-6 flex w-full max-w-md flex-col gap-4">
           <CustomFormField
             fieldType={FormFieldType.INPUT}
             control={form.control}
@@ -69,6 +71,11 @@ const LoginForm = () => {
           <SubmitButton isLoading={isSubmitting} loadingText="Logging in..." className="w-full">
             Log in
           </SubmitButton>
+
+          <p className="text-center text-xs text-muted-foreground">Don&apos;t have an account yet?</p>
+          <Link href="/onboarding" className={cn(buttonVariants({ variant: "outline", size: "lg" }), "-mt-2 w-full")}>
+            Apply to Growth X
+          </Link>
         </form>
       </div>
     </div>
