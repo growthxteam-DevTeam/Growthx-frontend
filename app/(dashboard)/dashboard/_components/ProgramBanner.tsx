@@ -3,21 +3,23 @@ import { NotebookText } from "lucide-react";
 import { PROGRAM } from "../_constants";
 
 const ProgramBanner = () => (
-  <section className="relative flex min-h-64 flex-col justify-between overflow-hidden rounded-lg bg-primary p-8 text-white">
-    <div className="pointer-events-none absolute -top-16 left-6 h-72 w-16 rotate-12 bg-white/10" />
-    <div className="pointer-events-none absolute -bottom-16 -right-10 h-28 w-96 rounded-[100%] bg-[#f0dfae]" />
-    <div className="pointer-events-none absolute -bottom-12 -right-6 h-28 w-96 rounded-[100%] bg-primary" />
+  <section className="relative flex min-h-72 flex-col justify-between overflow-hidden rounded-lg bg-primary p-10 text-white">
+    {/* Decorative arcs from the design: light band top-left, faint ring top-right, gold sweep bottom-right. */}
+    <div className="pointer-events-none absolute -left-44 -top-10 h-[150%] w-56 rounded-full border-r-[26px] border-white/30" />
+    <div className="pointer-events-none absolute -top-72 left-1/2 size-[520px] rounded-full border-[3px] border-white/10" />
+    <div className="pointer-events-none absolute -bottom-20 -right-10 h-32 w-[75%] rounded-[100%] bg-[#f0dfae]" />
+    <div className="pointer-events-none absolute -bottom-[60px] -right-4 h-32 w-[75%] rounded-[100%] bg-primary" />
 
-    <div className="relative mt-10 pl-6">
-      <p className="text-xs">{PROGRAM.label}</p>
-      <h2 className="mt-1 font-serif text-3xl font-bold">{PROGRAM.title}</h2>
-      <p className="mt-2 flex items-center gap-2 text-xs">
-        <NotebookText className="size-4" />
+    <div className="relative mt-8 pl-10">
+      <p className="text-base text-[#f0dfae]">{PROGRAM.label}</p>
+      <h2 className="mt-1 text-4xl font-bold">{PROGRAM.title}</h2>
+      <p className="mt-3 flex items-center gap-2 text-base">
+        <NotebookText className="size-5" />
         {PROGRAM.duration}
       </p>
     </div>
 
-    <p className="relative flex gap-8 pl-6 text-[10px] font-semibold">
+    <p className="relative flex gap-10 pl-10 text-sm font-bold">
       <span>Led by: {PROGRAM.leader}</span>
       <span>Cohort Members: {PROGRAM.cohortMembers}</span>
     </p>

@@ -5,22 +5,29 @@ import { cn } from "@/lib/utils";
 
 import type { ActionCardConfig } from "../_types";
 
-const buttonClassName = "mt-4 h-8 w-full border-primary text-xs font-semibold text-primary hover:bg-transparent";
+const buttonClassName = "mt-5 h-10 w-full border-primary text-sm font-medium text-primary hover:bg-transparent";
 
-const ActionCard = ({ title, description, buttonLabel, icon: Icon, href, comingSoon }: ActionCardConfig) => (
+const badgeClassNames = {
+  warning: "bg-orange-50 text-orange-500",
+  success: "bg-emerald-50 text-emerald-600",
+};
+
+const ActionCard = ({ title, description, buttonLabel, icon: Icon, href, badge }: ActionCardConfig) => (
   <article className="flex flex-col overflow-hidden rounded-lg border border-border bg-white shadow-sm">
-    <div className="relative flex h-28 items-center justify-center bg-[#f5f4fc]">
-      {comingSoon && (
-        <span className="absolute right-3 top-3 rounded bg-emerald-50 px-1.5 py-0.5 text-[9px] font-medium text-emerald-600">
-          Coming Soon
+    <div className="relative flex h-32 items-center justify-center bg-[#f5f4fc]">
+      {badge && (
+        <span
+          className={cn("absolute right-4 top-4 rounded px-2 py-0.5 text-xs font-medium", badgeClassNames[badge.tone])}
+        >
+          {badge.label}
         </span>
       )}
-      <Icon className="size-10 text-primary" strokeWidth={1.5} />
+      <Icon className="size-12 text-primary" strokeWidth={1.5} />
     </div>
 
-    <div className="flex flex-1 flex-col gap-1 p-4">
-      <h3 className="font-serif text-base font-bold text-primary">{title}</h3>
-      <p className="flex-1 text-xs text-muted-foreground">{description}</p>
+    <div className="flex flex-1 flex-col gap-1.5 p-5">
+      <h3 className="text-lg font-semibold text-primary">{title}</h3>
+      <p className="flex-1 text-sm text-foreground">{description}</p>
       {href ? (
         <Link href={href} className={cn(buttonVariants({ variant: "outline" }), buttonClassName)}>
           {buttonLabel}

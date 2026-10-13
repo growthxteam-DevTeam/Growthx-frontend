@@ -22,7 +22,7 @@ const DashboardShell = ({ children }: { children: ReactNode }) => {
   return (
     <div className="flex min-h-screen bg-white">
       <Sidebar />
-      <main className="min-w-0 flex-1 px-8 py-6">{children}</main>
+      <main className="min-w-0 flex-1 px-8 mt-6 py-6">{children}</main>
     </div>
   );
 };

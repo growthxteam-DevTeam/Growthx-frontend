@@ -19,6 +19,7 @@ export const ACTION_CARDS: ActionCardConfig[] = [
     buttonLabel: "Go to Class",
     icon: AlarmClockCheck,
     href: "/class",
+    badge: { label: "In 5 mins", tone: "warning" },
   },
   {
     title: "My Modules",
@@ -37,7 +38,7 @@ export const ACTION_CARDS: ActionCardConfig[] = [
     description: "Check out the modules for this program",
     buttonLabel: "Request to Join",
     icon: Building2,
-    comingSoon: true,
+    badge: { label: "Coming Soon", tone: "success" },
   },
 ];
 

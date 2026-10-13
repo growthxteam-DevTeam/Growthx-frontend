@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
 import { SIDEBAR_LINKS } from "../_constants";
 
 const itemClassName =
-  "flex w-full cursor-pointer flex-col items-center gap-1 rounded-lg px-1 py-3 text-center text-[10px] font-medium leading-tight transition-colors";
+  "flex w-full cursor-pointer flex-col items-center gap-1.5 rounded-lg px-1 py-4 text-center text-xs font-semibold leading-tight transition-colors";
 
 const Sidebar = () => {
   const t = useTranslations("Sidebar");
@@ -21,12 +21,20 @@ const Sidebar = () => {
   const dispatch = useAppDispatch();
 
   return (
-    <aside className="flex w-24 shrink-0 flex-col items-center gap-2 bg-[#f0dfae] px-2 py-6">
-      <Link href="/dashboard" className="mb-6">
-        <Image src="/img/logo.svg" alt="Growth Space" width={166} height={43} loading="eager" className="h-auto w-16" />
+    <aside className="flex w-28 shrink-0 flex-col items-center gap-2 bg-[#f0dfae] px-2 py-6">
+      <Link href="/dashboard" className="mb-3 flex flex-col items-center gap-1">
+        <Image
+          src="/img/logo-icon.png"
+          alt="Growth Space"
+          width={100}
+          height={50}
+          loading="eager"
+          className="h-auto w-12"
+        />
+        <span className="text-[11px] font-semibold text-primary">Growth Space</span>
       </Link>
 
-      <nav className="flex w-full flex-col gap-2">
+      <nav className="mt-6 flex w-full flex-col gap-3">
         {SIDEBAR_LINKS.map(({ labelKey, href, icon: Icon, alsoActiveOn = [] }) => {
           const isActive = pathname === href || alsoActiveOn.includes(pathname);
           return (
@@ -35,7 +43,7 @@ const Sidebar = () => {
               href={href}
               className={cn(itemClassName, isActive ? "bg-primary text-white" : "text-primary hover:bg-white/40")}
             >
-              <Icon className="size-5" />
+              <Icon className="size-7" strokeWidth={1.5} />
               {t(labelKey)}
             </Link>
           );
@@ -46,7 +54,7 @@ const Sidebar = () => {
           onClick={() => dispatch(logout())}
           className={cn(itemClassName, "text-primary hover:bg-white/40")}
         >
-          <LogOut className="size-5" />
+          <LogOut className="size-7" strokeWidth={1.5} />
           {t("logout")}
         </button>
       </nav>

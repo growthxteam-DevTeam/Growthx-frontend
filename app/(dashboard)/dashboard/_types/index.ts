@@ -7,7 +7,8 @@ export interface ActionCardConfig {
   icon: LucideIcon;
   /** When set, the button navigates here; otherwise it does nothing yet. */
   href?: string;
-  comingSoon?: boolean;
+  /** Small pill in the card's top-right corner, e.g. "Coming Soon" or "In 5 mins". */
+  badge?: { label: string; tone: "warning" | "success" };
 }
 
 export interface CredibilityStep {

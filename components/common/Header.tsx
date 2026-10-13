@@ -11,16 +11,10 @@ const Header = async () => {
 
   return (
     <header className="bg-[#f0dfae]">
-      <Container className="flex items-center justify-between py-4">
-        <Link href="/" className="flex items-center flex-col">
-          <Image
-            src="/img/logo.png"
-            alt="Growth Space"
-            width={300}
-            height={70}
-            loading="eager"
-            className="h-9 w-auto"
-          />
+      <Container className="flex items-center justify-between pb-6 pt-4">
+        <Link href="/" className="flex items-center gap-2">
+          <Image src="/img/logo-icon.png" alt="" width={192} height={192} loading="eager" className="size-10" />
+          <span className="text-lg font-bold text-primary">Growth Space</span>
         </Link>
 
         <nav className="hidden items-center gap-8 md:flex">

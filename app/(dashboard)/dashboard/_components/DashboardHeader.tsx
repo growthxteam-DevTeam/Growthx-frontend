@@ -8,11 +8,11 @@ const DashboardHeader = () => {
 
   return (
     <header className="flex items-start justify-between">
-      <h1 className="font-serif text-xl font-bold text-primary">Welcome {firstName}</h1>
+      <h1 className="text-2xl font-bold text-foreground">Welcome {firstName}</h1>
 
       <div className="flex flex-col items-center gap-1">
-        <Avatar name={name} src={profilePicture} />
-        <span className="text-[10px] text-muted-foreground">Account</span>
+        <Avatar name={name} src={profilePicture} className="size-11" />
+        <span className="text-xs text-muted-foreground">Account</span>
       </div>
     </header>
   );
