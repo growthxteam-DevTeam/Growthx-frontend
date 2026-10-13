@@ -71,6 +71,10 @@ const PersonalInfoStep = ({ form, onSubmit, isSubmitting }: PersonalInfoStepProp
             label={<RequiredLabel>{t("dateOfBirth")}</RequiredLabel>}
             dateFormat="dd/MM/yyyy"
             placeholder={t("dateOfBirthPlaceholder")}
+            captionLayout="dropdown"
+            startMonth={new Date(1900, 0)}
+            endMonth={new Date()}
+            disabledDates={(date) => date > new Date()}
           />
 
           <CustomFormField

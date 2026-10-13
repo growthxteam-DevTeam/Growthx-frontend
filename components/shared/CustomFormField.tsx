@@ -60,6 +60,11 @@ interface CustomProps<T extends FieldValues = FieldValues> {
   defaultValue?: string;
   readOnly?: boolean;
   disabledDates?: (date: Date) => boolean;
+  /** DATE only: "dropdown" adds month/year pickers so users can jump far back or ahead. */
+  captionLayout?: "label" | "dropdown";
+  /** DATE only: earliest / latest month the calendar can navigate to. */
+  startMonth?: Date;
+  endMonth?: Date;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   rightIcon?: React.ReactNode;
   leftIcon?: React.ReactNode;
@@ -219,7 +224,16 @@ const RenderInput = <T extends FieldValues>({
           </PopoverTrigger>
 
           <PopoverContent className="w-auto p-0" align="start">
-            <Calendar mode="single" selected={field.value} onSelect={field.onChange} disabled={props.disabledDates} />
+            <Calendar
+              mode="single"
+              selected={field.value}
+              onSelect={field.onChange}
+              disabled={props.disabledDates}
+              captionLayout={props.captionLayout}
+              startMonth={props.startMonth}
+              endMonth={props.endMonth}
+              defaultMonth={field.value}
+            />
           </PopoverContent>
         </Popover>
       );
