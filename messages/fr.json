@@ -11,7 +11,8 @@
     }
   },
   "Announcement": {
-    "message": "Les admissions sont ouvertes ! Postulez dès aujourd'hui (date limite : 19/09/2026)"
+    "message": "Les admissions sont ouvertes ! Postulez dès aujourd'hui (date limite : 19/09/2026)",
+    "dismiss": "Fermer l'annonce"
   },
   "Sidebar": {
     "dashboard": "Tableau de bord",

@@ -11,7 +11,8 @@
     }
   },
   "Announcement": {
-    "message": "Admissions are now open! Apply today (Deadline 19/09/2026)"
+    "message": "Admissions are now open! Apply today (Deadline 19/09/2026)",
+    "dismiss": "Dismiss announcement"
   },
   "Sidebar": {
     "dashboard": "Dashboard",
