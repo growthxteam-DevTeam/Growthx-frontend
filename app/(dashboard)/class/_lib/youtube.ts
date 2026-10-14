@@ -24,6 +24,4 @@ export const getYouTubeId = (url: string): string | null => {
   }
 };
 
-export const getYouTubeEmbedUrl = (id: string) => `https://www.youtube-nocookie.com/embed/${id}?rel=0`;
-
 export const getYouTubeThumbnailUrl = (id: string) => `https://i.ytimg.com/vi/${id}/mqdefault.jpg`;

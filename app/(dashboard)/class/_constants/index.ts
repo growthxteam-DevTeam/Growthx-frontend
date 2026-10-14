@@ -11,6 +11,21 @@ export const CURRENT_CLASS = {
   videoUrl: "https://www.youtube.com/watch?v=qgYuwG6JZq8",
 };
 
+// Shown over the video until the learner presses "Join Class".
+export const CLASS_INTRO = {
+  program: "Zero to Launch",
+  message: "The next class is how to write a pitch deck, it started 5 mins ago",
+  buttonLabel: "Join Class",
+};
+
+// Shown over the video when it finishes playing.
+export const CLASS_COMPLETE = {
+  title: "Lesson complete",
+  message: "Check what you learned with a short quiz.",
+  quizLabel: "Take Quiz",
+  replayLabel: "Replay Lesson",
+};
+
 export const MODULES: ClassModule[] = [
   { title: "Course Introduction", meta: "Video · 10 mins" },
   { title: "Welcome and Overview", meta: "Video · 10 mins" },

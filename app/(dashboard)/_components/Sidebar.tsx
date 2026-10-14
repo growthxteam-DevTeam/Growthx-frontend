@@ -36,7 +36,7 @@ const Sidebar = () => {
 
       <nav className="mt-6 flex w-full flex-col gap-3">
         {SIDEBAR_LINKS.map(({ labelKey, href, icon: Icon, alsoActiveOn = [] }) => {
-          const isActive = pathname === href || alsoActiveOn.includes(pathname);
+          const isActive = pathname === href || alsoActiveOn.some((path) => pathname.startsWith(path));
           return (
             <Link
               key={labelKey}

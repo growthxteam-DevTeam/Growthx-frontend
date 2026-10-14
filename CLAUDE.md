@@ -39,7 +39,9 @@ What exists:
   `auth.token` is empty, which also handles logout) + `Sidebar`. `dashboard/` is the home page; its content
   (program, schedule, announcements, progress) is placeholder data in `dashboard/_constants`, and the badge and
   to-do illustrations are lucide stand-ins until the artwork exists.
-- `app/(dashboard)/class/` — "Go to Class" target: YouTube embed (`CURRENT_CLASS.videoUrl` in
+- `app/(dashboard)/class/` — "Go to Class" target: video end -> "Lesson complete" overlay -> "Take Quiz" opens
+  `class/quiz/` (questions come from `GET /quizzes/:quizId`, submit posts to the backend which grades and saves the
+  score; `QUIZ_ID` in `quiz/_constants` must match a backend quiz id). YouTube embed (`CURRENT_CLASS.videoUrl` in
   `class/_constants`; `_lib/youtube.ts` only accepts YouTube hosts), a polling discussion forum
   (`useDiscussion` + `redux/features/discussion/discussionApi.ts`, JWT-protected backend routes), and modules /
   previous-classes / assignment cards that are placeholder data (the assignment buttons don't upload anything yet).
@@ -54,7 +56,7 @@ What exists:
 The matching backend is [../growth-x-be](../growth-x-be/CLAUDE.md); it exposes `POST /applications`,
 `POST /applications/create-password` (used by `app/(auth)/create-password`) and `POST /auth/login` (used by
 `app/(auth)/login`, which stores the JWT via `setCredentials`) plus the JWT-protected `/discussions/*` routes
-(used by `app/(dashboard)/class`).
+(used by `app/(dashboard)/class`) and the JWT-protected `/quizzes/*` routes (used by `app/(dashboard)/class/quiz`).
 
 ## Architecture
 
