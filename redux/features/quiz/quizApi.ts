@@ -36,7 +36,7 @@ export interface QuizResult {
   totalPoints: number;
   passingScore: number;
   passed: boolean;
-  results: { questionId: string; correct: boolean }[];
+  results: { questionId: string; correct: boolean; explanation: string }[];
 }
 
 export interface QuizAnswer {

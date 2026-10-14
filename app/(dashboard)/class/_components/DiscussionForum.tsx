@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import Avatar from "../../_components/Avatar";
 import { useDashboard } from "../../dashboard/_hooks/useDashboard";
 import { CURRENT_CLASS } from "../_constants";
-import { useDiscussion } from "../_hooks/useDiscussion";
+import { useDiscussion } from "../../_hooks/useDiscussion";
 import CommentComposer from "./CommentComposer";
 import CommentItem from "./CommentItem";
 

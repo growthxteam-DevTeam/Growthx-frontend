@@ -82,5 +82,3 @@ export const ASSIGNMENT_CARDS: AssignmentCardConfig[] = [
   },
 ];
 
-export const DISCUSSION_PAGE_SIZE = 5;
-export const DISCUSSION_POLL_INTERVAL_MS = 15_000;
