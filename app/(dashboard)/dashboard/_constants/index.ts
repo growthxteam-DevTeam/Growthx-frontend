@@ -68,7 +68,7 @@ export const ANNOUNCEMENT_MESSAGE =
 
 export const CREDIBILITY = {
   title: "Your path to investor-ready credibility badge",
-  progress: 15,
+  progress: 40,
   steps: [
     { label: "Curriculum", complete: true },
     { label: "Project", complete: true },

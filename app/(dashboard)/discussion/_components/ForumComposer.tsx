@@ -31,7 +31,7 @@ const ForumComposer = ({ onSubmit, isSubmitting }: ForumComposerProps) => {
         event.preventDefault();
         void submit();
       }}
-      className="flex min-h-40 flex-col rounded-lg border border-border bg-white p-4"
+      className="flex min-h-56 flex-col rounded-lg border border-border bg-white p-4"
     >
       <label htmlFor="forum-contribution" className="text-xs text-muted-foreground">
         Add contribution
@@ -50,7 +50,7 @@ const ForumComposer = ({ onSubmit, isSubmitting }: ForumComposerProps) => {
               void submit();
             }
           }}
-          rows={3}
+          rows={5}
           maxLength={MAX_LENGTH}
           placeholder="Add a contribution..."
           className="flex-1 resize-none border-b border-border bg-transparent pb-2 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-primary"

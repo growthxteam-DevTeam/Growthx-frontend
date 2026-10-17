@@ -1,4 +1,6 @@
-import { Check, ShieldCheck } from "lucide-react";
+import Image from "next/image";
+
+import { Check } from "lucide-react";
 
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
@@ -43,8 +45,26 @@ const CredibilityBadgeCard = () => {
       </div>
 
       <div className="flex flex-col items-center justify-center gap-6">
-        {/* TODO: swap for the credibility badge artwork once the asset is available. */}
-        <ShieldCheck className="size-32 text-primary" strokeWidth={1} />
+        <div className="relative">
+          {/* Blurred base — always visible underneath */}
+          <Image
+            src="/credibility-badge.png"
+            alt="Credibility badge"
+            width={160}
+            height={160}
+            style={{ filter: "blur(8px)" }}
+          />
+          {/* Sharp reveal layer — clips from the top, grows downward as progress increases */}
+          <Image
+            src="/credibility-badge.png"
+            alt=""
+            aria-hidden
+            width={160}
+            height={160}
+            className="absolute inset-0 transition-all duration-700"
+            style={{ clipPath: `inset(0 0 ${100 - CREDIBILITY.progress}% 0)` }}
+          />
+        </div>
         <div className="flex w-full items-center gap-2">
           <Progress value={CREDIBILITY.progress} className="flex-1" />
           <span className="text-xs font-semibold text-primary">{CREDIBILITY.progress}%</span>

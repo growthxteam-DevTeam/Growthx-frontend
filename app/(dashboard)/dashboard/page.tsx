@@ -11,18 +11,20 @@ const DashboardPage = () => (
   <div className="mx-auto flex max-w-6xl flex-col gap-6">
     <DashboardHeader />
 
+    {/* Top row: banner + schedule – grid stretch makes them equal height */}
     <div className="grid gap-6 lg:grid-cols-[1fr_280px]">
-      <div className="flex flex-col gap-6">
-        <ProgramBanner />
-        <div className="grid gap-6 sm:grid-cols-2">
-          {ACTION_CARDS.map((card) => (
-            <ActionCard key={card.title} {...card} />
-          ))}
-        </div>
-      </div>
+      <ProgramBanner />
+      <ScheduleCard />
+    </div>
 
-      <div className="flex flex-col gap-6">
-        <ScheduleCard />
+    {/* Bottom row: action cards + announcements & todo */}
+    <div className="grid gap-6 lg:grid-cols-[1fr_280px]">
+      <div className="grid gap-6 sm:grid-cols-2">
+        {ACTION_CARDS.map((card) => (
+          <ActionCard key={card.title} {...card} />
+        ))}
+      </div>
+      <div className="flex flex-col gap-6 self-start">
         <AnnouncementsCard />
         <TodoCard />
       </div>
