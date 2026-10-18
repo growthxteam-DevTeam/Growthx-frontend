@@ -15,7 +15,7 @@ const DashboardPage = () => (
       {/* Left column: banner + action cards */}
       <div className="flex flex-col gap-6">
         <ProgramBanner />
-        <div className="grid flex-1 content-start gap-6 sm:grid-cols-2">
+        <div className="grid flex-1 gap-6 sm:grid-cols-2">
           {ACTION_CARDS.map((card) => (
             <ActionCard key={card.title} {...card} />
           ))}

@@ -13,7 +13,7 @@ const badgeClassNames = {
 };
 
 const ActionCard = ({ title, description, buttonLabel, icon: Icon, href, badge }: ActionCardConfig) => (
-  <article className="flex flex-col overflow-hidden rounded-lg border border-border bg-white shadow-sm">
+  <article className="flex flex-col overflow-hidden rounded-lg border border-border bg-white shadow-sm ">
     <div className="relative flex h-32 items-center justify-center bg-[#f5f4fc]">
       {badge && (
         <span
@@ -33,7 +33,7 @@ const ActionCard = ({ title, description, buttonLabel, icon: Icon, href, badge }
           {buttonLabel}
         </Link>
       ) : (
-        <Button type="button" variant="outline" className={buttonClassName}>
+        <Button type="button" variant="outline" className={`${buttonClassName} cursor-pointer`}>
           {buttonLabel}
         </Button>
       )}

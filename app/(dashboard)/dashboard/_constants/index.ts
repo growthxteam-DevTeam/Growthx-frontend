@@ -26,6 +26,7 @@ export const ACTION_CARDS: ActionCardConfig[] = [
     description: "Check out the modules for this program",
     buttonLabel: "Go to Modules",
     icon: FileText,
+    href: "/class",
   },
   {
     title: "Meet your Peers",
