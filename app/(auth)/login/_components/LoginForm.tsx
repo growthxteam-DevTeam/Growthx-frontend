@@ -21,7 +21,7 @@ const LoginForm = () => {
 
   return (
     <div className="mx-auto w-full max-w-3xl px-6 py-6">
-      <div className="rounded-2xl border border-border bg-white px-6 py-8">
+      <div className="onboarding-form rounded-2xl border border-border bg-white px-6 py-8">
         <div className="text-center">
           <h1 className="font-serif text-2xl font-bold text-primary">{t("title")}</h1>
           <p className="mt-2 text-xs text-muted-foreground">{t("subtitle")}</p>

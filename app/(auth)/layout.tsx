@@ -9,7 +9,7 @@ const AuthLayout = async ({ children }: { children: ReactNode }) => {
   const t = await getTranslations("Announcement");
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col bg-[#f5f0e8]">
       {SHOW_ANNOUNCEMENT_BANNER && <AnnouncementBanner message={t("message")} />}
       <Header />
       <main className="flex-1">{children}</main>

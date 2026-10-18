@@ -159,3 +159,11 @@
   background-size: 200% 100%;
   animation: shimmer 1.6s linear infinite;
 }
+
+/* Onboarding form: warm beige inputs matching the design */
+.onboarding-form input,
+.onboarding-form textarea,
+.onboarding-form [data-slot="select-trigger"] {
+  background-color: #ede8db !important;
+  border-color: transparent !important;
+}
