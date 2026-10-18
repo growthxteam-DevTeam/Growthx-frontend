@@ -19,8 +19,8 @@ const AssignmentCards = () => (
       >
         <div className="flex items-center justify-between gap-6">
           <div>
-            <h2 className="font-serif text-sm font-bold text-primary">{card.title}</h2>
-            <p className="mt-1 max-w-xs text-[10px] text-muted-foreground">{card.description}</p>
+            <h2 className="font-serif text-lg font-bold text-primary">{card.title}</h2>
+            <p className="mt-1 max-w-xs text-md text-muted-foreground">{card.description}</p>
           </div>
 
           <div className="flex w-44 shrink-0 flex-col gap-2">
@@ -28,7 +28,7 @@ const AssignmentCards = () => (
               type="button"
               disabled={card.locked}
               onClick={notifyComingSoon}
-              className="h-8 gap-1.5 text-[11px] font-semibold"
+              className="h-8 gap-1.5 text-[13px] font-semibold"
             >
               <card.primaryIcon className="size-3.5" />
               {card.primaryLabel}
@@ -38,7 +38,7 @@ const AssignmentCards = () => (
               variant="outline"
               disabled={card.locked}
               onClick={notifyComingSoon}
-              className="h-8 gap-1.5 border-primary text-[11px] font-semibold text-primary hover:bg-transparent"
+              className="h-8 gap-1.5 border-primary text-[13px] font-semibold text-primary hover:bg-transparent"
             >
               <card.secondaryIcon className="size-3.5" />
               {card.secondaryLabel}

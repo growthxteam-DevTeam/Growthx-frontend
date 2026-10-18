@@ -32,12 +32,12 @@ const CommentItem = ({ comment, onReply, onLike }: CommentItemProps) => {
 
       <div className="min-w-0 flex-1">
         <p className="text-[11px]">
-          <span className="font-semibold text-primary">{comment.author.name}</span>
+          <span className="font-semibold text-primary text-lg">{comment.author.name}</span>
           <span className="ml-2 text-muted-foreground">
             {formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}
           </span>
         </p>
-        <p className="mt-0.5 wrap-break-word text-xs text-foreground">{comment.content}</p>
+        <p className="mt-0.5 wrap-break-word text-md text-foreground">{comment.content}</p>
 
         <div className="mt-1 flex items-center gap-4 text-[10px] text-muted-foreground">
           {onReply && (

@@ -17,14 +17,14 @@ const DiscussionForum = () => {
   return (
     <section className="rounded-lg border border-border bg-white p-4 shadow-sm">
       <div className="flex items-center justify-between">
-        <h2 className="font-serif text-sm font-bold text-primary">Discussion Forum</h2>
-        <span className="text-[10px] text-muted-foreground">
+        <h2 className="font-serif text-lg font-bold text-primary">Discussion Forum</h2>
+        <span className="text-[12px] text-muted-foreground">
           {total} {total === 1 ? "comment" : "comments"}
         </span>
       </div>
 
       <div className="mt-4 flex items-center gap-3">
-        <Avatar name={name} src={profilePicture} className="size-7 text-[10px]" />
+        <Avatar name={name} src={profilePicture} className="size-7 text-[12px]" />
         <CommentComposer
           placeholder="Add a comment..."
           submitLabel="Post"
@@ -35,11 +35,11 @@ const DiscussionForum = () => {
 
       <div className="mt-5">
         {isLoading ? (
-          <p className="text-xs text-muted-foreground">Loading discussion...</p>
+          <p className="text-sm text-muted-foreground">Loading discussion...</p>
         ) : isError ? (
-          <p className="text-xs text-destructive">Could not load the discussion. Please try again shortly.</p>
+          <p className="text-sm text-destructive">Could not load the discussion. Please try again shortly.</p>
         ) : comments.length === 0 ? (
-          <p className="text-xs text-muted-foreground">No comments yet. Start the conversation!</p>
+          <p className="text-sm text-muted-foreground">No comments yet. Start the conversation!</p>
         ) : (
           <ul className="flex flex-col gap-5">
             {comments.map((comment) => (
@@ -55,7 +55,7 @@ const DiscussionForum = () => {
           variant="ghost"
           onClick={showMore}
           disabled={isLoadingMore}
-          className="mt-4 h-7 px-0 text-[11px] font-semibold text-primary hover:bg-transparent"
+          className="mt-4 h-7 px-0 text-[13px] font-semibold text-primary hover:bg-transparent"
         >
           {isLoadingMore ? "Loading..." : "Show more comments"}
         </Button>

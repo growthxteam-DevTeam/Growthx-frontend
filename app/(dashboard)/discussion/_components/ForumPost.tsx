@@ -57,7 +57,7 @@ const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
         )}
 
         <p className="flex flex-wrap items-center gap-2">
-          <span className="text-sm font-semibold text-primary">{comment.author.name}</span>
+          <span className="text-md font-semibold text-primary">{comment.author.name}</span>
           {comment.staffPost && (
             <span className="rounded bg-[#ece9fb] px-1.5 py-0.5 text-[10px] font-medium text-primary">Staff Post</span>
           )}
@@ -66,7 +66,7 @@ const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
           </span>
         </p>
 
-        <p className="mt-1 break-words text-sm text-foreground">{comment.content}</p>
+        <p className="mt-1 break-words text-md text-foreground">{comment.content}</p>
 
         <div className="mt-2 flex items-center gap-5">
           <button

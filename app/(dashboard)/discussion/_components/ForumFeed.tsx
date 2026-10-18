@@ -30,12 +30,12 @@ const ForumFeed = () => {
   return (
     <section className="max-w-3xl">
       <div className="flex items-center justify-between">
-        <h2 className="text-xs font-bold text-primary">Feed</h2>
+        <h2 className="text-xl font-bold text-primary">Feed</h2>
 
         <Select value={sort} onValueChange={(value) => changeSort(value as CommentSort)}>
           <SelectTrigger
             aria-label="Sort by"
-            className="h-8 w-auto gap-1.5 border-0 bg-transparent px-1 text-xs text-foreground shadow-none"
+            className="h-8 w-auto gap-1.5 border-0 bg-transparent px-1 text-xl text-foreground shadow-none"
           >
             <ListFilter className="size-3.5" />
             <SelectValue>Sort by</SelectValue>
