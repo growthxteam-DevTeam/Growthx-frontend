@@ -25,7 +25,7 @@ const Sidebar = () => {
   return (
     <>
       {/* ── Desktop: left sidebar ── */}
-      <aside className="hidden lg:flex w-28 shrink-0 flex-col items-center gap-2 bg-[#f0dfae] px-2 py-6">
+      <aside className="hidden lg:flex h-full w-28 shrink-0 flex-col items-center gap-2 bg-[#f0dfae] px-2 py-6">
         <Link href="/dashboard" className="mb-3 flex flex-col items-center gap-1">
           <Image
             src="/img/logo-icon.png"
