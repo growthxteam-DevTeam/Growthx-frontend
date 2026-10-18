@@ -11,7 +11,7 @@ const ScheduleCard = () => {
   const [month, setMonth] = useState(new Date(SCHEDULE.year, SCHEDULE.defaultMonth));
 
   return (
-    <section className="rounded-lg border border-border bg-white p-5 shadow-sm h-full">
+    <section className="rounded-lg border border-border bg-white p-5 shadow-sm">
       <h2 className="text-lg font-bold text-foreground">Schedule</h2>
 
       <div className="mt-4 rounded-md border border-border p-3">

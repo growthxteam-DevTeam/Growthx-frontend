@@ -3,7 +3,7 @@ import { NotebookText } from "lucide-react";
 import { PROGRAM } from "../_constants";
 
 const ProgramBanner = () => (
-  <section className="relative flex min-h-30 flex-col justify-between overflow-hidden rounded-lg bg-primary p-6 text-white lg:p-10">
+  <section className="relative flex min-h-[390px] flex-col justify-between overflow-hidden rounded-lg bg-primary p-6 text-white lg:p-10">
     {/* Decorative arcs from the design: light band top-left, faint ring top-right, gold sweep bottom-right. */}
     <div className="pointer-events-none absolute -left-44 -top-10 h-[150%] w-56 rounded-full border-r-[26px] border-white/30" />
     <div className="pointer-events-none absolute -top-72 left-1/2 size-[520px] rounded-full border-[3px] border-white/10" />
