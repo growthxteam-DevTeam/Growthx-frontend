@@ -1,4 +1,4 @@
-import { ChevronRight, FileText, List } from "lucide-react";
+import { Book, ChevronRight, List } from "lucide-react";
 
 import { MODULES } from "../_constants";
 
@@ -22,12 +22,12 @@ const ModulesCard = () => (
         <List className="size-3.5 text-primary" />
       </div>
 
-      <ul className="mt-3 flex flex-col gap-2">
+      <ul className="mt-3 flex max-h-[280px] flex-col gap-2 overflow-y-auto">
         {MODULES.map((module, index) => (
           <li key={`${module.title}-${index}`}>
             {/* TODO: no module pages exist yet, so these rows don't navigate. */}
             <div className="flex items-center gap-2 rounded-md border border-border px-3 py-2">
-              <FileText className="size-3.5 shrink-0 text-primary" />
+              <Book className="size-3.5 shrink-0 text-primary" />
               <div className="min-w-0 flex-1">
                 <p className="truncate text-[13px] font-semibold text-primary">{module.title}</p>
                 <p className="text-[11px] text-muted-foreground">{module.meta}</p>

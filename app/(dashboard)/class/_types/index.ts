@@ -5,6 +5,14 @@ export interface ClassModule {
   meta: string;
 }
 
+export interface CurrentClass {
+  id: string;
+  title: string;
+  presenter: string;
+  duration: string;
+  videoUrl: string;
+}
+
 export interface PreviousClass {
   title: string;
   meta: string;
@@ -16,6 +24,8 @@ export interface AssignmentCardConfig {
   description: string;
   primaryLabel: string;
   primaryIcon: LucideIcon;
+  /** Defaults to the filled "default" button style. */
+  primaryVariant?: "default" | "outline";
   secondaryLabel: string;
   secondaryIcon: LucideIcon;
   /** Locked cards render greyed out until their stage opens. */

@@ -13,7 +13,7 @@ const PreviousClassesCard = () => (
 
         return (
           <li key={`${item.title}-${index}`}>
-            <div className="relative aspect-video overflow-hidden rounded-md bg-muted">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-muted">
               {videoId && (
                 <Image
                   src={getYouTubeThumbnailUrl(videoId)}

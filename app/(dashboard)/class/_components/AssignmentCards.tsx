@@ -23,25 +23,29 @@ const AssignmentCards = () => (
             <p className="mt-1 max-w-xs text-md text-muted-foreground">{card.description}</p>
           </div>
 
-          <div className="flex w-44 shrink-0 flex-col gap-2">
+          <div className="flex w-60 shrink-0 flex-col gap-2">
             <Button
               type="button"
+              variant={card.primaryVariant ?? "default"}
               disabled={card.locked}
               onClick={notifyComingSoon}
-              className="h-8 gap-1.5 text-[13px] font-semibold"
+              className={cn(
+                "h-8 w-full gap-1.5 text-[13px] font-semibold",
+                card.primaryVariant === "outline" && "border-primary text-primary hover:bg-transparent",
+              )}
             >
-              <card.primaryIcon className="size-3.5" />
-              {card.primaryLabel}
+              <card.primaryIcon className="size-3.5 shrink-0" />
+              <span className="truncate">{card.primaryLabel}</span>
             </Button>
             <Button
               type="button"
               variant="outline"
               disabled={card.locked}
               onClick={notifyComingSoon}
-              className="h-8 gap-1.5 border-primary text-[13px] font-semibold text-primary hover:bg-transparent"
+              className="h-8 w-full gap-1.5 border-primary text-[13px] font-semibold text-primary hover:bg-transparent"
             >
-              <card.secondaryIcon className="size-3.5" />
-              {card.secondaryLabel}
+              <card.secondaryIcon className="size-3.5 shrink-0" />
+              <span className="truncate">{card.secondaryLabel}</span>
             </Button>
           </div>
         </div>

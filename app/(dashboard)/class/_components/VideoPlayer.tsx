@@ -12,6 +12,52 @@ import { getYouTubeId } from "../_lib/youtube";
 import { loadYouTubeApi, type YouTubePlayer } from "../_lib/youtubePlayer";
 import { QUIZ_PAGE_PATH } from "../quiz/_constants";
 
+// Faint constellation of connected nodes behind the "Join Class" prompt.
+const NetworkBackground = () => (
+  <svg
+    className="pointer-events-none absolute inset-0 size-full opacity-50"
+    viewBox="0 0 400 225"
+    preserveAspectRatio="xMidYMid slice"
+    aria-hidden
+  >
+    <g stroke="rgba(125,211,252,0.35)" strokeWidth="0.6">
+      <line x1="40" y1="30" x2="110" y2="55" />
+      <line x1="110" y1="55" x2="70" y2="110" />
+      <line x1="70" y1="110" x2="140" y2="140" />
+      <line x1="140" y1="140" x2="60" y2="170" />
+      <line x1="200" y1="40" x2="110" y2="55" />
+      <line x1="200" y1="40" x2="260" y2="90" />
+      <line x1="260" y1="90" x2="320" y2="50" />
+      <line x1="320" y1="50" x2="380" y2="70" />
+      <line x1="260" y1="90" x2="230" y2="150" />
+      <line x1="230" y1="150" x2="300" y2="180" />
+      <line x1="300" y1="180" x2="180" y2="190" />
+      <line x1="180" y1="190" x2="60" y2="170" />
+      <line x1="20" y1="120" x2="70" y2="110" />
+      <line x1="140" y1="140" x2="230" y2="150" />
+    </g>
+    <g fill="rgba(165,243,252,0.7)">
+      {[
+        [40, 30],
+        [110, 55],
+        [70, 110],
+        [140, 140],
+        [200, 40],
+        [260, 90],
+        [320, 50],
+        [380, 70],
+        [230, 150],
+        [300, 180],
+        [180, 190],
+        [60, 170],
+        [20, 120],
+      ].map(([cx, cy]) => (
+        <circle key={`${cx}-${cy}`} cx={cx} cy={cy} r="1.6" />
+      ))}
+    </g>
+  </svg>
+);
+
 const VideoPlayer = () => {
   const router = useRouter();
   const [hasJoined, setHasJoined] = useState(false);
@@ -81,14 +127,14 @@ const VideoPlayer = () => {
         ) : hasJoined ? (
           <div ref={containerRef} className="size-full [&>iframe]:size-full" />
         ) : (
-          // TODO: swap the gradients for the network-nodes artwork once the asset is available.
-          <div className="flex size-full flex-col items-center justify-center gap-8 bg-[radial-gradient(circle_at_20%_30%,rgba(45,212,191,0.14),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(99,102,241,0.14),transparent_45%)] px-6 text-center text-white">
-            <p className="text-sm text-white/80">{CLASS_INTRO.program}</p>
-            <p className="max-w-md text-xl font-semibold">{CLASS_INTRO.message}</p>
+          <div className="relative flex size-full flex-col items-center justify-center gap-8 bg-[radial-gradient(circle_at_20%_30%,rgba(45,212,191,0.14),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(99,102,241,0.14),transparent_45%)] px-6 text-center text-white">
+            <NetworkBackground />
+            <p className="relative text-sm text-white/80">{CLASS_INTRO.program}</p>
+            <p className="relative max-w-md text-xl font-semibold">{CLASS_INTRO.message}</p>
             <Button
               type="button"
               onClick={() => setHasJoined(true)}
-              className="h-11 cursor-pointer gap-2 px-5 text-lg font-medium"
+              className="relative h-11 cursor-pointer gap-2 px-5 text-lg font-medium"
             >
               {CLASS_INTRO.buttonLabel}
               <SquarePlay className="size-5" />
@@ -119,7 +165,6 @@ const VideoPlayer = () => {
         )}
       </div>
 
-      <h2 className="mt-3 font-serif text-xl font-bold text-primary">{CURRENT_CLASS.title}</h2>
     </section>
   );
 };
