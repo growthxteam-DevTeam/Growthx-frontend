@@ -38,7 +38,7 @@ export default async function RootLayout({
   const locale = await getLocale();
 
   return (
-    <html lang={locale} className={`${googleSansFlex.variable}  antialiased`}>
+    <html lang={locale} suppressHydrationWarning className={`${googleSansFlex.variable}  antialiased`}>
       <body className="min-h-full flex flex-col">
         {/* <script
           id="runtime-env"

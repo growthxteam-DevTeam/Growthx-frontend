@@ -53,9 +53,9 @@ const CustomModal = ({
         data-testid={testId}
         className={cn('p-0 gap-0 overflow-hidden', sizeClasses[size], className)}
       >
-        <div className="px-6 py-4 border-b border-gray-200">
+        <div className="px-6 py-4 border-b border-border">
           {title ? (
-            <DialogTitle className="text-base font-semibold text-gray-900">{title}</DialogTitle>
+            <DialogTitle className="text-base font-semibold text-foreground">{title}</DialogTitle>
           ) : (
             <DialogTitle className="sr-only">Modal</DialogTitle>
           )}
@@ -69,7 +69,7 @@ const CustomModal = ({
         </div>
 
         {hasFooter && (
-          <div className="px-6 py-4 border-t border-gray-200 flex justify-end">
+          <div className="px-6 py-4 border-t border-border flex justify-end">
             {footer ?? (
               <SubmitButton
                 type="button"

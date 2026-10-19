@@ -25,7 +25,7 @@ const Sidebar = () => {
   return (
     <>
       {/* ── Desktop: left sidebar ── */}
-      <aside className="hidden lg:flex h-full w-28 shrink-0 flex-col items-center gap-2 bg-[#f0dfae] px-2 py-6">
+      <aside className="hidden lg:flex h-full w-28 shrink-0 flex-col items-center gap-2 border-r border-sidebar-border bg-sidebar px-2 py-6">
         <Link href="/dashboard" className="mb-3 flex flex-col items-center gap-1">
           <Image
             src="/img/logo-icon.png"
@@ -35,7 +35,7 @@ const Sidebar = () => {
             loading="eager"
             className="h-auto w-12"
           />
-          <span className="text-[11px] font-semibold text-primary">Growth Space</span>
+          <span className="text-[11px] font-semibold text-sidebar-foreground">Growth Space</span>
         </Link>
 
         <nav className="mt-6 flex w-full flex-col gap-3">
@@ -45,7 +45,9 @@ const Sidebar = () => {
               href={href}
               className={cn(
                 "flex w-full cursor-pointer flex-col items-center gap-1.5 rounded-lg px-1 py-4 text-center text-xs font-semibold leading-tight transition-colors",
-                isActive ? "bg-primary text-white" : "text-primary hover:bg-white/40",
+                isActive
+                  ? "bg-sidebar-primary text-sidebar-primary-foreground"
+                  : "text-sidebar-foreground hover:bg-sidebar-accent",
               )}
             >
               <Icon className="size-7" strokeWidth={1.5} />
@@ -56,7 +58,7 @@ const Sidebar = () => {
           <button
             type="button"
             onClick={() => dispatch(logout())}
-            className="flex w-full cursor-pointer flex-col items-center gap-1.5 rounded-lg px-1 py-4 text-center text-xs font-semibold leading-tight transition-colors text-primary hover:bg-white/40"
+            className="flex w-full cursor-pointer flex-col items-center gap-1.5 rounded-lg px-1 py-4 text-center text-xs font-semibold leading-tight transition-colors text-sidebar-foreground hover:bg-sidebar-accent"
           >
             <LogOut className="size-7" strokeWidth={1.5} />
             {t("logout")}
@@ -65,14 +67,14 @@ const Sidebar = () => {
       </aside>
 
       {/* ── Mobile: fixed bottom nav bar ── */}
-      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around border-t border-border bg-[#f0dfae] px-2 py-2">
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around border-t border-sidebar-border bg-sidebar px-2 py-2">
         {navLinks.map(({ labelKey, href, Icon, isActive }) => (
           <Link
             key={labelKey}
             href={href}
             className={cn(
               "flex flex-col items-center gap-1 rounded-lg px-3 py-2 text-[10px] font-semibold transition-colors",
-              isActive ? "bg-primary text-white" : "text-primary",
+              isActive ? "bg-sidebar-primary text-sidebar-primary-foreground" : "text-sidebar-foreground",
             )}
           >
             <Icon className="size-6" strokeWidth={1.5} />
@@ -82,7 +84,7 @@ const Sidebar = () => {
         <button
           type="button"
           onClick={() => dispatch(logout())}
-          className="flex flex-col items-center gap-1 rounded-lg px-3 py-2 text-[10px] font-semibold text-primary transition-colors"
+          className="flex flex-col items-center gap-1 rounded-lg px-3 py-2 text-[10px] font-semibold text-sidebar-foreground transition-colors"
         >
           <LogOut className="size-6" strokeWidth={1.5} />
           {t("logout")}

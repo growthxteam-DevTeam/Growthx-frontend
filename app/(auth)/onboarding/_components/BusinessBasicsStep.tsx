@@ -80,7 +80,7 @@ const BusinessBasicsStep = ({ form, onSubmit, isSubmitting }: BusinessBasicsStep
 
   if (screen === "operating-duration") {
     return (
-      <div className="onboarding-form rounded-xl border border-border bg-white p-8">
+      <div className="onboarding-form rounded-xl border border-border bg-card p-8">
         <h2 className="font-serif text-2xl font-bold text-primary">{t("operatingDuration.title")}</h2>
         <p className="mt-1 text-sm text-muted-foreground">{t("operatingDuration.description")}</p>
 
@@ -122,7 +122,7 @@ const BusinessBasicsStep = ({ form, onSubmit, isSubmitting }: BusinessBasicsStep
 
   if (screen === "average-revenue") {
     return (
-      <div className="onboarding-form rounded-xl border border-border bg-white p-8">
+      <div className="onboarding-form rounded-xl border border-border bg-card p-8">
         <h2 className="font-serif text-2xl font-bold text-primary">{t("averageRevenue.title")}</h2>
         <p className="mt-1 text-sm text-muted-foreground">{t("averageRevenue.description")}</p>
 
@@ -162,7 +162,7 @@ const BusinessBasicsStep = ({ form, onSubmit, isSubmitting }: BusinessBasicsStep
 
   if (screen === "full-time-commitment") {
     return (
-      <div className="onboarding-form rounded-xl border border-border bg-white p-8">
+      <div className="onboarding-form rounded-xl border border-border bg-card p-8">
         <h2 className="font-serif text-2xl font-bold text-primary">{t("fullTimeCommitment.title")}</h2>
         <p className="mt-1 text-sm text-muted-foreground">{t("fullTimeCommitment.description")}</p>
 
@@ -208,7 +208,7 @@ const BusinessBasicsStep = ({ form, onSubmit, isSubmitting }: BusinessBasicsStep
   }
 
   return (
-    <div className="onboarding-form rounded-xl border border-border bg-white p-8">
+    <div className="onboarding-form rounded-xl border border-border bg-card p-8">
       <h2 className="font-serif text-2xl font-bold text-primary">{t("description.title")}</h2>
       <p className="mt-1 text-sm text-muted-foreground">{t("description.description")}</p>
 
@@ -218,7 +218,7 @@ const BusinessBasicsStep = ({ form, onSubmit, isSubmitting }: BusinessBasicsStep
           control={form.control}
           name="businessDescription"
           placeholder={tc("textareaPlaceholder")}
-          variant="min-h-40 bg-[#ede8db]"
+          variant="min-h-40 bg-field"
         />
 
         <SubmitButton

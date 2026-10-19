@@ -65,11 +65,11 @@ const CustomSheet = ({
       <SheetContent
         data-testid={testId}
         side={side}
-        className={cn('w-full gap-0 p-0 bg-white border-white', sizeClasses[size], className)}
+        className={cn('w-full gap-0 p-0 bg-card border-white', sizeClasses[size], className)}
       >
-        <SheetHeader className="px-6 py-4 border-b border-gray-200">
+        <SheetHeader className="px-6 py-4 border-b border-border">
           {title ? (
-            <SheetTitle className="text-base font-semibold text-gray-900">{title}</SheetTitle>
+            <SheetTitle className="text-base font-semibold text-foreground">{title}</SheetTitle>
           ) : (
             <SheetTitle className="sr-only">Sheet</SheetTitle>
           )}
@@ -83,7 +83,7 @@ const CustomSheet = ({
         </div>
 
         {hasFooter && (
-          <SheetFooter className="px-6 py-4 border-t border-gray-200 flex-row justify-end">
+          <SheetFooter className="px-6 py-4 border-t border-border flex-row justify-end">
             {footer ?? (
               <SubmitButton
                 type="button"

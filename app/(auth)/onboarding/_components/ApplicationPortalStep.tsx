@@ -28,7 +28,7 @@ const ApplicationPortalStep = ({ form, onSubmit, isSubmitting }: ApplicationPort
     <div className="mx-auto w-full max-w-4xl px-6 py-16">
       <h1 className="text-center font-serif text-4xl font-bold text-primary">{t("title")}</h1>
 
-      <form onSubmit={onSubmit} className="onboarding-form mt-10 rounded-2xl border border-border bg-white p-10 shadow-sm">
+      <form onSubmit={onSubmit} className="onboarding-form mt-10 rounded-2xl border border-border bg-card p-10 shadow-sm">
         <div className="grid gap-x-10 gap-y-8 sm:grid-cols-2">
           <CustomFormField
             fieldType={FormFieldType.INPUT}

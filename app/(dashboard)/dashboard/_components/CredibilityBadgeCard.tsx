@@ -11,7 +11,7 @@ const CredibilityBadgeCard = () => {
   const completed = CREDIBILITY.steps.filter((step) => step.complete).length;
 
   return (
-    <section className="grid gap-8 rounded-lg border border-border bg-white p-8 shadow-sm md:grid-cols-[1fr_240px]">
+    <section className="grid gap-8 rounded-lg border border-border bg-card p-8 shadow-sm md:grid-cols-[1fr_240px]">
       <div>
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-bold text-foreground">{CREDIBILITY.title}</h2>
@@ -27,7 +27,7 @@ const CredibilityBadgeCard = () => {
               <span
                 className={cn(
                   "flex size-7 items-center justify-center rounded-full border",
-                  step.complete ? "border-emerald-200 bg-emerald-50 text-emerald-600" : "border-border bg-white",
+                  step.complete ? "border-emerald-200 bg-emerald-50 text-emerald-600 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-400" : "border-border bg-card",
                 )}
               >
                 {step.complete && <Check className="size-4" strokeWidth={3} />}
@@ -37,7 +37,7 @@ const CredibilityBadgeCard = () => {
           ))}
         </ol>
 
-        <div className="mt-6 rounded-md bg-[#f5f4fc] p-5">
+        <div className="mt-6 rounded-md bg-tint p-5">
           <p className="text-base font-bold text-primary">{CREDIBILITY.summary.title}</p>
           <p className="mt-1 text-xs font-semibold text-primary">{CREDIBILITY.summary.weeks}</p>
           <p className="mt-2 text-sm text-foreground">{CREDIBILITY.summary.description}</p>

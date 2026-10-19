@@ -99,7 +99,7 @@ const RenderInput = <T extends FieldValues>({
             type={props.type}
             readOnly={props.readOnly}
             disabled={props.disabled}
-            className={`${props.variant} h-11 w-full text-16 placeholder:text-16 rounded-[5px] border-0 bg-gray-50 text-gray-900 placeholder:text-gray-500 focus-visible:ring-0 focus-visible:ring-offset-0 ${
+            className={`${props.variant} h-11 w-full text-16 placeholder:text-16 rounded-[5px] border-0 bg-muted text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 ${
               props.leftIcon ? "pl-10" : ""
             } ${props.rightIcon ? "pr-10" : ""}`}
             onChange={(e) => {
@@ -131,12 +131,12 @@ const RenderInput = <T extends FieldValues>({
             onChange={field.onChange}
             className="flex w-full items-stretch"
             countrySelectProps={{
-              className: "h-11 bg-input-background text-sm text-gray-900 focus:outline-none cursor-pointer",
+              className: "h-11 bg-input-background text-sm text-foreground focus:outline-none cursor-pointer",
             }}
             numberInputProps={{
               placeholder: props.placeholder,
               className:
-                "flex h-11 w-full rounded-none border-0 bg-input-background px-3 py-2 text-sm placeholder:text-gray-500 focus:outline-none text-gray-900",
+                "flex h-11 w-full rounded-none border-0 bg-input-background px-3 py-2 text-sm placeholder:text-muted-foreground focus:outline-none text-foreground",
             }}
           />
         </div>
@@ -148,7 +148,7 @@ const RenderInput = <T extends FieldValues>({
           placeholder={props.placeholder}
           {...field}
           disabled={props.disabled}
-          className={`${props.variant} border border-primary bg-input-background rounded-md placeholder:text-gray-500 transition-colors focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:ring-offset-0`}
+          className={`${props.variant} border border-primary bg-input-background rounded-md placeholder:text-muted-foreground transition-colors focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:ring-offset-0`}
         />
       );
 
@@ -162,7 +162,7 @@ const RenderInput = <T extends FieldValues>({
             items={options}
           >
             <SelectTrigger
-              className={`${props.variant} w-full h-11! border-0 cursor-pointer text-16 placeholder:text-16 rounded-[5px] bg-gray-50 text-gray-500 placeholder:text-gray-500 focus:ring-2 focus:ring-offset-0`}
+              className={`${props.variant} w-full h-11! border-0 cursor-pointer text-16 placeholder:text-16 rounded-[5px] bg-muted text-muted-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-offset-0`}
               disabled={props.disabled}
             >
               <SelectValue placeholder={props.placeholder} />
@@ -171,7 +171,7 @@ const RenderInput = <T extends FieldValues>({
             <SelectContent
               alignItemWithTrigger={false}
               sideOffset={4}
-              className="z-100 text-16 border-primary text-gray-900"
+              className="z-100 text-16 border-primary text-foreground"
             >
               {props.children}
             </SelectContent>
@@ -210,7 +210,7 @@ const RenderInput = <T extends FieldValues>({
             render={
               <Button
                 variant="outline"
-                className={`${props.variant ?? ""} h-11! w-full justify-start rounded-[5px] border-primary bg-gray-50 pl-3 text-16 text-left font-normal text-gray-900 hover:bg-gray-50 ${!field.value && "text-gray-500"}`}
+                className={`${props.variant ?? ""} h-11! w-full justify-start rounded-[5px] border-primary bg-muted pl-3 text-16 text-left font-normal text-foreground hover:bg-muted ${!field.value && "text-muted-foreground"}`}
               />
             }
           >

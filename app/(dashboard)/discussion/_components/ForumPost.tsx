@@ -45,7 +45,7 @@ const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
       <Avatar
         name={comment.author.name}
         src={comment.author.profilePicture}
-        className="size-8 bg-[#ece9fb] text-[10px] text-primary"
+        className="size-8 bg-tint-strong text-[10px] text-primary"
       />
 
       <div className="min-w-0 flex-1">
@@ -59,7 +59,7 @@ const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
         <p className="flex flex-wrap items-center gap-2">
           <span className="text-md font-semibold text-primary">{comment.author.name}</span>
           {comment.staffPost && (
-            <span className="rounded bg-[#ece9fb] px-1.5 py-0.5 text-[10px] font-medium text-primary">Staff Post</span>
+            <span className="rounded bg-tint-strong px-1.5 py-0.5 text-[10px] font-medium text-primary">Staff Post</span>
           )}
           <span className="text-[11px] text-muted-foreground">
             {formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}
@@ -117,7 +117,7 @@ const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
             }}
             className="mt-3 flex items-center gap-3"
           >
-            <Avatar name={name} src={profilePicture} className="size-7 bg-[#ece9fb] text-[10px] text-primary" />
+            <Avatar name={name} src={profilePicture} className="size-7 bg-tint-strong text-[10px] text-primary" />
             <input
               value={replyText}
               onChange={(event) => setReplyText(event.target.value)}

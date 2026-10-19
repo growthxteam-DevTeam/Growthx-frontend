@@ -4,7 +4,7 @@ import { PREVIOUS_CLASSES } from "../_constants";
 import { getYouTubeId, getYouTubeThumbnailUrl } from "../_lib/youtube";
 
 const PreviousClassesCard = () => (
-  <section className="rounded-lg border border-border bg-white p-4 shadow-sm">
+  <section className="rounded-lg border border-border bg-card p-4 shadow-sm">
     <h2 className="font-serif text-lg font-bold text-primary">Previous Classes</h2>
 
     <ul className="mt-3 flex flex-col gap-4">

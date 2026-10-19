@@ -16,7 +16,7 @@ const ModulesCard = () => (
     />
 
     {/* Card content sits on top */}
-    <section className="relative rounded-lg bg-white p-4 shadow-sm">
+    <section className="relative rounded-lg bg-card p-4 shadow-sm">
       <div className="flex items-center justify-between">
         <h2 className="font-serif text-base font-bold text-primary">Modules</h2>
         <List className="size-3.5 text-primary" />

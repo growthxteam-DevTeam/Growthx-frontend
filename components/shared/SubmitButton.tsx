@@ -26,7 +26,7 @@ const SubmitButton = ({
       type={type}
       disabled={isLoading || loading || disabled}
       className={cn(
-        'cursor-pointer text-white bg-primary h-11  rounded-md mt-2 text-sm font-regular hover:bg-blue-700',
+        'cursor-pointer text-primary-foreground bg-primary h-11  rounded-md mt-2 text-sm font-regular hover:bg-primary/90',
         className,
       )}
       onClick={clickFn}

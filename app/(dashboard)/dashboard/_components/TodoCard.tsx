@@ -8,7 +8,7 @@ const TODO_ITEMS = [
 ];
 
 const TodoCard = () => (
-  <section className="rounded-lg border border-border bg-white px-3 py-4 shadow-sm">
+  <section className="rounded-lg border border-border bg-card px-3 py-4 shadow-sm">
     <h2 className="text-lg font-bold text-foreground">To-Do</h2>
 
     <div className="mt-4 flex flex-col gap-3">

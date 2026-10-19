@@ -15,7 +15,7 @@ const AssignmentCards = () => (
     {ASSIGNMENT_CARDS.map((card) => (
       <section
         key={card.title}
-        className={cn("rounded-lg border border-border bg-white p-5 shadow-sm", card.locked && "opacity-60")}
+        className={cn("rounded-lg border border-border bg-card p-5 shadow-sm", card.locked && "opacity-60")}
       >
         <div className="flex items-center justify-between gap-6">
           <div>

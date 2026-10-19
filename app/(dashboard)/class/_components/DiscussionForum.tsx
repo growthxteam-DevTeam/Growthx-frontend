@@ -30,7 +30,7 @@ const DiscussionForum = () => {
   } = useDiscussion(CURRENT_CLASS.id);
 
   return (
-    <section className="rounded-lg border border-border bg-white p-4 shadow-sm">
+    <section className="rounded-lg border border-border bg-card p-4 shadow-sm">
       <div className="flex items-center justify-between">
         <h2 className="font-serif text-lg font-bold text-primary">Discussion Forum</h2>
         <Select value={sort} onValueChange={(value) => value && changeSort(value as never)}>

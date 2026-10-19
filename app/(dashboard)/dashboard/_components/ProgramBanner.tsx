@@ -3,12 +3,12 @@ import { NotebookText } from "lucide-react";
 import { PROGRAM } from "../_constants";
 
 const ProgramBanner = () => (
-  <section className="relative flex min-h-[390px] flex-col justify-between overflow-hidden rounded-lg bg-primary p-6 text-white lg:p-10">
+  <section className="relative flex min-h-[390px] flex-col justify-between overflow-hidden rounded-lg bg-brand p-6 text-white lg:p-10">
     {/* Decorative arcs from the design: light band top-left, faint ring top-right, gold sweep bottom-right. */}
     <div className="pointer-events-none absolute -left-44 -top-10 h-[150%] w-56 rounded-full border-r-[26px] border-white/30" />
     <div className="pointer-events-none absolute -top-72 left-1/2 size-[520px] rounded-full border-[3px] border-white/10" />
     <div className="pointer-events-none absolute -bottom-20 -right-10 h-32 w-[75%] rounded-[100%] bg-[#f0dfae]" />
-    <div className="pointer-events-none absolute -bottom-[60px] -right-4 h-32 w-[75%] rounded-[100%] bg-primary" />
+    <div className="pointer-events-none absolute -bottom-[60px] -right-4 h-32 w-[75%] rounded-[100%] bg-brand" />
 
     <div className="relative mt-4 pl-4 lg:mt-8 lg:pl-10">
       <p className="text-base text-[#f0dfae]">{PROGRAM.label}</p>

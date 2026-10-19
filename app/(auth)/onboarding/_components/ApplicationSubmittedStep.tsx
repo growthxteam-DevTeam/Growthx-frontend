@@ -39,7 +39,7 @@ const ApplicationSubmittedStep = ({ application }: ApplicationSubmittedStepProps
 
   return (
     <div className="mx-auto w-full max-w-3xl px-6 py-16">
-      <div className="rounded-2xl border border-border bg-white p-8">
+      <div className="rounded-2xl border border-border bg-card p-8">
         <div className="flex flex-col items-center text-center">
           <div className="flex size-24 items-center justify-center rounded-full bg-emerald-50">
             <Check className="size-10 text-emerald-600" strokeWidth={3} />
@@ -49,7 +49,7 @@ const ApplicationSubmittedStep = ({ application }: ApplicationSubmittedStepProps
           <p className="mt-3 max-w-md text-muted-foreground">{t("description")}</p>
         </div>
 
-        <div className="mt-10 divide-y divide-border rounded-xl bg-[#f5f4fc]">
+        <div className="mt-10 divide-y divide-border rounded-xl bg-tint">
           {summaryRows.map((row) => (
             <div key={row.label} className="grid grid-cols-[1fr_2fr] gap-4 px-6 py-5">
               <p className="font-serif text-lg font-bold text-primary">{row.label}</p>

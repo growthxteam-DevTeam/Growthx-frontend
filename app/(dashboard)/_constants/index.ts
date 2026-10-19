@@ -9,12 +9,12 @@ export interface SidebarLink {
   alsoActiveOn?: string[];
 }
 
-// Only the dashboard and discussion forum have pages so far; the other entries are placeholders.
+// Only the dashboard, discussion forum, community and resource vault pages exist so far; the rest are placeholders.
 export const SIDEBAR_LINKS: SidebarLink[] = [
   { labelKey: "dashboard", href: "/dashboard", icon: Compass, alsoActiveOn: ["/class"] },
   { labelKey: "discussion", href: "/discussion", icon: Users },
-  { labelKey: "community", href: "#", icon: MessagesSquare },
-  { labelKey: "resourceVault", href: "#", icon: Archive },
+  { labelKey: "community", href: "/community", icon: MessagesSquare },
+  { labelKey: "resourceVault", href: "/resource-vault", icon: Archive },
   { labelKey: "coworkingLab", href: "#", icon: Building2 },
 ];
 

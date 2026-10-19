@@ -31,14 +31,14 @@ const ForumComposer = ({ onSubmit, isSubmitting }: ForumComposerProps) => {
         event.preventDefault();
         void submit();
       }}
-      className="flex min-h-56 flex-col rounded-lg border border-border bg-white p-4"
+      className="flex min-h-56 flex-col rounded-lg border border-border bg-card p-4"
     >
       <label htmlFor="forum-contribution" className="text-xs text-muted-foreground">
         Add contribution
       </label>
 
       <div className="mt-3 flex items-start gap-3">
-        <Avatar name={name} src={profilePicture} className="size-8 bg-[#ece9fb] text-[10px] text-primary" />
+        <Avatar name={name} src={profilePicture} className="size-8 bg-tint-strong text-[10px] text-primary" />
         <textarea
           id="forum-contribution"
           value={content}

@@ -11,7 +11,7 @@ const ScheduleCard = () => {
   const [month, setMonth] = useState(new Date(SCHEDULE.year, SCHEDULE.defaultMonth));
 
   return (
-    <section className="rounded-lg border border-border bg-white p-5 shadow-sm">
+    <section className="rounded-lg border border-border bg-card p-5 shadow-sm">
       <h2 className="text-lg font-bold text-foreground">Schedule</h2>
 
       <div className="mt-4 rounded-md border border-border p-3">
@@ -36,7 +36,7 @@ const ScheduleCard = () => {
           onMonthChange={setMonth}
           hideNavigation
           modifiers={{ event: SCHEDULE.eventDates }}
-          modifiersClassNames={{ event: "flex items-center justify-center rounded-md bg-[#f0dfae] font-semibold text-primary" }}
+          modifiersClassNames={{ event: "flex items-center justify-center rounded-md bg-[#f0dfae] font-semibold text-primary dark:bg-primary/20" }}
           classNames={{ root: "w-full", month_caption: "hidden", outside: "opacity-40" }}
           className="mt-3 p-0 text-sm text-primary"
         />

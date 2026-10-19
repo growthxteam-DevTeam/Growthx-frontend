@@ -14,19 +14,19 @@ npx tsc --noEmit   # type-check only — faster than a full build
 
 There is no test setup in this project.
 
-`npx tsc --noEmit` is currently clean. `npm run lint` has a known baseline of 1 error + 2 warnings —
-diff against it rather than assuming a clean tree:
+`npm run lint` has a known baseline of 0 errors + 2 warnings — diff against it:
 
-- error: `context/ThemeProvider.tsx:29` (`react-hooks/set-state-in-effect`)
 - warning: `app/layout.tsx` unused `runtimeEnv` (the `window.__ENV__` script is commented out)
 - warning: `redux/features/api/apiSlice.ts:28` (`window.location.href` redirect on 401)
+
+`npx tsc --noEmit` has 1 known error: `lucide-react` no longer exports `Youtube`
+(`app/(dashboard)/resource-vault/_constants/index.ts`).
 
 ## State of the repo
 
 Growth X is an application/onboarding site for a cohort program, rebuilt from a scrapped laundry app.
 Anything laundry-shaped is dead weight, not a pattern to follow: `formatNaira()` in `lib/utils.ts`,
-`context/cartContext.txt` (parked as `.txt` so it doesn't compile), the `"smart-trade-theme"` key in
-`context/ThemeProvider.tsx`, and the starter `public/*.svg` files.
+`context/cartContext.txt` (parked as `.txt` so it doesn't compile), and the starter `public/*.svg` files.
 
 What exists:
 
@@ -65,8 +65,9 @@ Next.js **App Router**, React 19, TypeScript (strict), Tailwind CSS v4. Path ali
 ### Providers
 
 `app/layout.tsx` → `providers/Providers.tsx` → `ReduxProvider` + sonner `<Toaster>`. Add app-wide providers
-inside `Providers`, not the layout. `context/RefetchContext.tsx` and `context/ThemeProvider.tsx` are not wired
-in; `next-themes` is installed but unused. Pick one theme approach before building a toggle.
+inside `Providers`, not the layout. `context/RefetchContext.tsx` is not wired in. `next-themes` `ThemeProvider`
+(`attribute="class"`, default light, no system) lives in `Providers`; `components/common/ThemeToggle.tsx` is the toggle
+(marketing `Header` and dashboard `HeaderAccount`).
 
 ### Redux / data fetching
 
@@ -111,7 +112,10 @@ per-type components. Use `components/shared/SubmitButton.tsx` for submit buttons
 ### Styling
 
 Tailwind v4 is configured entirely in `app/globals.css` — there is no `tailwind.config.*`. Light and dark token
-sets exist but nothing toggles `.dark`, so treat the app as light-only.
+sets live there and `.dark` is toggled by `next-themes`. Dark mode is a black/gold palette: in `.dark`, `primary` is
+gold (so `text-primary` / `bg-primary` just work) and `primary-foreground` is navy — use `text-primary-foreground` on
+`bg-primary`, never `text-white`. Don't hardcode `bg-white`/`gray-*`/hex surfaces; use `bg-card`, `text-foreground`,
+`text-muted-foreground`, `bg-tint*`, `bg-field`, `bg-page`, `bg-sidebar`, `bg-brand` (always indigo).
 
 `components/ui/` is shadcn/ui (`components.json`: style `base-nova`, `@base-ui/react` primitives, lucide icons).
 Treat it as generated — add primitives with the shadcn CLI. `components/common/` holds small app-wide pieces

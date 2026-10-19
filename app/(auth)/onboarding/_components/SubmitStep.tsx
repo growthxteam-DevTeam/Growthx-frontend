@@ -62,11 +62,11 @@ const SubmitStep = ({ form, onSubmit, isSubmitting, onBack }: SubmitStepProps) =
   };
 
   return (
-    <div className="onboarding-form rounded-xl border border-border bg-white p-8">
+    <div className="onboarding-form rounded-xl border border-border bg-card p-8">
       <h2 className="font-serif text-2xl font-bold text-primary">{t("title")}</h2>
 
       <form onSubmit={onSubmit} className="mt-8">
-        <div className="flex flex-col items-center justify-center gap-3 rounded-xl border border-dashed border-border bg-[#ede8db] px-6 py-14 text-center">
+        <div className="flex flex-col items-center justify-center gap-3 rounded-xl border border-dashed border-border bg-field px-6 py-14 text-center">
           {previewUrl ? (
             <div className="flex flex-col items-center gap-3">
               {/* eslint-disable-next-line @next/next/no-img-element -- transient client-side object URL, not an optimizable asset */}

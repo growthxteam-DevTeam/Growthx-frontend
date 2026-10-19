@@ -24,7 +24,7 @@ const QuizQuestionCard = ({ index, question, selected, onSelect, outcome }: Quiz
           <span>{question.text}</span>
         </p>
 
-        <span className="shrink-0 rounded-full bg-[#f5f4fc] px-2 py-0.5 text-[10px] text-muted-foreground">
+        <span className="shrink-0 rounded-full bg-tint px-2 py-0.5 text-[10px] text-muted-foreground">
           {question.points} {question.points === 1 ? "point" : "points"}
         </span>
       </div>

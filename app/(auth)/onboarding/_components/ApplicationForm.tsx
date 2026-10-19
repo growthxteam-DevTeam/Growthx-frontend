@@ -126,7 +126,7 @@ const ApplicationForm = ({
 
   return (
     <div className="mx-auto w-full max-w-5xl px-6 py-16">
-      <div className="onboarding-form rounded-2xl border border-border bg-white p-8">
+      <div className="onboarding-form rounded-2xl border border-border bg-card p-8">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <h1 className="font-serif text-3xl font-bold text-primary">
             {t("form.title", { program: APPLICATION_META.programTitle })}

@@ -13,8 +13,8 @@ const badgeClassNames = {
 };
 
 const ActionCard = ({ title, description, buttonLabel, icon: Icon, href, badge }: ActionCardConfig) => (
-  <article className="flex flex-col overflow-hidden rounded-lg border border-border bg-white shadow-sm ">
-    <div className="relative flex h-32 items-center justify-center bg-[#f5f4fc]">
+  <article className="flex flex-col overflow-hidden rounded-lg border border-border bg-card shadow-sm ">
+    <div className="relative flex h-32 items-center justify-center bg-tint">
       {badge && (
         <span
           className={cn("absolute right-4 top-4 rounded px-2 py-0.5 text-xs font-medium", badgeClassNames[badge.tone])}

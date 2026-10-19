@@ -35,7 +35,7 @@ const CreatePasswordForm = ({ gsCode }: CreatePasswordFormProps) => {
 
   return (
     <div className="mx-auto w-full max-w-3xl px-6 py-16">
-      <div className="rounded-2xl border border-border bg-white px-6 py-12">
+      <div className="rounded-2xl border border-border bg-card px-6 py-12">
         <div className="text-center">
           <p className="font-serif text-lg font-bold text-primary">{t("congrats")}</p>
           <h1 className="mt-3 font-serif text-3xl font-bold text-primary">{t("title")}</h1>
