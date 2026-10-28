@@ -47,7 +47,7 @@ const AccessibilityStep = ({ form, onSubmit, isSubmitting, onBack }: Accessibili
 
   if (screen === "need") {
     return (
-      <div className="onboarding-form rounded-xl border border-border bg-card p-8">
+      <div className="onboarding-form rounded-xl border border-border bg-card p-5 sm:p-8">
         <h2 className="font-serif text-2xl font-bold text-primary">{t("need.title")}</h2>
 
         <form onSubmit={onSubmit} className="mt-8">
@@ -114,7 +114,7 @@ const AccessibilityStep = ({ form, onSubmit, isSubmitting, onBack }: Accessibili
   }
 
   return (
-    <div className="onboarding-form rounded-xl border border-border bg-card p-8">
+    <div className="onboarding-form rounded-xl border border-border bg-card p-5 sm:p-8">
       <h2 className="font-serif text-2xl font-bold text-primary">{t("choice.title")}</h2>
       <p className="mt-1 text-sm text-muted-foreground">{t("choice.description")}</p>
 

@@ -140,15 +140,14 @@ export type OnboardingTabId = "personal-info" | "business-basics" | "who-you-are
 
 export interface OnboardingTabConfig {
   id: OnboardingTabId;
-  progress: number;
   /** false until that tab's design and fields are known. */
   enabled: boolean;
 }
 
 export const ONBOARDING_TABS: OnboardingTabConfig[] = [
-  { id: "personal-info", progress: 15, enabled: true },
-  { id: "business-basics", progress: 25, enabled: true },
-  { id: "who-you-are", progress: 65, enabled: true },
-  { id: "accessibility-support", progress: 95, enabled: true },
-  { id: "submit", progress: 65, enabled: true },
+  { id: "personal-info", enabled: true },
+  { id: "business-basics", enabled: true },
+  { id: "who-you-are", enabled: true },
+  { id: "accessibility-support", enabled: true },
+  { id: "submit", enabled: true },
 ];

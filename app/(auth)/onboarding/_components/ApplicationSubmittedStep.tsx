@@ -38,14 +38,14 @@ const ApplicationSubmittedStep = ({ application }: ApplicationSubmittedStepProps
   ];
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-6 py-16">
-      <div className="rounded-2xl border border-border bg-card p-8">
+    <div className="mx-auto w-full max-w-3xl px-4 py-8 sm:px-6 sm:py-16">
+      <div className="rounded-2xl border border-border bg-card p-5 sm:p-8">
         <div className="flex flex-col items-center text-center">
           <div className="flex size-24 items-center justify-center rounded-full bg-emerald-50">
             <Check className="size-10 text-emerald-600" strokeWidth={3} />
           </div>
 
-          <h1 className="mt-6 font-serif text-3xl font-bold text-primary">{t("title")}</h1>
+          <h1 className="mt-6 font-serif text-2xl font-bold text-primary sm:text-3xl">{t("title")}</h1>
           <p className="mt-3 max-w-md text-muted-foreground">{t("description")}</p>
         </div>
 

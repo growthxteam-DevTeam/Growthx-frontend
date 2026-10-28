@@ -26,7 +26,7 @@ const PersonalInfoStep = ({ form, onSubmit, isSubmitting }: PersonalInfoStepProp
   const genderOptions = toOptions(GENDER_OPTIONS);
 
   return (
-    <div className="onboarding-form rounded-xl border border-border bg-card p-8">
+    <div className="onboarding-form rounded-xl border border-border bg-card p-5 sm:p-8">
       <h2 className="font-serif text-2xl font-bold text-primary">{t("title")}</h2>
       <p className="mt-1 text-sm text-muted-foreground">{t("description")}</p>
 
