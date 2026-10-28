@@ -20,7 +20,7 @@ const LoginForm = () => {
   const t = useTranslations("Login");
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-6 py-6">
+    <div className="mx-auto my-auto w-full max-w-3xl px-6 py-6">
       <div className="onboarding-form rounded-2xl border border-border bg-card px-6 py-8">
         <div className="text-center">
           <h1 className="font-serif text-2xl font-bold text-primary">{t("title")}</h1>

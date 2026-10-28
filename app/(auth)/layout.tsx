@@ -12,7 +12,7 @@ const AuthLayout = async ({ children }: { children: ReactNode }) => {
     <div className="flex min-h-screen flex-col bg-page">
       {SHOW_ANNOUNCEMENT_BANNER && <AnnouncementBanner message={t("message")} />}
       <Header />
-      <main className="flex-1">{children}</main>
+      <main className="flex flex-1 flex-col">{children}</main>
     </div>
   );
 };
