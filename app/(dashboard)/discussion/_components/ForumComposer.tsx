@@ -53,7 +53,7 @@ const ForumComposer = ({ onSubmit, isSubmitting }: ForumComposerProps) => {
           rows={5}
           maxLength={MAX_LENGTH}
           placeholder="Add a contribution..."
-          className="flex-1 resize-none border-b border-border bg-transparent pb-2 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-primary"
+          className="flex-1 resize-none border-b border-border bg-transparent pb-2 text-sm text-foreground outline-none placeholder:text-muted-foreground focus:border-field-focus"
         />
       </div>
 

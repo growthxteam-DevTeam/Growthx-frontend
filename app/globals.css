@@ -95,6 +95,9 @@
   --tint-strong: #ece9fb;
   --tint-soft: #faf9fd;
   --field: #f9f7ef;
+  --field-border: #b8b6bd;
+  --field-label: #807f8e;
+  --field-focus: #a3a1ae;
   --danger-tint: #fdeee8;
 }
 
@@ -137,6 +140,8 @@
   --tint-strong: oklch(0.3 0.02 85);
   --tint-soft: oklch(0.19 0.006 70);
   --field: oklch(0.15 0.004 40);
+  --field-border: oklch(0.38 0.01 80);
+  --field-label: oklch(0.7 0.01 80);
   --field-focus: oklch(0.55 0.02 285);
   --danger-tint: oklch(0.27 0.06 30);
 }
@@ -192,6 +197,11 @@
   border-color: transparent !important;
 }
 
+/* Active state: the textarea carries its own border (inputs and selects sit inside bordered wrappers). */
+.onboarding-form textarea:focus-visible {
+  border-color: var(--field-focus) !important;
+}
+
 .onboarding-form .date-field-trigger {
   background-color: var(--field) !important;
 }
@@ -204,9 +214,15 @@
   font-weight: 600;
 }
 
-/* ...and the border lives on CustomFormField's wrapper divs (and the date button), not the input itself */
+/* The visible border lives on CustomFormField's wrapper divs (and the date button / textarea), not the input itself */
 .onboarding-form .border-primary {
-  border-color: transparent !important;
+  border-color: var(--field-border) !important;
+  border-radius: 10px;
+}
+
+.onboarding-form input,
+.onboarding-form [data-slot="select-trigger"] {
+  border-radius: 9px !important;
 }
 
 /* No purple border/ring/outline on focus or open state either */
@@ -222,4 +238,9 @@
   border-color: transparent !important;
   box-shadow: none !important;
   outline: none !important;
+}
+
+/* Field labels: muted gray-violet (the red required asterisk keeps its own color) */
+.onboarding-form [data-slot="field-label"] {
+  color: var(--field-label);
 }

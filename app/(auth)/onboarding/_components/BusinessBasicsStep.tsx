@@ -47,7 +47,7 @@ const RadioCardGroup = ({
           "rounded-md border px-6 py-4 text-sm font-medium transition-colors",
           layout === "grid" ? "text-center" : "text-left",
           value === option.value
-            ? "border-primary bg-primary/5 text-primary"
+            ? "border-primary bg-field text-primary"
             : "border-border text-foreground hover:border-primary/40",
         )}
       >

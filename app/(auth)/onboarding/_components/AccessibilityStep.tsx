@@ -67,7 +67,7 @@ const AccessibilityStep = ({ form, onSubmit, isSubmitting, onBack }: Accessibili
                       className={cn(
                         "w-full rounded-md border px-4 py-3 text-left text-sm transition-colors",
                         value === option.value
-                          ? "border-primary bg-primary/5 font-semibold text-primary"
+                          ? "border-primary bg-field font-semibold text-primary"
                           : "border-border text-foreground hover:border-primary/40",
                       )}
                     >
@@ -135,7 +135,7 @@ const AccessibilityStep = ({ form, onSubmit, isSubmitting, onBack }: Accessibili
                     className={cn(
                       "rounded-md border px-6 py-4 text-center text-sm font-medium transition-colors",
                       value === option.value
-                        ? "border-primary bg-primary/5 text-primary"
+                        ? "border-primary bg-field text-primary"
                         : "border-border text-foreground hover:border-primary/40",
                     )}
                   >

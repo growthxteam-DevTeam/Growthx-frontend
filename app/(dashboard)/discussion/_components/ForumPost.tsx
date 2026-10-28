@@ -125,7 +125,7 @@ const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
               maxLength={1000}
               autoFocus
               aria-label={`Reply to ${comment.author.name}`}
-              className="flex-1 border-b border-border bg-transparent pb-1.5 text-sm outline-none placeholder:text-muted-foreground focus:border-primary"
+              className="flex-1 border-b border-border bg-transparent pb-1.5 text-sm outline-none placeholder:text-muted-foreground focus:border-field-focus"
             />
             <button
               type="submit"
