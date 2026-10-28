@@ -90,7 +90,7 @@ const RenderInput = <T extends FieldValues>({
   switch (props.fieldType) {
     case FormFieldType.INPUT:
       return (
-        <div className="flex items-center rounded border border-primary relative transition-colors focus-within:border-primary focus-within:ring-1 focus-within:ring-primary">
+        <div className="flex items-center rounded border border-primary relative transition-colors focus-within:border-field-focus focus-within:ring-0">
           {props.leftIcon && <div className="absolute mb-1 left-3 cursor-pointer z-10">{props.leftIcon}</div>}
 
           <Input
@@ -115,7 +115,7 @@ const RenderInput = <T extends FieldValues>({
     case FormFieldType.PHONE_INPUT:
       return (
         <div
-          className="phone-input-wrapper flex items-center rounded-md border border-primary overflow-hidden transition-colors focus-within:border-primary focus-within:ring-1 focus-within:ring-primary [&_.PhoneInputCountry]:px-3 [&_.PhoneInputCountry]:border-r [&_.PhoneInputCountry]:border-primary"
+          className="phone-input-wrapper flex items-center rounded-md border border-primary overflow-hidden transition-colors focus-within:border-field-focus focus-within:ring-0 [&_.PhoneInputCountry]:px-3 [&_.PhoneInputCountry]:border-r [&_.PhoneInputCountry]:border-primary"
           style={
             {
               "--PhoneInputCountrySelect-marginRight": "0",
@@ -148,13 +148,13 @@ const RenderInput = <T extends FieldValues>({
           placeholder={props.placeholder}
           {...field}
           disabled={props.disabled}
-          className={`${props.variant} border border-primary bg-input-background rounded-md placeholder:text-muted-foreground transition-colors focus-visible:border-primary focus-visible:ring-2 focus-visible:ring-primary/20 focus-visible:ring-offset-0`}
+          className={`${props.variant} border border-primary bg-input-background rounded-md placeholder:text-muted-foreground transition-colors focus-visible:border-field-focus focus-visible:ring-0 focus-visible:ring-offset-0`}
         />
       );
 
     case FormFieldType.SELECT:
       return (
-        <div className="flex items-center rounded border border-primary relative transition-colors focus-within:border-primary focus-within:ring-1 focus-within:ring-primary has-data-popup-open:border-primary has-data-popup-open:ring-1 has-data-popup-open:ring-primary">
+        <div className="flex items-center rounded border border-primary relative transition-colors focus-within:border-field-focus focus-within:ring-0 has-data-popup-open:border-field-focus has-data-popup-open:ring-0">
           <Select
             defaultValue={props.defaultValue}
             onValueChange={field.onChange}
@@ -210,7 +210,7 @@ const RenderInput = <T extends FieldValues>({
             render={
               <Button
                 variant="outline"
-                className={`${props.variant ?? ""} h-11! w-full justify-start rounded-[5px] border-primary bg-muted pl-3 text-16 text-left font-normal text-foreground hover:bg-muted ${!field.value && "text-muted-foreground"}`}
+                className={`${props.variant ?? ""} date-field-trigger h-11! w-full justify-start rounded-[5px] border-primary bg-muted pl-3 text-16 text-left font-normal text-foreground hover:bg-muted ${!field.value && "text-muted-foreground"}`}
               />
             }
           >

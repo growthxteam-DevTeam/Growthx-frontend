@@ -16,6 +16,7 @@
   --color-tint-strong: var(--tint-strong);
   --color-tint-soft: var(--tint-soft);
   --color-field: var(--field);
+  --color-field-focus: var(--field-focus);
   --color-danger-tint: var(--danger-tint);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -93,7 +94,7 @@
   --tint: #f5f4fc;
   --tint-strong: #ece9fb;
   --tint-soft: #faf9fd;
-  --field: #ede8db;
+  --field: #f9f7ef;
   --danger-tint: #fdeee8;
 }
 
@@ -136,6 +137,7 @@
   --tint-strong: oklch(0.3 0.02 85);
   --tint-soft: oklch(0.19 0.006 70);
   --field: oklch(0.15 0.004 40);
+  --field-focus: oklch(0.55 0.02 285);
   --danger-tint: oklch(0.27 0.06 30);
 }
 
@@ -188,4 +190,36 @@
 .onboarding-form [data-slot="select-trigger"] {
   background-color: var(--field) !important;
   border-color: transparent !important;
+}
+
+.onboarding-form .date-field-trigger {
+  background-color: var(--field) !important;
+}
+
+/* Entered / selected values read as bold primary (navy light, gold dark); placeholders stay muted */
+.onboarding-form input:not(:placeholder-shown),
+.onboarding-form textarea:not(:placeholder-shown),
+.onboarding-form [data-slot="select-trigger"]:not([data-placeholder]) {
+  color: var(--primary) !important;
+  font-weight: 600;
+}
+
+/* ...and the border lives on CustomFormField's wrapper divs (and the date button), not the input itself */
+.onboarding-form .border-primary {
+  border-color: transparent !important;
+}
+
+/* No purple border/ring/outline on focus or open state either */
+.onboarding-form .border-primary:focus-within,
+.onboarding-form .border-primary:has([data-popup-open]),
+.onboarding-form input:focus,
+.onboarding-form input:focus-visible,
+.onboarding-form textarea:focus,
+.onboarding-form textarea:focus-visible,
+.onboarding-form [data-slot="select-trigger"]:focus,
+.onboarding-form [data-slot="select-trigger"]:focus-visible,
+.onboarding-form .date-field-trigger:focus-visible {
+  border-color: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
 }

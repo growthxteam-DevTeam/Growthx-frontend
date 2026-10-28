@@ -212,14 +212,14 @@ const ApplicationForm = ({
           >
             <TabsList
               variant="default"
-              className="h-auto w-max flex-nowrap justify-start gap-2 bg-transparent p-0 group-data-horizontal/tabs:h-auto sm:w-fit sm:flex-wrap"
+              className="h-auto w-max flex-nowrap justify-start gap-2 bg-transparent p-0 group-data-horizontal/tabs:h-auto sm:w-full sm:flex-wrap sm:justify-between"
             >
               {ONBOARDING_TABS.map((tab) => (
                 <TabsTrigger
                   key={tab.id}
                   value={tab.id}
                   disabled={!tab.enabled}
-                  className="h-auto flex-none rounded-lg border-0 px-3.5 py-2 text-sm font-semibold text-muted-foreground data-active:bg-primary data-active:text-primary-foreground data-active:shadow-none sm:px-4"
+                  className="h-auto flex-none rounded-lg border-0 px-3.5 py-2 text-sm font-semibold text-muted-foreground data-active:bg-primary data-active:text-primary-foreground hover:data-active:text-primary-foreground data-active:shadow-none sm:px-4"
                 >
                   {t(`tabs.${tab.id}`)}
                 </TabsTrigger>
