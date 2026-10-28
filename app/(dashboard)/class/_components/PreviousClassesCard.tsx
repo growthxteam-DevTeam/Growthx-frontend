@@ -25,7 +25,7 @@ const PreviousClassesCard = () => (
                 />
               )}
             </div>
-            <p className="mt-2 text-md font-semibold text-primary">{item.title}</p>
+            <p className="mt-2 text-[15px] font-semibold text-primary">{item.title}</p>
             <p className="text-[12px] text-muted-foreground">{item.meta}</p>
           </li>
         );

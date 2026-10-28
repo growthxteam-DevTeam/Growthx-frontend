@@ -8,8 +8,8 @@ import { ChevronDown, Pin, ThumbsDown, ThumbsUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { DiscussionComment } from "@/redux/features/discussion/discussionApi";
 
-import Avatar from "../../_components/Avatar";
-import { useDashboard } from "../../dashboard/_hooks/useDashboard";
+import Avatar from "./Avatar";
+import { useDashboard } from "../dashboard/_hooks/useDashboard";
 
 interface ForumPostProps {
   comment: DiscussionComment;
@@ -19,7 +19,7 @@ interface ForumPostProps {
   onDislike: (commentId: string) => void;
 }
 
-const actionClassName = "flex cursor-pointer items-center gap-1 text-xs text-muted-foreground hover:text-primary";
+const actionClassName = "flex cursor-pointer items-center gap-1 text-xs text-ink-muted hover:text-primary";
 
 const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
   const { name, profilePicture } = useDashboard();
@@ -45,28 +45,28 @@ const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
       <Avatar
         name={comment.author.name}
         src={comment.author.profilePicture}
-        className="size-8 bg-tint-strong text-[10px] text-primary"
+        className="size-8 bg-tint text-[10px] text-ink-muted"
       />
 
       <div className="min-w-0 flex-1">
         {comment.pinned && (
-          <p className="mb-0.5 flex items-center gap-1 text-[11px] text-muted-foreground">
-            <Pin className="size-3" />
+          <p className="mb-0.5 flex items-center gap-1 text-[11px] text-ink-muted">
+            <Pin className="size-3 text-ink" />
             Pinned by Growth Space
           </p>
         )}
 
         <p className="flex flex-wrap items-center gap-2">
-          <span className="text-md font-semibold text-primary">{comment.author.name}</span>
+          <span className="text-md text-ink">{comment.author.name}</span>
           {comment.staffPost && (
-            <span className="rounded bg-tint-strong px-1.5 py-0.5 text-[10px] font-medium text-primary">Staff Post</span>
+            <span className="rounded-md bg-tint px-2 py-0.5 text-[11px] font-medium text-primary">Staff Post</span>
           )}
-          <span className="text-[11px] text-muted-foreground">
+          <span className="text-[11px] text-ink-muted">
             {formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}
           </span>
         </p>
 
-        <p className="mt-1 break-words text-md text-foreground">{comment.content}</p>
+        <p className="mt-1 break-words text-[13px] text-ink">{comment.content}</p>
 
         <div className="mt-2 flex items-center gap-5">
           <button
@@ -91,7 +91,11 @@ const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
           </button>
 
           {onReply && (
-            <button type="button" onClick={() => setIsReplying((open) => !open)} className={actionClassName}>
+            <button
+              type="button"
+              onClick={() => setIsReplying((open) => !open)}
+              className={cn(actionClassName, "font-medium text-ink")}
+            >
               Reply
             </button>
           )}
@@ -101,7 +105,7 @@ const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
               type="button"
               onClick={() => setShowReplies((open) => !open)}
               aria-expanded={showReplies}
-              className={actionClassName}
+              className={cn(actionClassName, "font-medium text-primary")}
             >
               <ChevronDown className={cn("size-3.5 transition-transform", showReplies && "rotate-180")} />
               {replyCount} {replyCount === 1 ? "reply" : "replies"}

@@ -4,7 +4,7 @@ import { MODULES } from "../_constants";
 
 const ModulesCard = () => (
   /* Spinning border wrapper */
-  <div className="relative rounded-lg p-px overflow-hidden">
+  <div className="relative rounded-lg p-px overflow-hidden lg:absolute lg:inset-0">
     {/* Rotating conic-gradient that forms the animated border */}
     <div
       className="absolute -inset-2 animate-spin"
@@ -16,13 +16,13 @@ const ModulesCard = () => (
     />
 
     {/* Card content sits on top */}
-    <section className="relative rounded-lg bg-card p-4 shadow-sm">
+    <section className="relative rounded-lg bg-card p-4 shadow-sm lg:flex lg:h-full lg:flex-col">
       <div className="flex items-center justify-between">
         <h2 className="font-serif text-base font-bold text-primary">Modules</h2>
         <List className="size-3.5 text-primary" />
       </div>
 
-      <ul className="mt-3 flex max-h-[280px] flex-col gap-2 overflow-y-auto">
+      <ul className="mt-3 flex max-h-[280px] flex-col gap-2 overflow-y-auto lg:max-h-none lg:min-h-0 lg:flex-1">
         {MODULES.map((module, index) => (
           <li key={`${module.title}-${index}`}>
             {/* TODO: no module pages exist yet, so these rows don't navigate. */}

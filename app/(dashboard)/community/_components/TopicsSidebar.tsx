@@ -12,7 +12,7 @@ interface TopicsSidebarProps {
 }
 
 const TopicsSidebar = ({ activeTopic, onSelect }: TopicsSidebarProps) => (
-  <div className="w-full shrink-0 md:w-44">
+  <div className="w-full shrink-0 md:sticky md:top-6 md:w-44 md:self-start">
     <p className="text-sm text-muted-foreground">Topics</p>
 
     <div className="mt-3 flex flex-col gap-1">

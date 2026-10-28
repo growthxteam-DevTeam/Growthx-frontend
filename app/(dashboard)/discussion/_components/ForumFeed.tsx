@@ -8,8 +8,8 @@ import type { CommentSort } from "@/redux/features/discussion/discussionApi";
 
 import { useDiscussion } from "../../_hooks/useDiscussion";
 import { FORUM, SORT_OPTIONS } from "../_constants";
-import ForumComposer from "./ForumComposer";
-import ForumPost from "./ForumPost";
+import ForumComposer from "../../_components/ForumComposer";
+import ForumPost from "../../_components/ForumPost";
 
 const ForumFeed = () => {
   const {

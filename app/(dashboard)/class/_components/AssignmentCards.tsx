@@ -20,7 +20,7 @@ const AssignmentCards = () => (
         <div className="flex items-center justify-between gap-6">
           <div className="min-w-0">
             <h2 className="font-serif text-lg font-bold text-primary">{card.title}</h2>
-            <p className="mt-1 max-w-lg text-md text-muted-foreground">{card.description}</p>
+            <p className="mt-1 max-w-lg text-[15px] text-muted-foreground">{card.description}</p>
           </div>
 
           <div className="flex w-60 shrink-0 flex-col gap-2">

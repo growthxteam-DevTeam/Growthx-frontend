@@ -1,19 +1,17 @@
 "use client";
 
-import { ListFilter } from "lucide-react";
+import { AlignJustify } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger } from "@/components/ui/select";
+import type { CommentSort } from "@/redux/features/discussion/discussionApi";
 
-import Avatar from "../../_components/Avatar";
-import { useDashboard } from "../../dashboard/_hooks/useDashboard";
-import { CURRENT_CLASS } from "../_constants";
+import ForumComposer from "../../_components/ForumComposer";
+import ForumPost from "../../_components/ForumPost";
 import { useDiscussion } from "../../_hooks/useDiscussion";
-import CommentComposer from "./CommentComposer";
-import CommentItem from "./CommentItem";
+import { CURRENT_CLASS } from "../_constants";
 
 const DiscussionForum = () => {
-  const { name, profilePicture } = useDashboard();
   const {
     comments,
     isLoading,
@@ -30,15 +28,19 @@ const DiscussionForum = () => {
   } = useDiscussion(CURRENT_CLASS.id);
 
   return (
-    <section className="rounded-lg border border-border bg-card p-4 shadow-sm">
+    <section>
       <div className="flex items-center justify-between">
-        <h2 className="font-serif text-lg font-bold text-primary">Discussion Forum</h2>
-        <Select value={sort} onValueChange={(value) => value && changeSort(value as never)}>
-          <SelectTrigger className="h-auto gap-1.5 border-none bg-transparent p-0 text-[13px] text-muted-foreground shadow-none hover:bg-transparent data-[size=default]:h-auto">
-            <ListFilter className="size-3.5" />
+        <h2 className="text-[11px] font-medium text-ink">Discussion Forum</h2>
+
+        <Select value={sort} onValueChange={(value) => changeSort(value as CommentSort)}>
+          <SelectTrigger
+            aria-label="Sort by"
+            className="h-auto w-auto gap-1.5 border-0 bg-transparent p-0 text-[11px] font-medium text-ink shadow-none hover:bg-transparent data-[size=default]:h-auto [&>svg:last-child]:hidden"
+          >
+            <AlignJustify className="size-3.5" />
             Sort by
           </SelectTrigger>
-          <SelectContent>
+          <SelectContent alignItemWithTrigger={false} align="end">
             <SelectItem value="newest">Newest</SelectItem>
             <SelectItem value="oldest">Oldest</SelectItem>
             <SelectItem value="top">Top</SelectItem>
@@ -46,30 +48,25 @@ const DiscussionForum = () => {
         </Select>
       </div>
 
-      <div className="mt-4 rounded-lg border border-border p-3">
-        <p className="text-xs text-muted-foreground">Add contribution</p>
-        <div className="mt-2 flex items-center gap-3">
-          <Avatar name={name} src={profilePicture} className="size-7 text-[12px]" />
-          <CommentComposer
-            placeholder="Add a contribution..."
-            submitLabel="Post"
-            onSubmit={(content) => addComment(content)}
-            isSubmitting={isPosting}
-          />
-        </div>
+      <div className="mt-4">
+        <ForumComposer
+          onSubmit={(content) => addComment(content)}
+          isSubmitting={isPosting}
+          className="min-h-[168px]"
+        />
       </div>
 
-      <div className="mt-5">
+      <div className="mt-6">
         {isLoading ? (
-          <p className="text-sm text-muted-foreground">Loading discussion...</p>
+          <p className="text-sm text-ink-muted">Loading discussion...</p>
         ) : isError ? (
           <p className="text-sm text-destructive">Could not load the discussion. Please try again shortly.</p>
         ) : comments.length === 0 ? (
-          <p className="text-sm text-muted-foreground">No comments yet. Start the conversation!</p>
+          <p className="text-sm text-ink-muted">No comments yet. Start the conversation!</p>
         ) : (
-          <ul className="flex flex-col gap-5">
+          <ul className="flex flex-col gap-6">
             {comments.map((comment) => (
-              <CommentItem
+              <ForumPost
                 key={comment.id}
                 comment={comment}
                 onReply={addComment}
@@ -87,7 +84,7 @@ const DiscussionForum = () => {
           variant="ghost"
           onClick={showMore}
           disabled={isLoadingMore}
-          className="mt-4 h-7 px-0 text-[13px] font-semibold text-primary hover:bg-transparent"
+          className="mt-6 h-7 cursor-pointer px-0 text-xs font-medium text-primary hover:bg-transparent"
         >
           {isLoadingMore ? "Loading..." : "Show more comments"}
         </Button>
