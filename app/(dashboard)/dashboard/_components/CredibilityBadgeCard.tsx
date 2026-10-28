@@ -1,14 +1,40 @@
+import { Fragment } from "react";
+
 import Image from "next/image";
 
-import { Check } from "lucide-react";
+import { Check, Lock } from "lucide-react";
 
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
 
 import { CREDIBILITY } from "../_constants";
+import type { CredibilityStepStatus } from "../_types";
+
+const StepMarker = ({ status }: { status: CredibilityStepStatus }) => {
+  switch (status) {
+    case "complete":
+      return (
+        <span className="flex size-8 items-center justify-center rounded-full border border-emerald-200 bg-emerald-50 text-emerald-600 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-400">
+          <Check className="size-4" strokeWidth={3} />
+        </span>
+      );
+    case "current":
+      return (
+        <span className="flex size-8 items-center justify-center rounded-full border-2 border-primary bg-card">
+          <span className="size-1.5 rounded-full bg-primary" />
+        </span>
+      );
+    case "locked":
+      return (
+        <span className="flex size-8 items-center justify-center text-muted-foreground">
+          <Lock className="size-5" />
+        </span>
+      );
+  }
+};
 
 const CredibilityBadgeCard = () => {
-  const completed = CREDIBILITY.steps.filter((step) => step.complete).length;
+  const completed = CREDIBILITY.steps.filter((step) => step.status === "complete").length;
 
   return (
     <section className="grid gap-8 rounded-lg border border-border bg-card p-8 shadow-sm md:grid-cols-[1fr_240px]">
@@ -20,20 +46,24 @@ const CredibilityBadgeCard = () => {
           </span>
         </div>
 
-        <ol className="relative mt-6 grid grid-cols-3">
-          <div className="absolute left-[16.67%] right-[16.67%] top-3.5 h-px bg-border" />
-          {CREDIBILITY.steps.map((step) => (
-            <li key={step.label} className="relative flex flex-col items-center gap-2">
-              <span
-                className={cn(
-                  "flex size-7 items-center justify-center rounded-full border",
-                  step.complete ? "border-emerald-200 bg-emerald-50 text-emerald-600 dark:border-emerald-800 dark:bg-emerald-950 dark:text-emerald-400" : "border-border bg-card",
-                )}
-              >
-                {step.complete && <Check className="size-4" strokeWidth={3} />}
-              </span>
-              <span className="text-xs text-foreground">{step.label}</span>
-            </li>
+        <ol className="mt-6 flex items-start">
+          {CREDIBILITY.steps.map((step, index) => (
+            <Fragment key={step.label}>
+              <li className="flex flex-col items-center gap-2">
+                <StepMarker status={step.status} />
+                <span
+                  className={cn(
+                    "text-sm",
+                    step.status === "locked" ? "text-muted-foreground" : "font-medium text-primary",
+                  )}
+                >
+                  {step.label}
+                </span>
+              </li>
+              {index < CREDIBILITY.steps.length - 1 && (
+                <li role="presentation" aria-hidden className="mx-3 mt-4 h-px flex-1 bg-border" />
+              )}
+            </Fragment>
           ))}
         </ol>
 

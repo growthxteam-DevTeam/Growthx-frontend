@@ -11,7 +11,9 @@ export interface ActionCardConfig {
   badge?: { label: string; tone: "warning" | "success" };
 }
 
+export type CredibilityStepStatus = "complete" | "current" | "locked";
+
 export interface CredibilityStep {
   label: string;
-  complete: boolean;
+  status: CredibilityStepStatus;
 }

@@ -71,9 +71,9 @@ export const CREDIBILITY = {
   title: "Your path to investor-ready credibility badge",
   progress: 40,
   steps: [
-    { label: "Curriculum", complete: true },
-    { label: "Project", complete: true },
-    { label: "Peer review", complete: true },
+    { label: "Curriculum", status: "current" },
+    { label: "Project", status: "locked" },
+    { label: "Peer review", status: "locked" },
   ] as CredibilityStep[],
   summary: {
     title: "Core curriculum complete",
