@@ -49,7 +49,7 @@ const ApplicationSubmittedStep = ({ application }: ApplicationSubmittedStepProps
           <p className="mt-3 max-w-md text-muted-foreground">{t("description")}</p>
         </div>
 
-        <div className="mt-10 divide-y divide-border rounded-xl bg-tint">
+        <div className="mt-10 divide-y divide-border rounded-xl bg-field">
           {summaryRows.map((row) => (
             <div key={row.label} className="grid grid-cols-[1fr_2fr] gap-4 px-6 py-5">
               <p className="font-serif text-lg font-bold text-primary">{row.label}</p>
