@@ -43,12 +43,23 @@
     "welcomeToast": "Bon retour",
     "error": "Une erreur est survenue lors de la connexion. Veuillez réessayer."
   },
+  "PaymentSuccess": {
+    "title": "Paiement reçu",
+    "description": "Merci ! Nous confirmons votre paiement. Dans quelques minutes, nous vous enverrons par e-mail un lien avec votre code GS pour configurer votre compte Growth Space.",
+    "hint": "Vous ne le voyez pas ? Vérifiez vos courriers indésirables.",
+    "login": "Aller à la connexion"
+  },
+  "PaymentCancelled": {
+    "title": "Paiement non finalisé",
+    "description": "Aucun paiement n'a été effectué. Votre candidature est enregistrée : utilisez le lien de paiement de votre e-mail dès que vous serez prêt(e) à la finaliser.",
+    "home": "Retour à l'accueil"
+  },
   "CreatePassword": {
-    "congrats": "Félicitations pour votre admission à la cohorte",
+    "congrats": "Paiement confirmé. Bienvenue dans la cohorte",
     "title": "Créer un mot de passe",
     "subtitle": "Définissez un mot de passe robuste pour sécuriser votre compte Growth Space.",
     "gsCode": "Saisissez votre code GS",
-    "gsCodeHint": "Ce code vous a été envoyé dans votre e-mail d'admission",
+    "gsCodeHint": "Ce code vous a été envoyé dans votre e-mail de confirmation de paiement",
     "password": "Mot de passe",
     "confirmPassword": "Confirmer le mot de passe",
     "showPassword": "Afficher le mot de passe",
@@ -194,9 +205,11 @@
     },
     "submitted": {
       "title": "Candidature envoyée",
-      "description": "Nous examinons chaque candidature personnellement. Si vous êtes sélectionné(e), vous aurez de nos nouvelles sous 5 jours ouvrés avec des indications sur les prochaines étapes.",
+      "description": "Nous vous avons envoyé un lien de paiement par e-mail. Finalisez votre paiement pour recevoir votre code GS et accéder à votre tableau de bord.",
+      "payNow": "Payer maintenant",
+      "payHint": "Vous ne trouvez pas l'e-mail ? Utilisez ce bouton ou vérifiez vos courriers indésirables.",
       "toastTitle": "Candidature envoyée",
-      "toastDescription": "Nous l'examinerons et reviendrons vers vous sous 5 jours ouvrés.",
+      "toastDescription": "Consultez votre e-mail pour trouver votre lien de paiement.",
       "rows": {
         "business": "Entreprise",
         "operating": "Ancienneté",

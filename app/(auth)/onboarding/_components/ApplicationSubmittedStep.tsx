@@ -1,6 +1,8 @@
-import { Check } from "lucide-react";
+import { Check, CreditCard } from "lucide-react";
 import { useTranslations } from "next-intl";
 
+import { buttonVariants } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import type { ApplicationRecord } from "@/redux/features/applications/applicationsApi";
 import type { FrameworkT } from "@/types/global";
 
@@ -9,12 +11,13 @@ import { useOptions } from "../_hooks/useOptions";
 
 interface ApplicationSubmittedStepProps {
   application: ApplicationRecord;
+  paymentUrl: string | null;
 }
 
 const labelFor = (options: FrameworkT[], value: string) =>
   options.find((option) => option.value === value)?.label ?? value;
 
-const ApplicationSubmittedStep = ({ application }: ApplicationSubmittedStepProps) => {
+const ApplicationSubmittedStep = ({ application, paymentUrl }: ApplicationSubmittedStepProps) => {
   const { businessBasics, whoYouAre, accessibilitySupport } = application;
   const t = useTranslations("Onboarding.submitted");
   const toOptions = useOptions();
@@ -47,6 +50,16 @@ const ApplicationSubmittedStep = ({ application }: ApplicationSubmittedStepProps
 
           <h1 className="mt-6 font-serif text-2xl font-bold text-primary sm:text-3xl">{t("title")}</h1>
           <p className="mt-3 max-w-md text-muted-foreground">{t("description")}</p>
+
+          {paymentUrl && (
+            <>
+              <a href={paymentUrl} className={cn(buttonVariants({ size: "lg" }), "mt-6 gap-2")}>
+                <CreditCard className="size-4" />
+                {t("payNow")}
+              </a>
+              <p className="mt-3 max-w-md text-sm text-muted-foreground">{t("payHint")}</p>
+            </>
+          )}
         </div>
 
         <div className="mt-10 divide-y divide-border rounded-xl bg-field">

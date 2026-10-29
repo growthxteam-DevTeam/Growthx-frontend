@@ -43,6 +43,8 @@ interface SubmitApplicationResponse {
   status: string;
   statusCode: number;
   data: ApplicationRecord;
+  // Bachs hosted checkout; the same link is emailed to the applicant.
+  paymentUrl: string;
 }
 
 interface CreatePasswordRequest {

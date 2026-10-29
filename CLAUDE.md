@@ -33,6 +33,10 @@ What exists:
 - `app/page.tsx` renders `AnnouncementBanner` + `Header` + `OnboardingWizard` directly (the wizard is the
   home page). `app/(auth)/layout.tsx` also wraps children in banner + header, so don't nest both.
 - `app/(auth)/onboarding/` — the one fully built feature (multi-step application form, see below).
+- `app/(auth)/success/` and `app/(auth)/cancel/` — Bachs redirects here after / when backing out of checkout (static pages;
+  "check your email" never unlocks anything).
+  The onboarding submit returns `paymentUrl`, shown as a "Pay now" button on the submitted step; the GS code is only
+  emailed after the backend confirms payment.
 - `app/(auth)/create-password/` and `app/(auth)/login/` — emailed GS code -> set password -> log in; a login
   stores the JWT with `setCredentials` and redirects to `/dashboard`.
 - `app/(dashboard)/` — logged-in area. `layout.tsx` -> `DashboardShell` (redirects to `/login` when

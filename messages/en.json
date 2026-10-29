@@ -43,12 +43,23 @@
     "welcomeToast": "Welcome back",
     "error": "Something went wrong logging you in. Please try again."
   },
+  "PaymentSuccess": {
+    "title": "Payment received",
+    "description": "Thank you! We're confirming your payment now. Within a few minutes we'll email you a link with your GS code to set up your Growth Space account.",
+    "hint": "Don't see it? Check your spam folder.",
+    "login": "Go to login"
+  },
+  "PaymentCancelled": {
+    "title": "Payment not completed",
+    "description": "No payment was taken. Your application is saved: use the payment link in your email whenever you're ready to complete it.",
+    "home": "Back to home"
+  },
   "CreatePassword": {
-    "congrats": "Congratulations on your acceptance to the Cohort",
+    "congrats": "Payment confirmed. Welcome to the Cohort",
     "title": "Create password",
     "subtitle": "Set a strong password to secure your Growth Space account.",
     "gsCode": "Enter your GS Code",
-    "gsCodeHint": "This was sent to you in your acceptance email",
+    "gsCodeHint": "This was sent to you in your payment confirmation email",
     "password": "Password",
     "confirmPassword": "Confirm password",
     "showPassword": "Show password",
@@ -194,9 +205,11 @@
     },
     "submitted": {
       "title": "Application Submitted",
-      "description": "We review every application personally. If selected, you will hear from us within 5 business days with guidance on next steps.",
+      "description": "We've emailed you a payment link. Complete your payment to receive your GS code and access your dashboard.",
+      "payNow": "Pay now",
+      "payHint": "Can't find the email? Use this button, or check your spam folder.",
       "toastTitle": "Application submitted",
-      "toastDescription": "We'll review it and be in touch within 5 business days.",
+      "toastDescription": "Check your email for your payment link.",
       "rows": {
         "business": "Business",
         "operating": "Operating",

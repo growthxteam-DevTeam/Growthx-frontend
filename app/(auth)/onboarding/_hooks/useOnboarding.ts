@@ -35,6 +35,7 @@ export const useOnboarding = () => {
   const [wizardStep, setWizardStep] = useState<OnboardingWizardStep>("portal");
   const [activeTab, setActiveTab] = useState<OnboardingTabId>(ONBOARDING_TABS[0].id);
   const [submittedApplication, setSubmittedApplication] = useState<ApplicationRecord | null>(null);
+  const [paymentUrl, setPaymentUrl] = useState<string | null>(null);
 
   const [submitApplication, { isLoading: isSubmitStepSubmitting }] = useSubmitApplicationMutation();
 
@@ -167,8 +168,9 @@ export const useOnboarding = () => {
     if (values.passportPhoto) formData.append("passportPhoto", values.passportPhoto);
 
     try {
-      const { data: application } = await submitApplication(formData).unwrap();
+      const { data: application, paymentUrl: checkoutUrl } = await submitApplication(formData).unwrap();
       setSubmittedApplication(application);
+      setPaymentUrl(checkoutUrl);
       setWizardStep("success");
     } catch (error) {
       toast.error(getApiErrorMessage(error, t("errors.submitFailed")));
@@ -181,6 +183,7 @@ export const useOnboarding = () => {
     setActiveTab,
     goToPreviousTab,
     submittedApplication,
+    paymentUrl,
     portalForm,
     onSubmitPortal,
     isPortalSubmitting: portalForm.formState.isSubmitting,
