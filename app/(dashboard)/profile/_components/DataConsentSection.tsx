@@ -13,7 +13,7 @@ import SettingRow from "./SettingRow";
 import SettingsSection from "./SettingsSection";
 
 const outlineButton =
-  "h-8 cursor-pointer gap-1.5 rounded-md border-primary px-3 text-[13px] font-semibold text-primary hover:bg-transparent";
+  "h-8 cursor-pointer gap-1.5 rounded-md border-primary px-3 text-sm font-semibold text-primary hover:bg-transparent";
 
 // TODO: reviewing application answers, exporting data and consent have no endpoints yet.
 const DataConsentSection = () => {

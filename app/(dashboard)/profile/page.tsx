@@ -10,7 +10,7 @@ const ProfilePage = () => (
   <div className="mx-auto flex max-w-6xl flex-col gap-6">
     <ProfileHeader />
 
-    <div className="mx-auto flex w-full max-w-lg flex-col gap-5 pb-10">
+    <div className="mx-auto flex w-full max-w-5xl flex-col gap-5 pb-10">
       <ProfileSummary />
       <LearningProgress />
       <PreferencesSection />

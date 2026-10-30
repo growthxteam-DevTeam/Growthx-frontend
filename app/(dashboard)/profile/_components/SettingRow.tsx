@@ -13,8 +13,8 @@ const SettingRow = ({ label, hint, icon, children }: SettingRowProps) => (
     <div className="flex min-w-0 items-center gap-3">
       {icon}
       <div className="min-w-0">
-        <p className="text-[13px] text-ink">{label}</p>
-        {hint && <p className="mt-0.5 text-[11px] text-ink-muted">{hint}</p>}
+        <p className="text-sm text-ink">{label}</p>
+        {hint && <p className="mt-0.5 text-xs text-ink-muted">{hint}</p>}
       </div>
     </div>
     <div className="flex shrink-0 items-center gap-3">{children}</div>

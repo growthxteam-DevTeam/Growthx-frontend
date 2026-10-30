@@ -25,11 +25,11 @@ const AccountSection = () => {
     <SettingsSection title={t("title")}>
       {rows.map(({ id, icon: Icon, value, action }) => (
         <SettingRow key={id} label={t(id)} icon={<Icon className="size-4 shrink-0 text-ink-muted" />}>
-          <span className="truncate text-[11px] text-ink-muted">{value}</span>
+          <span className="truncate text-xs text-ink-muted">{value}</span>
           <button
             type="button"
             onClick={() => toast.info(tc("comingSoon"))}
-            className="cursor-pointer text-[11px] font-medium text-primary hover:underline"
+            className="cursor-pointer text-xs font-medium text-primary hover:underline"
           >
             {action}
           </button>

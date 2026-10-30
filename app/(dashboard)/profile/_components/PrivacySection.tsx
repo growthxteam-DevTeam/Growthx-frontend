@@ -37,14 +37,14 @@ const PrivacySection = () => {
         <button
           type="button"
           onClick={() => toast.info(tc("comingSoon"))}
-          className="cursor-pointer text-[11px] text-destructive hover:underline"
+          className="cursor-pointer text-xs text-destructive hover:underline"
         >
           {t("deleteAccount")}
         </button>
         <button
           type="button"
           onClick={() => dispatch(logout())}
-          className="flex cursor-pointer items-center gap-1.5 text-[11px] text-ink-muted hover:text-primary"
+          className="flex cursor-pointer items-center gap-1.5 text-xs text-ink-muted hover:text-primary"
         >
           <LogOut className="size-3.5" />
           {t("logout")}
