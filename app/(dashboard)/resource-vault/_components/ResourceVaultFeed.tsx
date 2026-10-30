@@ -1,27 +1,30 @@
 "use client";
 
 import { Search } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { cn } from "@/lib/utils";
 
-import { PROFILE_TAGS, RESOURCE_TABS, RESOURCE_VAULT, SKELETON_SUBTITLE_WIDTHS } from "../_constants";
+import { PROFILE_TAG_IDS, RESOURCE_TABS, SKELETON_SUBTITLE_WIDTHS } from "../_constants";
 import { useResourceSearch } from "../_hooks/useResourceSearch";
 import ResourceCard from "./ResourceCard";
 import ResourceCardSkeleton from "./ResourceCardSkeleton";
 
 const ResourceVaultFeed = () => {
+  const t = useTranslations("Dashboard.vault");
+  const tc = useTranslations("Dashboard.common");
   const { query, setQuery, category, selectCategory, isSearchingAll, isLoading, isError, refetch, resources } =
     useResourceSearch();
   const activeTab = RESOURCE_TABS.find((tab) => tab.id === category);
 
   return (
     <div>
-      <h2 className="text-2xl font-bold text-primary">{RESOURCE_VAULT.headline}</h2>
+      <h2 className="text-2xl font-bold text-primary">{t("headline")}</h2>
 
       {isLoading && query.trim() && (
         <p role="status" className="mt-4 text-sm text-muted-foreground">
-          {RESOURCE_VAULT.searchingMessage}
+          {t("searching")}
         </p>
       )}
 
@@ -31,30 +34,30 @@ const ResourceVaultFeed = () => {
           type="text"
           value={query}
           onChange={(event) => setQuery(event.target.value)}
-          placeholder={RESOURCE_VAULT.searchPlaceholder}
-          aria-label="Search the resource vault"
+          placeholder={t("searchPlaceholder")}
+          aria-label={t("searchLabel")}
           className="w-full border-none bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
         />
       </div>
 
       <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
-        <span className="text-muted-foreground">Based on your profile:</span>
-        {PROFILE_TAGS.map((tag) => (
+        <span className="text-muted-foreground">{t("basedOnProfile")}</span>
+        {PROFILE_TAG_IDS.map((tag) => (
           <span key={tag} className="rounded-full bg-tint px-3 py-1 font-semibold text-primary">
-            {tag}
+            {t(`profileTags.${tag}`)}
           </span>
         ))}
         {/* TODO: no profile endpoint yet, so editing only acknowledges the click. */}
         <button
           type="button"
-          onClick={() => toast.info("This isn't available yet. Check back soon.")}
+          onClick={() => toast.info(tc("comingSoon"))}
           className="cursor-pointer font-medium text-foreground hover:underline"
         >
-          Edit
+          {t("edit")}
         </button>
       </div>
 
-      <div role="tablist" aria-label="Resource categories" className="mt-5 flex flex-wrap gap-2">
+      <div role="tablist" aria-label={t("tabsLabel")} className="mt-5 flex flex-wrap gap-2">
         {RESOURCE_TABS.map((tab) => {
           const isActive = !isSearchingAll && tab.id === category;
           return (
@@ -71,14 +74,14 @@ const ResourceVaultFeed = () => {
                   : "border-border bg-card text-muted-foreground hover:text-primary",
               )}
             >
-              {tab.label}
+              {t(`tabs.${tab.id}`)}
             </button>
           );
         })}
       </div>
 
       {isLoading ? (
-        <ul aria-busy="true" aria-label="Loading resources" className="mt-6 flex flex-col gap-4">
+        <ul aria-busy="true" aria-label={t("loadingLabel")} className="mt-6 flex flex-col gap-4">
           {SKELETON_SUBTITLE_WIDTHS.map((width) => (
             <li key={width}>
               <ResourceCardSkeleton subtitleClassName={width} />
@@ -87,18 +90,21 @@ const ResourceVaultFeed = () => {
         </ul>
       ) : isError ? (
         <p role="alert" className="mt-6 text-sm text-muted-foreground">
-          We couldn&apos;t load resources right now.{" "}
+          {t("loadError")}{" "}
           <button type="button" onClick={refetch} className="cursor-pointer font-semibold text-primary hover:underline">
-            Try again
+            {t("tryAgain")}
           </button>
         </p>
       ) : resources.length === 0 ? (
-        <p className="mt-6 text-sm text-muted-foreground">No resources match that search yet. Try different words.</p>
+        <p className="mt-6 text-sm text-muted-foreground">{t("empty")}</p>
       ) : (
         <ul className="mt-6 flex flex-col gap-4">
           {resources.map((resource) => (
             <li key={resource.id}>
-              <ResourceCard resource={resource} tag={isSearchingAll ? undefined : activeTab?.label} />
+              <ResourceCard
+                resource={resource}
+                tag={isSearchingAll || !activeTab ? undefined : t(`tabs.${activeTab.id}`)}
+              />
             </li>
           ))}
         </ul>

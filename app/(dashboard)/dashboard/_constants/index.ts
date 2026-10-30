@@ -5,57 +5,23 @@ import type { ActionCardConfig, CredibilityStep } from "../_types";
 // TODO: everything below is placeholder content from the design — replace with API data
 // once program, schedule, announcement and progress endpoints exist.
 export const PROGRAM = {
-  label: "Program",
+  // Program names stay in English in every language, like the onboarding's program options.
   title: "Zero to Launch",
-  duration: "6 weeks",
+  durationWeeks: 6,
   leader: "Sarah A.B",
   cohortMembers: 32,
 };
 
 export const ACTION_CARDS: ActionCardConfig[] = [
   {
-    title: "Next Class",
-    description: "Your next class is: Business Acumen",
-    buttonLabel: "Go to Class",
+    id: "nextClass",
     icon: AlarmClockCheck,
     href: "/class",
-    badge: { label: "In 5 mins", tone: "warning" },
+    badgeTone: "warning",
   },
-  {
-    title: "My Modules",
-    description: "Check out the modules for this program",
-    buttonLabel: "Go to Modules",
-    icon: FileText,
-    href: "/class",
-  },
-  {
-    title: "Meet your Peers",
-    description: "Interact with other learners in this cohort, share ideas and build networks",
-    buttonLabel: "Join",
-    icon: Handshake,
-  },
-  {
-    title: "Co-working Lab",
-    description: "Check out the modules for this program",
-    buttonLabel: "Request to Join",
-    icon: Building2,
-    badge: { label: "Coming Soon", tone: "success" },
-  },
-];
-
-export const MONTH_NAMES = [
-  "January",
-  "February",
-  "March",
-  "April",
-  "May",
-  "June",
-  "July",
-  "August",
-  "September",
-  "October",
-  "November",
-  "December",
+  { id: "modules", icon: FileText, href: "/class" },
+  { id: "peers", icon: Handshake },
+  { id: "coworking", icon: Building2, badgeTone: "success" },
 ];
 
 export const SCHEDULE = {
@@ -64,20 +30,18 @@ export const SCHEDULE = {
   eventDates: [new Date(2026, 8, 9), new Date(2026, 8, 13), new Date(2026, 8, 24)],
 };
 
-export const ANNOUNCEMENT_MESSAGE =
-  "The next open day will be happening in Kenya on 23/12/2026. Founders will have access to pitch to investors.";
+export const TODO_ITEMS = [
+  { id: 1, key: "quiz2", points: 20 },
+  { id: 2, key: "peerReviewAssignment", points: 20 },
+  { id: 3, key: "peerReviewWeek1", points: 20 },
+  { id: 4, key: "peerReviewWeek1", points: 20 },
+] as const;
 
 export const CREDIBILITY = {
-  title: "Your path to investor-ready credibility badge",
   progress: 40,
   steps: [
-    { label: "Curriculum", status: "current" },
-    { label: "Project", status: "locked" },
-    { label: "Peer review", status: "locked" },
+    { id: "curriculum", status: "current" },
+    { id: "project", status: "locked" },
+    { id: "peerReview", status: "locked" },
   ] as CredibilityStep[],
-  summary: {
-    title: "Core curriculum complete",
-    weeks: "Weeks 1 to 6",
-    description: "All four weekly modules and live sessions completed.",
-  },
 };

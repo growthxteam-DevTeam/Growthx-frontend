@@ -1,19 +1,19 @@
 import type { LucideIcon } from "lucide-react";
 
 export interface ActionCardConfig {
-  title: string;
-  description: string;
-  buttonLabel: string;
+  /** Key under `Dashboard.home.cards` in the translation files. */
+  id: "nextClass" | "modules" | "peers" | "coworking";
   icon: LucideIcon;
   /** When set, the button navigates here; otherwise it does nothing yet. */
   href?: string;
-  /** Small pill in the card's top-right corner, e.g. "Coming Soon" or "In 5 mins". */
-  badge?: { label: string; tone: "warning" | "success" };
+  /** Small pill in the card's top-right corner; its text is `cards.<id>.badge`. */
+  badgeTone?: "warning" | "success";
 }
 
 export type CredibilityStepStatus = "complete" | "current" | "locked";
 
 export interface CredibilityStep {
-  label: string;
+  /** Key under `Dashboard.home.credibility.steps`. */
+  id: "curriculum" | "project" | "peerReview";
   status: CredibilityStepStatus;
 }

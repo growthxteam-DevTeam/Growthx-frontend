@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+import { useTranslations } from "next-intl";
+
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -18,6 +20,7 @@ interface ForumComposerProps {
 }
 
 const ForumComposer = ({ onSubmit, isSubmitting, className }: ForumComposerProps) => {
+  const t = useTranslations("Dashboard.forum.composer");
   const { name, profilePicture } = useDashboard();
   const [content, setContent] = useState("");
   const canSubmit = content.trim().length > 0 && !isSubmitting;
@@ -36,7 +39,7 @@ const ForumComposer = ({ onSubmit, isSubmitting, className }: ForumComposerProps
       className={cn("flex min-h-56 flex-col rounded-lg border border-border bg-card p-4", className)}
     >
       <label htmlFor="forum-contribution" className="text-xs text-ink-muted">
-        Add contribution
+        {t("label")}
       </label>
 
       <div className="mt-3 flex items-start gap-3">
@@ -54,7 +57,7 @@ const ForumComposer = ({ onSubmit, isSubmitting, className }: ForumComposerProps
           }}
           rows={5}
           maxLength={MAX_LENGTH}
-          placeholder="Add a contribution..."
+          placeholder={t("placeholder")}
           className="flex-1 resize-none border-b border-border bg-transparent pb-2 text-sm text-ink outline-none placeholder:text-ink-muted focus:border-field-focus"
         />
       </div>
@@ -63,7 +66,7 @@ const ForumComposer = ({ onSubmit, isSubmitting, className }: ForumComposerProps
       {(content.trim() || isSubmitting) && (
         <div className="mt-auto flex justify-end pt-3">
           <Button type="submit" disabled={!canSubmit} className="h-9 cursor-pointer px-5 text-xs font-semibold">
-            {isSubmitting ? "Posting..." : "Post"}
+            {isSubmitting ? t("posting") : t("post")}
           </Button>
         </div>
       )}

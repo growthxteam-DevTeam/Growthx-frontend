@@ -1,12 +1,17 @@
 "use client";
 
-import PageHeader from "../../_components/PageHeader";
-import { RESOURCE_VAULT } from "../_constants";
+import { useTranslations } from "next-intl";
 
-const ResourceVaultHeader = () => (
-  <PageHeader>
-    <h1 className="text-2xl font-bold text-foreground">{RESOURCE_VAULT.title}</h1>
-  </PageHeader>
-);
+import PageHeader from "../../_components/PageHeader";
+
+const ResourceVaultHeader = () => {
+  const t = useTranslations("Dashboard.vault");
+
+  return (
+    <PageHeader>
+      <h1 className="text-2xl font-bold text-foreground">{t("title")}</h1>
+    </PageHeader>
+  );
+};
 
 export default ResourceVaultHeader;

@@ -1,32 +1,24 @@
 import type { LucideIcon } from "lucide-react";
 
 export interface ClassModule {
-  title: string;
-  meta: string;
-}
-
-export interface CurrentClass {
-  id: string;
-  title: string;
-  presenter: string;
-  duration: string;
-  videoUrl: string;
+  /** Key under `Dashboard.class.modules.items`. */
+  id: "introduction" | "welcome" | "makeMost" | "pricing";
+  minutes: number;
 }
 
 export interface PreviousClass {
-  title: string;
-  meta: string;
+  week: number;
+  peersJoined: number;
+  daysAgo: number;
   videoUrl: string;
 }
 
 export interface AssignmentCardConfig {
-  title: string;
-  description: string;
-  primaryLabel: string;
+  /** Key under `Dashboard.class.assignments`. */
+  id: "submission" | "peerReview" | "finalProject";
   primaryIcon: LucideIcon;
   /** Defaults to the filled "default" button style. */
   primaryVariant?: "default" | "outline";
-  secondaryLabel: string;
   secondaryIcon: LucideIcon;
   /** Locked cards render greyed out until their stage opens. */
   locked: boolean;

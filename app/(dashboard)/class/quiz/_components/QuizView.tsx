@@ -1,6 +1,7 @@
 "use client";
 
 import { Award, Check, ClipboardList, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 import Link from "next/link";
 
 import { Button, buttonVariants } from "@/components/ui/button";
@@ -11,6 +12,7 @@ import { useQuiz } from "../_hooks/useQuiz";
 import QuizQuestionCard from "./QuizQuestionCard";
 
 const QuizView = () => {
+  const t = useTranslations("Dashboard.quiz");
   const {
     quiz,
     isLoading,
@@ -26,9 +28,8 @@ const QuizView = () => {
     retake,
   } = useQuiz();
 
-  if (isLoading) return <p className="text-sm text-muted-foreground">Loading quiz...</p>;
-  if (isError || !quiz)
-    return <p className="text-sm text-destructive">Could not load the quiz. Please try again shortly.</p>;
+  if (isLoading) return <p className="text-sm text-muted-foreground">{t("loading")}</p>;
+  if (isError || !quiz) return <p className="text-sm text-destructive">{t("loadError")}</p>;
 
   const outcomeByQuestion = new Map(result?.results.map((item) => [item.questionId, item]));
 
@@ -42,14 +43,14 @@ const QuizView = () => {
           <div>
             <h1 className="text-base font-bold text-primary">{quiz.title}</h1>
             <p className="text-[11px] text-muted-foreground">
-              {quiz.subtitle} · {quiz.questions.length} questions
+              {quiz.subtitle} · {t("questionCount", { count: quiz.questions.length })}
             </p>
           </div>
         </div>
 
         <p className="flex shrink-0 items-center gap-1.5 text-[11px] text-muted-foreground">
           <Award className="size-3.5" />
-          Passing score: {quiz.passingScore}/{quiz.totalPoints}
+          {t("passingScore", { passing: quiz.passingScore, total: quiz.totalPoints })}
         </p>
       </header>
 
@@ -60,15 +61,15 @@ const QuizView = () => {
               <Check className="size-4 shrink-0 text-emerald-600" strokeWidth={3} />
               <div>
                 <p className="text-sm font-bold text-primary">
-                  You scored {result.score}/{result.totalPoints}
+                  {t("scored", { score: result.score, total: result.totalPoints })}
                 </p>
-                <p className="text-[11px] text-muted-foreground">Nice work — you can continue to the next lesson.</p>
+                <p className="text-[11px] text-muted-foreground">{t("passedNote")}</p>
               </div>
             </div>
 
             {/* TODO: there is no "next lesson" page yet, so this returns to the class page. */}
             <Link href="/class" className={cn(buttonVariants(), "h-9 shrink-0 px-5 text-sm font-semibold")}>
-              Continue
+              {t("continue")}
             </Link>
           </div>
         ) : (
@@ -79,10 +80,10 @@ const QuizView = () => {
               </span>
               <div>
                 <p className="text-sm font-bold text-primary">
-                  You scored {result.score}/{result.totalPoints}
+                  {t("scored", { score: result.score, total: result.totalPoints })}
                 </p>
                 <p className="text-[11px] text-muted-foreground">
-                  You need {result.passingScore}/{result.totalPoints} to continue — review the lesson and try again.
+                  {t("failedNote", { passing: result.passingScore, total: result.totalPoints })}
                 </p>
               </div>
             </div>
@@ -95,14 +96,14 @@ const QuizView = () => {
                   "h-9 border-primary bg-card px-4 text-xs font-semibold text-primary hover:bg-card",
                 )}
               >
-                Back to class
+                {t("backToClass")}
               </Link>
               <Button
                 type="button"
                 onClick={retake}
                 className="h-9 cursor-pointer bg-red-500 px-4 text-xs font-semibold text-white hover:bg-red-600"
               >
-                Retake quiz
+                {t("retake")}
               </Button>
             </div>
           </div>
@@ -111,19 +112,18 @@ const QuizView = () => {
         <>
           {quiz.lastAttempt && (
             <p className="mt-4 rounded-md bg-tint px-3 py-2 text-[11px] text-foreground">
-              Your last score:{" "}
-              <strong>
-                {quiz.lastAttempt.score}/{quiz.lastAttempt.totalPoints}
-              </strong>{" "}
-              · {quiz.lastAttempt.passed ? "Passed" : "Not passed"}. You can take it again.
+              {t.rich("lastScore", {
+                score: quiz.lastAttempt.score,
+                total: quiz.lastAttempt.totalPoints,
+                status: quiz.lastAttempt.passed ? t("passed") : t("notPassed"),
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
             </p>
           )}
 
           <div className="mt-6">
             <div className="flex items-center justify-between text-[11px] text-muted-foreground">
-              <span>
-                {answeredCount} of {quiz.questions.length} answered
-              </span>
+              <span>{t("answered", { answered: answeredCount, total: quiz.questions.length })}</span>
               <span>{progress}%</span>
             </div>
             <Progress value={progress} className="mt-1.5" />
@@ -152,10 +152,10 @@ const QuizView = () => {
             disabled={!canSubmit}
             className="h-11 w-full max-w-xs cursor-pointer text-sm font-medium disabled:cursor-not-allowed"
           >
-            {isSubmitting ? "Submitting..." : "Submit Quiz"}
+            {isSubmitting ? t("submitting") : t("submit")}
           </Button>
           {answeredCount < quiz.questions.length && (
-            <p className="text-[11px] text-muted-foreground">Answer all questions to submit.</p>
+            <p className="text-[11px] text-muted-foreground">{t("answerAll")}</p>
           )}
         </div>
       )}

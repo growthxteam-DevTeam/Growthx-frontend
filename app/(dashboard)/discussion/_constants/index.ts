@@ -1,20 +1,9 @@
-import type { CommentSort } from "@/redux/features/discussion/discussionApi";
-
 // TODO: placeholder content — the topic and program details should come from the API; only admins
-// should be able to change the topic.
+// should be able to change the topic. The visible text lives in `Dashboard.discussionPage` messages.
 export const FORUM = {
   // Also the comment thread key on the backend.
   id: "zero-to-launch-forum",
-  label: "Discussion Forum",
+  // Program names stay in English in every language.
   program: "Zero to Launch",
-  duration: "6 weeks Program",
-  topicTitle: "Discussion Topic",
-  topic: "What is customer interview script? share your ideas everyone",
-  topicNote: "only admins can edit topic",
+  durationWeeks: 6,
 };
-
-export const SORT_OPTIONS: { value: CommentSort; label: string }[] = [
-  { value: "newest", label: "Newest" },
-  { value: "oldest", label: "Oldest" },
-  { value: "top", label: "Top" },
-];

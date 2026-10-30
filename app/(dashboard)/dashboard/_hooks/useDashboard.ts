@@ -10,6 +10,7 @@ export const useDashboard = () => {
   return {
     name: user?.name ?? "",
     firstName: nameParts[0] ?? "",
+    email: user?.email ?? "",
     profilePicture: user?.profilePicture ?? null,
   };
 };

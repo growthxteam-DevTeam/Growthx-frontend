@@ -1,17 +1,22 @@
 "use client";
 
 import { ListFilter } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import type { CommentSort } from "@/redux/features/discussion/discussionApi";
 
 import { useDiscussion } from "../../_hooks/useDiscussion";
-import { FORUM, SORT_OPTIONS } from "../_constants";
+import { FORUM } from "../_constants";
 import ForumComposer from "../../_components/ForumComposer";
 import ForumPost from "../../_components/ForumPost";
 
+const SORT_VALUES: CommentSort[] = ["newest", "oldest", "top"];
+
 const ForumFeed = () => {
+  const t = useTranslations("Dashboard.discussionPage");
+  const tf = useTranslations("Dashboard.forum");
   const {
     comments,
     isLoading,
@@ -30,20 +35,20 @@ const ForumFeed = () => {
   return (
     <section>
       <div className="flex items-center justify-between">
-        <h2 className="text-sm font-semibold text-primary">Feed</h2>
+        <h2 className="text-sm font-semibold text-primary">{t("feed")}</h2>
 
         <Select value={sort} onValueChange={(value) => changeSort(value as CommentSort)}>
           <SelectTrigger
-            aria-label="Sort by"
+            aria-label={tf("sortBy")}
             className="h-auto w-auto gap-1.5 border-0 bg-transparent p-0 text-[13px] text-muted-foreground shadow-none hover:bg-transparent data-[size=default]:h-auto"
           >
             <ListFilter className="size-3.5" />
-            <SelectValue>Sort by</SelectValue>
+            <SelectValue>{tf("sortBy")}</SelectValue>
           </SelectTrigger>
           <SelectContent alignItemWithTrigger={false} align="end">
-            {SORT_OPTIONS.map((option) => (
-              <SelectItem key={option.value} value={option.value}>
-                {option.label}
+            {SORT_VALUES.map((value) => (
+              <SelectItem key={value} value={value}>
+                {tf(`sort.${value}`)}
               </SelectItem>
             ))}
           </SelectContent>
@@ -57,11 +62,11 @@ const ForumFeed = () => {
 
         <div className="mt-8">
           {isLoading ? (
-            <p className="text-sm text-muted-foreground">Loading discussion...</p>
+            <p className="text-sm text-muted-foreground">{tf("loading")}</p>
           ) : isError ? (
-            <p className="text-sm text-destructive">Could not load the discussion. Please try again shortly.</p>
+            <p className="text-sm text-destructive">{tf("loadError")}</p>
           ) : comments.length === 0 ? (
-            <p className="text-sm text-muted-foreground">No contributions yet. Be the first to share an idea!</p>
+            <p className="text-sm text-muted-foreground">{t("empty")}</p>
           ) : (
             <ul className="flex flex-col gap-7">
               {comments.map((comment) => (
@@ -85,7 +90,7 @@ const ForumFeed = () => {
             disabled={isLoadingMore}
             className="mt-6 h-8 cursor-pointer px-0 text-xs font-semibold text-primary hover:bg-transparent"
           >
-            {isLoadingMore ? "Loading..." : "Show more comments"}
+            {isLoadingMore ? tf("loadingMore") : tf("showMore")}
           </Button>
         )}
       </div>

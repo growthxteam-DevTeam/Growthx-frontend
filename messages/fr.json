@@ -76,6 +76,39 @@
     "success": "Mot de passe créé. Veuillez vous connecter.",
     "error": "Une erreur est survenue lors de la création de votre mot de passe. Veuillez réessayer."
   },
+  "ForgotPassword": {
+    "title": "Mot de passe oublié ?",
+    "subtitle": "Saisissez l'adresse e-mail utilisée pour votre candidature et nous vous enverrons un lien pour réinitialiser votre mot de passe.",
+    "email": "Adresse e-mail",
+    "submit": "Envoyer le lien",
+    "submitting": "Envoi en cours...",
+    "backToLogin": "Retour à la connexion",
+    "sentTitle": "Consultez vos e-mails",
+    "sentMessage": "Si un compte existe pour {email}, nous vous avons envoyé un lien pour réinitialiser votre mot de passe. Il expire dans 1 heure.",
+    "error": "Une erreur est survenue lors de l'envoi du lien. Veuillez réessayer."
+  },
+  "ResetPassword": {
+    "title": "Réinitialiser le mot de passe",
+    "subtitle": "Choisissez un nouveau mot de passe pour votre compte Growth Space.",
+    "password": "Nouveau mot de passe",
+    "confirmPassword": "Confirmer le nouveau mot de passe",
+    "showPassword": "Afficher le mot de passe",
+    "hidePassword": "Masquer le mot de passe",
+    "requirementsTitle": "Exigences du mot de passe",
+    "requirements": {
+      "length": "Au moins 8 caractères",
+      "number": "Contient au moins un chiffre",
+      "uppercase": "Contient au moins une lettre majuscule",
+      "special": "Contient au moins un caractère spécial"
+    },
+    "submit": "Réinitialiser le mot de passe",
+    "submitting": "Réinitialisation en cours...",
+    "success": "Mot de passe réinitialisé. Veuillez vous connecter.",
+    "error": "Une erreur est survenue lors de la réinitialisation de votre mot de passe. Veuillez réessayer.",
+    "invalidTitle": "Lien de réinitialisation invalide",
+    "invalidMessage": "Ce lien de réinitialisation est absent ou incomplet. Demandez-en un nouveau pour continuer.",
+    "requestNew": "Demander un nouveau lien"
+  },
   "Validation": {
     "emailInvalid": "Saisissez une adresse e-mail valide",
     "passwordRequired": "Le mot de passe est obligatoire",
@@ -275,6 +308,434 @@
       "hasAccessibilityNeeds": {
         "yes": "Oui, j'ai des besoins d'accessibilité",
         "no": "Non, je n'ai pas de besoins d'accessibilité"
+      }
+    }
+  },
+  "Dashboard": {
+    "shell": {
+      "account": "Compte",
+      "back": "Retour"
+    },
+    "home": {
+      "welcome": "Bienvenue {name}",
+      "program": {
+        "label": "Programme",
+        "duration": "{weeks} semaines",
+        "ledBy": "Dirigé par : {leader}",
+        "cohortMembers": "Membres de la cohorte : {count}"
+      },
+      "cards": {
+        "nextClass": {
+          "title": "Prochain cours",
+          "description": "Votre prochain cours : Business Acumen",
+          "button": "Aller au cours",
+          "badge": "Dans 5 min"
+        },
+        "modules": {
+          "title": "Mes modules",
+          "description": "Découvrez les modules de ce programme",
+          "button": "Aller aux modules"
+        },
+        "peers": {
+          "title": "Rencontrez vos pairs",
+          "description": "Échangez avec les autres apprenants de cette cohorte, partagez vos idées et développez votre réseau",
+          "button": "Rejoindre"
+        },
+        "coworking": {
+          "title": "Laboratoire de coworking",
+          "description": "Découvrez les modules de ce programme",
+          "button": "Demander à rejoindre",
+          "badge": "Bientôt disponible"
+        }
+      },
+      "schedule": {
+        "title": "Calendrier"
+      },
+      "announcements": {
+        "title": "Annonces",
+        "message": "La prochaine journée portes ouvertes aura lieu au Kenya le 23/12/2026. Les fondateurs pourront présenter leur projet à des investisseurs."
+      },
+      "todo": {
+        "title": "À faire",
+        "points": "{points} points",
+        "due": "30 sept. à 23 h 59 WAT",
+        "items": {
+          "quiz2": "Rendre le quiz 2",
+          "peerReviewAssignment": "Rendre le devoir d'évaluation par les pairs",
+          "peerReviewWeek1": "Évaluation par les pairs de la semaine 1"
+        }
+      },
+      "credibility": {
+        "title": "Votre parcours vers le badge de crédibilité prêt pour les investisseurs",
+        "complete": "{completed} sur {total} terminées",
+        "badgeAlt": "Badge de crédibilité",
+        "steps": {
+          "curriculum": "Programme",
+          "project": "Projet",
+          "peerReview": "Évaluation par les pairs"
+        },
+        "summary": {
+          "title": "Programme de base terminé",
+          "weeks": "Semaines 1 à 6",
+          "description": "Les quatre modules hebdomadaires et les sessions en direct sont terminés."
+        }
+      }
+    },
+    "common": {
+      "comingSoon": "Cette fonctionnalité n'est pas encore disponible. Revenez bientôt."
+    },
+    "forum": {
+      "sortBy": "Trier par",
+      "sort": {
+        "newest": "Plus récents",
+        "oldest": "Plus anciens",
+        "top": "Les plus populaires"
+      },
+      "loading": "Chargement de la discussion...",
+      "loadError": "Impossible de charger la discussion. Veuillez réessayer dans un instant.",
+      "loadingMore": "Chargement...",
+      "showMore": "Afficher plus de commentaires",
+      "composer": {
+        "label": "Ajouter une contribution",
+        "placeholder": "Ajoutez une contribution...",
+        "post": "Publier",
+        "posting": "Publication..."
+      },
+      "post": {
+        "pinned": "Épinglé par Growth Space",
+        "staff": "Message de l'équipe",
+        "like": "J'aime",
+        "removeLike": "Retirer le j'aime",
+        "dislike": "Je n'aime pas",
+        "removeDislike": "Retirer le je n'aime pas",
+        "reply": "Répondre",
+        "replyCount": "{count, plural, one {# réponse} other {# réponses}}",
+        "replyTo": "Répondre à {name}...",
+        "replyToLabel": "Répondre à {name}"
+      },
+      "errors": {
+        "post": "Impossible de publier votre commentaire. Veuillez réessayer.",
+        "react": "Impossible d'enregistrer votre réaction. Veuillez réessayer."
+      }
+    },
+    "discussionPage": {
+      "title": "Forum de discussion",
+      "feed": "Fil",
+      "empty": "Aucune contribution pour le moment. Soyez le premier à partager une idée !",
+      "label": "Forum de discussion",
+      "duration": "Programme de {weeks} semaines",
+      "topicTitle": "Sujet de discussion",
+      "topic": "Qu'est-ce qu'un script d'entretien client ? Partagez vos idées, tout le monde",
+      "topicNote": "seuls les administrateurs peuvent modifier le sujet"
+    },
+    "class": {
+      "welcome": "Bienvenue en cours",
+      "title": "Semaine 4 : Fixer le prix de votre produit",
+      "practitioner": "Intervenant : {presenter} · {minutes} min",
+      "video": {
+        "unavailable": "La vidéo de ce cours n'est pas disponible pour le moment.",
+        "intro": "Le prochain cours porte sur la rédaction d'un pitch deck, il a commencé il y a 5 minutes",
+        "join": "Rejoindre le cours",
+        "completeTitle": "Leçon terminée",
+        "completeMessage": "Vérifiez ce que vous avez appris avec un court quiz.",
+        "takeQuiz": "Passer le quiz",
+        "replay": "Revoir la leçon"
+      },
+      "modules": {
+        "title": "Modules",
+        "meta": "Vidéo · {minutes} min",
+        "items": {
+          "introduction": "Introduction au cours",
+          "welcome": "Bienvenue et présentation",
+          "makeMost": "Comment tirer le meilleur parti de ce cours",
+          "pricing": "Fixer le prix de votre produit"
+        }
+      },
+      "previous": {
+        "title": "Cours précédents",
+        "week": "Semaine {week} : Fixer le prix de votre produit",
+        "meta": "{count} pairs ont participé · il y a {days, plural, one {# jour} other {# jours}}"
+      },
+      "discussionTitle": "Forum de discussion",
+      "discussionEmpty": "Aucun commentaire pour le moment. Lancez la conversation !",
+      "assignments": {
+        "submission": {
+          "title": "Remise du devoir",
+          "description": "Veuillez consulter les instructions et déposer votre devoir lorsque vous êtes prêt(e). Les remises sont ouvertes.",
+          "primary": "Déposer le devoir",
+          "secondary": "Télécharger les instructions"
+        },
+        "peerReview": {
+          "title": "Évaluation par les pairs",
+          "description": "Veuillez examiner les devoirs de vos pairs et les noter selon les critères d'évaluation fournis.",
+          "primary": "Télécharger le devoir d'un pair",
+          "secondary": "Télécharger les critères d'évaluation"
+        },
+        "finalProject": {
+          "title": "Projet final",
+          "description": "Veuillez consulter les instructions et déposer votre devoir lorsque vous êtes prêt(e). Les remises sont ouvertes.",
+          "primary": "Déposer le devoir",
+          "secondary": "Télécharger les instructions"
+        }
+      }
+    },
+    "quiz": {
+      "loading": "Chargement du quiz...",
+      "loadError": "Impossible de charger le quiz. Veuillez réessayer dans un instant.",
+      "questionCount": "{count, plural, one {# question} other {# questions}}",
+      "passingScore": "Note de passage : {passing}/{total}",
+      "scored": "Vous avez obtenu {score}/{total}",
+      "passedNote": "Bon travail — vous pouvez passer à la leçon suivante.",
+      "continue": "Continuer",
+      "failedNote": "Il vous faut {passing}/{total} pour continuer — revoyez la leçon et réessayez.",
+      "backToClass": "Retour au cours",
+      "retake": "Repasser le quiz",
+      "lastScore": "Votre dernière note : <strong>{score}/{total}</strong> · {status}. Vous pouvez le repasser.",
+      "passed": "Réussi",
+      "notPassed": "Non réussi",
+      "answered": "{answered} sur {total} répondues",
+      "submit": "Envoyer le quiz",
+      "submitting": "Envoi...",
+      "answerAll": "Répondez à toutes les questions pour envoyer.",
+      "submitError": "Impossible d'envoyer votre quiz. Veuillez réessayer.",
+      "question": {
+        "points": "{count, plural, one {# point} other {# points}}",
+        "single": "Question à choix unique",
+        "multi": "Question à choix multiples",
+        "correct": "Correct.",
+        "incorrect": "Incorrect."
+      }
+    },
+    "community": {
+      "title": "Communauté générale",
+      "prompt": "Posez n'importe quelle question, même si elle vous semble basique : c'est ici que les fondateurs avancent ensemble.",
+      "topicsLabel": "Sujets",
+      "topics": {
+        "all": "Tous",
+        "fundraising": "Levée de fonds",
+        "pricing": "Tarification",
+        "hiring": "Recrutement",
+        "product": "Produit",
+        "wins": "Succès"
+      },
+      "ago": {
+        "hours": "{count} h",
+        "days": "{count} j"
+      },
+      "posts": {
+        "1": "Comment les autres ont-ils validé leurs prix avant d'avoir un premier client payant ?",
+        "2": "Nous venons de signer notre premier contrat B2B 🎉 Six mois de prospection qui paient.",
+        "3": "Quelqu'un a-t-il embauché un directeur financier à temps partiel à un stade précoce ? Comment avez-vous organisé cela ?",
+        "4": "Qu'utilisez-vous tous pour recueillir les retours des utilisateurs avant le lancement ?",
+        "5": "Pour combien de temps de trésorerie avez-vous levé des fonds avant de solliciter à nouveau des investisseurs ?"
+      },
+      "answeredByAlumna": "Réponse d'une ancienne de Growth Space",
+      "replies": "{count, plural, one {# réponse} other {# réponses}}",
+      "likes": "{count, plural, one {# j'aime} other {# j'aime}}",
+      "reply": "Répondre",
+      "ask": {
+        "placeholder": "Posez une question...",
+        "label": "Posez une question",
+        "post": "Publier"
+      },
+      "foundersGallery": "Galerie des fondateurs",
+      "alumni": {
+        "title": "Réseau des anciens",
+        "teaser": "Cette réponse vient d'un fondateur du réseau des anciens, où les diplômés échangent des introductions auprès d'investisseurs et des pistes de cofondateurs.",
+        "unlock": "Débloqué à l'obtention du diplôme",
+        "open": "Ouvrir le réseau des anciens"
+      },
+      "badge": {
+        "title": "Votre progression vers le badge",
+        "progress": "{done} sur {total} étapes · continuez"
+      },
+      "trending": {
+        "title": "Tendances",
+        "topics": {
+          "fundraising": "Levée de fonds",
+          "pricing": "Tarification",
+          "demoDay": "Demo Day"
+        }
+      }
+    },
+    "alumniNetwork": {
+      "title": "Réseau des anciens",
+      "comingSoon": "Pas encore disponible. Revenez bientôt.",
+      "filtersLabel": "Filtrer les publications",
+      "filters": {
+        "all": "Tous",
+        "lookingFor": "Recherche",
+        "offering": "Propose",
+        "coFounder": "Cofondateur",
+        "investorIntro": "Intro investisseur",
+        "productFeedback": "Retour produit"
+      },
+      "composer": {
+        "typeLabel": "Type de publication",
+        "placeholder": "Publiez un besoin ou une opportunité...",
+        "inputLabel": "Publiez un besoin ou une opportunité",
+        "visibility": "Visible uniquement par les anciens",
+        "post": "Publier"
+      },
+      "post": {
+        "cohort": "Cohorte {number}",
+        "responses": "{count, plural, one {# réponse} other {# réponses}}",
+        "helpful": "Utile",
+        "actions": {
+          "respond": "Répondre",
+          "requestIntro": "Demander une intro",
+          "giveFeedback": "Donner un avis"
+        },
+        "content": {
+          "1": "Je recherche un cofondateur technique, fintech, basé à Lagos.",
+          "2": "Je propose une introduction chaleureuse auprès d'un investisseur seed spécialisé dans la logistique en Afrique de l'Est.",
+          "3": "Nous avons besoin de retours sur notre parcours d'intégration avant les discussions de série A."
+        }
+      },
+      "empty": "Aucune publication pour l'instant. Soyez le premier à en partager une.",
+      "points": {
+        "title": "Vos points au total",
+        "value": "{count} pts"
+      },
+      "referrals": {
+        "title": "Suivi des recommandations",
+        "made": "Recommandations faites :",
+        "received": "Recommandations reçues :",
+        "cta": "Recommander"
+      },
+      "contributors": {
+        "title": "Meilleurs contributeurs"
+      },
+      "howPoints": {
+        "title": "Comment fonctionnent les points",
+        "referralMade": "Recommandation faite",
+        "referralLed": "Recommandation ayant mené à un membre",
+        "coFounderMatch": "Mise en relation de cofondateurs",
+        "feedbackGiven": "Retour produit donné",
+        "markedHelpful": "Publication jugée utile",
+        "note": "Les points reflètent la contribution : ils se gagnent en aidant d'autres fondateurs, pas selon votre ancienneté dans le réseau."
+      }
+    },
+    "vault": {
+      "title": "Coffre de ressources",
+      "headline": "Trouvez exactement ce qui correspond à votre situation, pas des résultats de recherche génériques.",
+      "searchPlaceholder": "Sur quoi êtes-vous bloqué(e) ? p. ex. négocier un bail",
+      "searchLabel": "Rechercher dans le coffre de ressources",
+      "searching": "Recherche des ressources correspondant à votre question...",
+      "basedOnProfile": "D'après votre profil :",
+      "profileTags": {
+        "preRevenue": "Avant revenus",
+        "fintech": "Fintech",
+        "lagos": "Lagos"
+      },
+      "edit": "Modifier",
+      "tabsLabel": "Catégories de ressources",
+      "tabs": {
+        "pre-seed": "Pré-amorçage",
+        "pitch": "Pitch",
+        "raise": "Levée de fonds",
+        "pricing": "Tarification"
+      },
+      "loadingLabel": "Chargement des ressources",
+      "loadError": "Nous n'avons pas pu charger les ressources pour le moment.",
+      "tryAgain": "Réessayer",
+      "empty": "Aucune ressource ne correspond encore à cette recherche. Essayez d'autres mots.",
+      "card": {
+        "article": "Article",
+        "video": "Vidéo",
+        "minRead": "{minutes} min de lecture",
+        "readOn": "Lire sur {source}",
+        "opensIn": "(ouvre {source} dans un nouvel onglet)",
+        "save": "Enregistrer la ressource",
+        "removeBookmark": "Retirer le favori"
+      }
+    },
+    "profile": {
+      "title": "Paramètres du compte",
+      "subtitle": "Gérez votre profil Growth Space et vos préférences d'apprentissage.",
+      "cohort": "Cohorte {number}",
+      "editProfile": "Modifier le profil",
+      "learning": {
+        "title": "Progression de l'apprentissage",
+        "badgeProgress": "Progression du badge",
+        "viewDetails": "Voir les détails du badge"
+      },
+      "preferences": {
+        "title": "Accessibilité et préférences d'apprentissage",
+        "items": {
+          "captions": {
+            "label": "Sous-titres sur les cours vidéo",
+            "hint": "Afficher les sous-titres par défaut"
+          },
+          "screenReader": {
+            "label": "Mise en page optimisée pour lecteur d'écran",
+            "hint": "Simplifie l'ordre de navigation et les libellés"
+          },
+          "textSize": {
+            "label": "Taille du texte",
+            "hint": "S'applique aux cours et aux quiz",
+            "options": {
+              "default": "Par défaut",
+              "large": "Grande",
+              "extraLarge": "Très grande"
+            }
+          },
+          "highContrast": {
+            "label": "Mode contraste élevé",
+            "hint": "Augmente le contraste entre le texte et l'arrière-plan"
+          },
+          "reduceMotion": {
+            "label": "Réduire les animations",
+            "hint": "Limite les animations et les transitions automatiques"
+          },
+          "dyslexiaFont": {
+            "label": "Police adaptée à la dyslexie",
+            "hint": "Utilise une police plus facile à lire pour le texte"
+          },
+          "extendedQuiz": {
+            "label": "Temps de quiz prolongé",
+            "hint": "Supprime ou allonge le temps des évaluations chronométrées"
+          }
+        }
+      },
+      "data": {
+        "title": "Données et consentement",
+        "accessibilityInfo": {
+          "label": "Informations d'accessibilité",
+          "hint": "Ce que vous avez partagé lors de la candidature et son utilisation.",
+          "action": "Consulter"
+        },
+        "sessionRecording": {
+          "label": "Consentement à l'enregistrement des sessions",
+          "hint": "Autoriser l'enregistrement des sessions auxquelles vous participez à des fins de recherche."
+        },
+        "downloadData": {
+          "label": "Télécharger mes données",
+          "hint": "Obtenez une copie de votre profil et de vos données d'activité.",
+          "action": "Télécharger"
+        }
+      },
+      "account": {
+        "title": "Compte",
+        "email": "E-mail",
+        "password": "Mot de passe",
+        "notifications": "Notifications",
+        "notificationsValue": "E-mail et push",
+        "change": "Modifier",
+        "manage": "Gérer"
+      },
+      "privacy": {
+        "title": "Confidentialité et gestion du compte",
+        "visibility": {
+          "label": "Visibilité du profil dans la communauté",
+          "options": {
+            "allFounders": "Tous les fondateurs",
+            "myCohort": "Ma cohorte",
+            "onlyMe": "Moi uniquement"
+          }
+        },
+        "deleteAccount": "Supprimer le compte",
+        "logout": "Se déconnecter"
       }
     }
   }

@@ -76,6 +76,39 @@
     "success": "Password created. Please log in.",
     "error": "Something went wrong creating your password. Please try again."
   },
+  "ForgotPassword": {
+    "title": "Forgot your password?",
+    "subtitle": "Enter the email you applied with and we'll send you a link to reset your password.",
+    "email": "Email Address",
+    "submit": "Send reset link",
+    "submitting": "Sending...",
+    "backToLogin": "Back to log in",
+    "sentTitle": "Check your email",
+    "sentMessage": "If an account exists for {email}, we've sent a link to reset your password. It expires in 1 hour.",
+    "error": "Something went wrong sending the reset link. Please try again."
+  },
+  "ResetPassword": {
+    "title": "Reset password",
+    "subtitle": "Choose a new password for your Growth Space account.",
+    "password": "New password",
+    "confirmPassword": "Confirm new password",
+    "showPassword": "Show password",
+    "hidePassword": "Hide password",
+    "requirementsTitle": "Password requirements",
+    "requirements": {
+      "length": "At least 8 characters long",
+      "number": "Contains at least one number",
+      "uppercase": "Contains at least one uppercase letter",
+      "special": "Contains at least one special character"
+    },
+    "submit": "Reset password",
+    "submitting": "Resetting...",
+    "success": "Password reset. Please log in.",
+    "error": "Something went wrong resetting your password. Please try again.",
+    "invalidTitle": "Invalid reset link",
+    "invalidMessage": "This password reset link is missing or incomplete. Request a new one to continue.",
+    "requestNew": "Request a new link"
+  },
   "Validation": {
     "emailInvalid": "Enter a valid email address",
     "passwordRequired": "Password is required",
@@ -275,6 +308,434 @@
       "hasAccessibilityNeeds": {
         "yes": "Yes, I have accessibility needs",
         "no": "No, I don't have accessibility needs"
+      }
+    }
+  },
+  "Dashboard": {
+    "shell": {
+      "account": "Account",
+      "back": "Back"
+    },
+    "home": {
+      "welcome": "Welcome {name}",
+      "program": {
+        "label": "Program",
+        "duration": "{weeks} weeks",
+        "ledBy": "Led by: {leader}",
+        "cohortMembers": "Cohort Members: {count}"
+      },
+      "cards": {
+        "nextClass": {
+          "title": "Next Class",
+          "description": "Your next class is: Business Acumen",
+          "button": "Go to Class",
+          "badge": "In 5 mins"
+        },
+        "modules": {
+          "title": "My Modules",
+          "description": "Check out the modules for this program",
+          "button": "Go to Modules"
+        },
+        "peers": {
+          "title": "Meet your Peers",
+          "description": "Interact with other learners in this cohort, share ideas and build networks",
+          "button": "Join"
+        },
+        "coworking": {
+          "title": "Co-working Lab",
+          "description": "Check out the modules for this program",
+          "button": "Request to Join",
+          "badge": "Coming Soon"
+        }
+      },
+      "schedule": {
+        "title": "Schedule"
+      },
+      "announcements": {
+        "title": "Announcements",
+        "message": "The next open day will be happening in Kenya on 23/12/2026. Founders will have access to pitch to investors."
+      },
+      "todo": {
+        "title": "To-Do",
+        "points": "{points} points",
+        "due": "Sep 30 at 11:59 WAT",
+        "items": {
+          "quiz2": "Turn in Quiz 2",
+          "peerReviewAssignment": "Turn in peer review assignment",
+          "peerReviewWeek1": "Peer review for week 1"
+        }
+      },
+      "credibility": {
+        "title": "Your path to investor-ready credibility badge",
+        "complete": "{completed} of {total} complete",
+        "badgeAlt": "Credibility badge",
+        "steps": {
+          "curriculum": "Curriculum",
+          "project": "Project",
+          "peerReview": "Peer review"
+        },
+        "summary": {
+          "title": "Core curriculum complete",
+          "weeks": "Weeks 1 to 6",
+          "description": "All four weekly modules and live sessions completed."
+        }
+      }
+    },
+    "common": {
+      "comingSoon": "This isn't available yet. Check back soon."
+    },
+    "forum": {
+      "sortBy": "Sort by",
+      "sort": {
+        "newest": "Newest",
+        "oldest": "Oldest",
+        "top": "Top"
+      },
+      "loading": "Loading discussion...",
+      "loadError": "Could not load the discussion. Please try again shortly.",
+      "loadingMore": "Loading...",
+      "showMore": "Show more comments",
+      "composer": {
+        "label": "Add contribution",
+        "placeholder": "Add a contribution...",
+        "post": "Post",
+        "posting": "Posting..."
+      },
+      "post": {
+        "pinned": "Pinned by Growth Space",
+        "staff": "Staff Post",
+        "like": "Like",
+        "removeLike": "Remove like",
+        "dislike": "Dislike",
+        "removeDislike": "Remove dislike",
+        "reply": "Reply",
+        "replyCount": "{count, plural, one {# reply} other {# replies}}",
+        "replyTo": "Reply to {name}...",
+        "replyToLabel": "Reply to {name}"
+      },
+      "errors": {
+        "post": "Could not post your comment. Please try again.",
+        "react": "Could not save your reaction. Please try again."
+      }
+    },
+    "discussionPage": {
+      "title": "Discussion Forum",
+      "feed": "Feed",
+      "empty": "No contributions yet. Be the first to share an idea!",
+      "label": "Discussion Forum",
+      "duration": "{weeks} weeks Program",
+      "topicTitle": "Discussion Topic",
+      "topic": "What is customer interview script? share your ideas everyone",
+      "topicNote": "only admins can edit topic"
+    },
+    "class": {
+      "welcome": "Welcome to Class",
+      "title": "Week 4: Pricing your product",
+      "practitioner": "Practitioner: {presenter} · {minutes} min",
+      "video": {
+        "unavailable": "This class video is unavailable right now.",
+        "intro": "The next class is how to write a pitch deck, it started 5 mins ago",
+        "join": "Join Class",
+        "completeTitle": "Lesson complete",
+        "completeMessage": "Check what you learned with a short quiz.",
+        "takeQuiz": "Take Quiz",
+        "replay": "Replay Lesson"
+      },
+      "modules": {
+        "title": "Modules",
+        "meta": "Video · {minutes} mins",
+        "items": {
+          "introduction": "Course Introduction",
+          "welcome": "Welcome and Overview",
+          "makeMost": "How to make the most of this course",
+          "pricing": "Pricing your product"
+        }
+      },
+      "previous": {
+        "title": "Previous Classes",
+        "week": "Week {week}: Pricing your product",
+        "meta": "{count} peers joined · {days, plural, one {# day} other {# days}} ago"
+      },
+      "discussionTitle": "Discussion Forum",
+      "discussionEmpty": "No comments yet. Start the conversation!",
+      "assignments": {
+        "submission": {
+          "title": "Assignment Submission",
+          "description": "Please review the instructions and upload your assignment when ready. Submission is open.",
+          "primary": "Upload Assignment",
+          "secondary": "Download Instructions"
+        },
+        "peerReview": {
+          "title": "Peer Review",
+          "description": "Please review your peers' assignment and grade them based on the grading criteria provided.",
+          "primary": "Download Peer Assignment",
+          "secondary": "Download Grading Criteria"
+        },
+        "finalProject": {
+          "title": "Final Project",
+          "description": "Please review the instructions and upload your assignment when ready. Submission is open.",
+          "primary": "Upload Assignment",
+          "secondary": "Download Instructions"
+        }
+      }
+    },
+    "quiz": {
+      "loading": "Loading quiz...",
+      "loadError": "Could not load the quiz. Please try again shortly.",
+      "questionCount": "{count, plural, one {# question} other {# questions}}",
+      "passingScore": "Passing score: {passing}/{total}",
+      "scored": "You scored {score}/{total}",
+      "passedNote": "Nice work — you can continue to the next lesson.",
+      "continue": "Continue",
+      "failedNote": "You need {passing}/{total} to continue — review the lesson and try again.",
+      "backToClass": "Back to class",
+      "retake": "Retake quiz",
+      "lastScore": "Your last score: <strong>{score}/{total}</strong> · {status}. You can take it again.",
+      "passed": "Passed",
+      "notPassed": "Not passed",
+      "answered": "{answered} of {total} answered",
+      "submit": "Submit Quiz",
+      "submitting": "Submitting...",
+      "answerAll": "Answer all questions to submit.",
+      "submitError": "Could not submit your quiz. Please try again.",
+      "question": {
+        "points": "{count, plural, one {# point} other {# points}}",
+        "single": "Single-select question",
+        "multi": "Multi-select question",
+        "correct": "Correct.",
+        "incorrect": "Incorrect."
+      }
+    },
+    "community": {
+      "title": "General Community",
+      "prompt": "Ask anything, even if it feels basic, this is where founders figure things out together.",
+      "topicsLabel": "Topics",
+      "topics": {
+        "all": "All",
+        "fundraising": "Fundraising",
+        "pricing": "Pricing",
+        "hiring": "Hiring",
+        "product": "Product",
+        "wins": "Wins"
+      },
+      "ago": {
+        "hours": "{count}h",
+        "days": "{count}d"
+      },
+      "posts": {
+        "1": "How did others validate pricing before getting a first paying customer?",
+        "2": "Just closed our first B2B contract 🎉 Six months of outreach paid off.",
+        "3": "Anyone hired a part-time CFO at an early stage? How did you structure it?",
+        "4": "What's everyone using to collect user feedback pre-launch?",
+        "5": "How much runway did you raise for before approaching investors again?"
+      },
+      "answeredByAlumna": "Answered by a Growth Space alumna",
+      "replies": "{count, plural, one {# reply} other {# replies}}",
+      "likes": "{count, plural, one {# like} other {# likes}}",
+      "reply": "Reply",
+      "ask": {
+        "placeholder": "Ask anything...",
+        "label": "Ask anything",
+        "post": "Post"
+      },
+      "foundersGallery": "Founder's Gallery",
+      "alumni": {
+        "title": "Alumni Network",
+        "teaser": "This answer came from a founder in the Alumni Network, where graduates swap investor intros and co-founder leads.",
+        "unlock": "Unlocks at graduation",
+        "open": "Open Alumni Network"
+      },
+      "badge": {
+        "title": "Your badge progress",
+        "progress": "{done} of {total} milestones · keep going"
+      },
+      "trending": {
+        "title": "Trending",
+        "topics": {
+          "fundraising": "Fundraising",
+          "pricing": "Pricing",
+          "demoDay": "Demo Day"
+        }
+      }
+    },
+    "alumniNetwork": {
+      "title": "Alumni Network",
+      "comingSoon": "This isn't available yet. Check back soon.",
+      "filtersLabel": "Filter posts",
+      "filters": {
+        "all": "All",
+        "lookingFor": "Looking for",
+        "offering": "Offering",
+        "coFounder": "Co-founder",
+        "investorIntro": "Investor intro",
+        "productFeedback": "Product feedback"
+      },
+      "composer": {
+        "typeLabel": "Post type",
+        "placeholder": "Post a need or opportunity...",
+        "inputLabel": "Post a need or opportunity",
+        "visibility": "Visible to alumni only",
+        "post": "Post"
+      },
+      "post": {
+        "cohort": "Cohort {number}",
+        "responses": "{count, plural, one {# response} other {# responses}}",
+        "helpful": "Helpful",
+        "actions": {
+          "respond": "Respond",
+          "requestIntro": "Request intro",
+          "giveFeedback": "Give feedback"
+        },
+        "content": {
+          "1": "Looking for a technical co-founder, fintech, Lagos-based.",
+          "2": "Offering a warm intro to a seed investor focused on logistics in East Africa.",
+          "3": "Need product feedback on our onboarding flow before Series A conversations."
+        }
+      },
+      "empty": "No posts here yet. Be the first to share one.",
+      "points": {
+        "title": "Your overall points",
+        "value": "{count} pts"
+      },
+      "referrals": {
+        "title": "Referral tracker",
+        "made": "Referrals made:",
+        "received": "Referrals received:",
+        "cta": "Refer now"
+      },
+      "contributors": {
+        "title": "Top contributors"
+      },
+      "howPoints": {
+        "title": "How points work",
+        "referralMade": "Referral made",
+        "referralLed": "Referral led to a member",
+        "coFounderMatch": "Co-founder match made",
+        "feedbackGiven": "Product feedback given",
+        "markedHelpful": "Post marked helpful",
+        "note": "Points reflect contribution, they are earned by helping other founders, not how long you have been in the network."
+      }
+    },
+    "vault": {
+      "title": "Resource Vault",
+      "headline": "Find exactly what fits your situation, not generic search results.",
+      "searchPlaceholder": "What are you stuck on? e.g. negotiating a lease",
+      "searchLabel": "Search the resource vault",
+      "searching": "Matching resources to your question...",
+      "basedOnProfile": "Based on your profile:",
+      "profileTags": {
+        "preRevenue": "Pre-revenue",
+        "fintech": "Fintech",
+        "lagos": "Lagos"
+      },
+      "edit": "Edit",
+      "tabsLabel": "Resource categories",
+      "tabs": {
+        "pre-seed": "Pre-seed",
+        "pitch": "Pitch",
+        "raise": "Raise",
+        "pricing": "Pricing"
+      },
+      "loadingLabel": "Loading resources",
+      "loadError": "We couldn't load resources right now.",
+      "tryAgain": "Try again",
+      "empty": "No resources match that search yet. Try different words.",
+      "card": {
+        "article": "Article",
+        "video": "Video",
+        "minRead": "{minutes} min read",
+        "readOn": "Read on {source}",
+        "opensIn": "(opens {source} in a new tab)",
+        "save": "Save resource",
+        "removeBookmark": "Remove bookmark"
+      }
+    },
+    "profile": {
+      "title": "Account Settings",
+      "subtitle": "Manage your Growth Space profile and learning preferences.",
+      "cohort": "Cohort {number}",
+      "editProfile": "Edit profile",
+      "learning": {
+        "title": "Learning progress",
+        "badgeProgress": "Badge progress",
+        "viewDetails": "View badge details"
+      },
+      "preferences": {
+        "title": "Accessibility and learning preferences",
+        "items": {
+          "captions": {
+            "label": "Captions on video lessons",
+            "hint": "Show captions by default"
+          },
+          "screenReader": {
+            "label": "Screen reader optimized layout",
+            "hint": "Simplifies navigation order and labeling"
+          },
+          "textSize": {
+            "label": "Text size",
+            "hint": "Applies across lessons and quizzes",
+            "options": {
+              "default": "Default",
+              "large": "Large",
+              "extraLarge": "Extra large"
+            }
+          },
+          "highContrast": {
+            "label": "High contrast mode",
+            "hint": "Increases contrast between text and background"
+          },
+          "reduceMotion": {
+            "label": "Reduce motion",
+            "hint": "Limits animations and auto-playing transitions"
+          },
+          "dyslexiaFont": {
+            "label": "Dyslexia friendly font",
+            "hint": "Switches body text to an easier to read typeface"
+          },
+          "extendedQuiz": {
+            "label": "Extended quiz time",
+            "hint": "Removes or extends timing on timed assessments"
+          }
+        }
+      },
+      "data": {
+        "title": "Data and consent",
+        "accessibilityInfo": {
+          "label": "Accessibility information",
+          "hint": "What you shared at application, and how it's used.",
+          "action": "Review"
+        },
+        "sessionRecording": {
+          "label": "Session recording consent",
+          "hint": "Allow sessions you join to be recorded for research."
+        },
+        "downloadData": {
+          "label": "Download my data",
+          "hint": "Get a copy of your profile and activity data.",
+          "action": "Download"
+        }
+      },
+      "account": {
+        "title": "Account",
+        "email": "Email",
+        "password": "Password",
+        "notifications": "Notifications",
+        "notificationsValue": "Email & Push",
+        "change": "Change",
+        "manage": "Manage"
+      },
+      "privacy": {
+        "title": "Privacy and account management",
+        "visibility": {
+          "label": "Profile visibility in community",
+          "options": {
+            "allFounders": "All Founders",
+            "myCohort": "My cohort",
+            "onlyMe": "Only me"
+          }
+        },
+        "deleteAccount": "Delete account",
+        "logout": "Log out"
       }
     }
   }

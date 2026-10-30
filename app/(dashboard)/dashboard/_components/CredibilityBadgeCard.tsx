@@ -3,6 +3,7 @@ import { Fragment } from "react";
 import Image from "next/image";
 
 import { Check, Lock } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { Progress } from "@/components/ui/progress";
 import { cn } from "@/lib/utils";
@@ -34,21 +35,22 @@ const StepMarker = ({ status }: { status: CredibilityStepStatus }) => {
 };
 
 const CredibilityBadgeCard = () => {
+  const t = useTranslations("Dashboard.home.credibility");
   const completed = CREDIBILITY.steps.filter((step) => step.status === "complete").length;
 
   return (
     <section className="grid gap-8 rounded-lg border border-border bg-card p-8 shadow-sm md:grid-cols-[1fr_240px]">
       <div>
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-bold text-foreground">{CREDIBILITY.title}</h2>
+          <h2 className="text-lg font-bold text-foreground">{t("title")}</h2>
           <span className="text-xs font-semibold text-primary">
-            {completed} of {CREDIBILITY.steps.length} complete
+            {t("complete", { completed, total: CREDIBILITY.steps.length })}
           </span>
         </div>
 
         <ol className="mt-6 flex items-start">
           {CREDIBILITY.steps.map((step, index) => (
-            <Fragment key={step.label}>
+            <Fragment key={step.id}>
               <li className="flex flex-col items-center gap-2">
                 <StepMarker status={step.status} />
                 <span
@@ -57,7 +59,7 @@ const CredibilityBadgeCard = () => {
                     step.status === "locked" ? "text-muted-foreground" : "font-medium text-primary",
                   )}
                 >
-                  {step.label}
+                  {t(`steps.${step.id}`)}
                 </span>
               </li>
               {index < CREDIBILITY.steps.length - 1 && (
@@ -68,9 +70,9 @@ const CredibilityBadgeCard = () => {
         </ol>
 
         <div className="mt-6 rounded-md bg-tint p-5">
-          <p className="text-base font-bold text-primary">{CREDIBILITY.summary.title}</p>
-          <p className="mt-1 text-xs font-semibold text-primary">{CREDIBILITY.summary.weeks}</p>
-          <p className="mt-2 text-sm text-foreground">{CREDIBILITY.summary.description}</p>
+          <p className="text-base font-bold text-primary">{t("summary.title")}</p>
+          <p className="mt-1 text-xs font-semibold text-primary">{t("summary.weeks")}</p>
+          <p className="mt-2 text-sm text-foreground">{t("summary.description")}</p>
         </div>
       </div>
 
@@ -79,7 +81,7 @@ const CredibilityBadgeCard = () => {
           {/* Blurred base — always visible underneath */}
           <Image
             src="/credibility-badge.png"
-            alt="Credibility badge"
+            alt={t("badgeAlt")}
             width={160}
             height={160}
             style={{ filter: "blur(8px)" }}

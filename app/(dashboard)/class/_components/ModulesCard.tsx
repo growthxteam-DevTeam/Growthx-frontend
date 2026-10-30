@@ -1,44 +1,48 @@
 import { Book, ChevronRight, List } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import { MODULES } from "../_constants";
 
-const ModulesCard = () => (
-  /* Spinning border wrapper */
-  <div className="relative rounded-lg p-px overflow-hidden lg:absolute lg:inset-0">
-    {/* Rotating conic-gradient that forms the animated border */}
-    <div
-      className="absolute -inset-2 animate-spin"
-      style={{
-        background:
-          "conic-gradient(from 0deg, transparent 0deg, oklch(0.348 0.185 274.5) 60deg, transparent 120deg)",
-        animationDuration: "3s",
-      }}
-    />
+const ModulesCard = () => {
+  const t = useTranslations("Dashboard.class.modules");
 
-    {/* Card content sits on top */}
-    <section className="relative rounded-lg bg-card p-4 shadow-sm lg:flex lg:h-full lg:flex-col">
-      <div className="flex items-center justify-between">
-        <h2 className="font-serif text-base font-bold text-primary">Modules</h2>
-        <List className="size-3.5 text-primary" />
-      </div>
+  return (
+    /* Spinning border wrapper */
+    <div className="relative rounded-lg p-px overflow-hidden lg:absolute lg:inset-0">
+      {/* Rotating conic-gradient that forms the animated border */}
+      <div
+        className="absolute -inset-2 animate-spin"
+        style={{
+          background: "conic-gradient(from 0deg, transparent 0deg, oklch(0.348 0.185 274.5) 60deg, transparent 120deg)",
+          animationDuration: "3s",
+        }}
+      />
 
-      <ul className="mt-3 flex max-h-[280px] flex-col gap-2 overflow-y-auto lg:max-h-none lg:min-h-0 lg:flex-1">
-        {MODULES.map((module, index) => (
-          <li key={`${module.title}-${index}`}>
-            {/* TODO: no module pages exist yet, so these rows don't navigate. */}
-            <div className="flex items-center gap-2 rounded-md border border-border px-3 py-2">
-              <Book className="size-3.5 shrink-0 text-primary" />
-              <div className="min-w-0 flex-1">
-                <p className="truncate text-[13px] font-semibold text-primary">{module.title}</p>
-                <p className="text-[11px] text-muted-foreground">{module.meta}</p>
+      {/* Card content sits on top */}
+      <section className="relative rounded-lg bg-card p-4 shadow-sm lg:flex lg:h-full lg:flex-col">
+        <div className="flex items-center justify-between">
+          <h2 className="font-serif text-base font-bold text-primary">{t("title")}</h2>
+          <List className="size-3.5 text-primary" />
+        </div>
+
+        <ul className="mt-3 flex max-h-[280px] flex-col gap-2 overflow-y-auto lg:max-h-none lg:min-h-0 lg:flex-1">
+          {MODULES.map((module, index) => (
+            <li key={`${module.id}-${index}`}>
+              {/* TODO: no module pages exist yet, so these rows don't navigate. */}
+              <div className="flex items-center gap-2 rounded-md border border-border px-3 py-2">
+                <Book className="size-3.5 shrink-0 text-primary" />
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-[13px] font-semibold text-primary">{t(`items.${module.id}`)}</p>
+                  <p className="text-[11px] text-muted-foreground">{t("meta", { minutes: module.minutes })}</p>
+                </div>
+                <ChevronRight className="size-3.5 shrink-0 text-muted-foreground" />
               </div>
-              <ChevronRight className="size-3.5 shrink-0 text-muted-foreground" />
-            </div>
-          </li>
-        ))}
-      </ul>
-    </section>
-  </div>
-);
+            </li>
+          ))}
+        </ul>
+      </section>
+    </div>
+  );
+};
 
 export default ModulesCard;

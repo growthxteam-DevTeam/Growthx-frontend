@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { getApiErrorMessage } from "@/lib/api-error";
@@ -17,6 +18,7 @@ import { QUIZ_ID } from "../_constants";
 const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
 export const useQuiz = () => {
+  const t = useTranslations("Dashboard.quiz");
   const { data: quiz, isLoading, isError } = useGetQuizQuery(QUIZ_ID);
   const [submitQuiz, { isLoading: isSubmitting }] = useSubmitQuizMutation();
 
@@ -53,7 +55,7 @@ export const useQuiz = () => {
       setResult(response);
       scrollToTop();
     } catch (error) {
-      toast.error(getApiErrorMessage(error, "Could not submit your quiz. Please try again."));
+      toast.error(getApiErrorMessage(error, t("submitError")));
     }
   };
 

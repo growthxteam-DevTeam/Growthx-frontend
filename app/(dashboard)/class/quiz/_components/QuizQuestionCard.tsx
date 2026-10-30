@@ -1,3 +1,5 @@
+import { useTranslations } from "next-intl";
+
 import { cn } from "@/lib/utils";
 import type { QuizQuestion } from "@/redux/features/quiz/quizApi";
 
@@ -11,6 +13,7 @@ interface QuizQuestionCardProps {
 }
 
 const QuizQuestionCard = ({ index, question, selected, onSelect, outcome }: QuizQuestionCardProps) => {
+  const t = useTranslations("Dashboard.quiz.question");
   const isSingle = question.type === "single";
   const isLocked = outcome !== undefined;
 
@@ -25,13 +28,11 @@ const QuizQuestionCard = ({ index, question, selected, onSelect, outcome }: Quiz
         </p>
 
         <span className="shrink-0 rounded-full bg-tint px-2 py-0.5 text-[10px] text-muted-foreground">
-          {question.points} {question.points === 1 ? "point" : "points"}
+          {t("points", { count: question.points })}
         </span>
       </div>
 
-      <p className="pl-6 text-[11px] text-muted-foreground">
-        {isSingle ? "Single-select question" : "Multi-select question"}
-      </p>
+      <p className="pl-6 text-[11px] text-muted-foreground">{isSingle ? t("single") : t("multi")}</p>
 
       <div className="flex flex-col gap-2.5 pl-6">
         {question.options.map((option) => (
@@ -57,7 +58,7 @@ const QuizQuestionCard = ({ index, question, selected, onSelect, outcome }: Quiz
 
       {outcome && (
         <p className={cn("pl-6 text-[10px]", outcome.correct ? "text-muted-foreground" : "text-red-500")}>
-          {outcome.correct ? "Correct." : "Incorrect."} {outcome.explanation}
+          {outcome.correct ? t("correct") : t("incorrect")} {outcome.explanation}
         </p>
       )}
     </fieldset>

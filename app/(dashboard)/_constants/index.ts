@@ -13,7 +13,7 @@ export interface SidebarLink {
 export const SIDEBAR_LINKS: SidebarLink[] = [
   { labelKey: "dashboard", href: "/dashboard", icon: Compass, alsoActiveOn: ["/class"] },
   { labelKey: "discussion", href: "/discussion", icon: Users },
-  { labelKey: "community", href: "/community", icon: MessagesSquare },
+  { labelKey: "community", href: "/community", icon: MessagesSquare, alsoActiveOn: ["/community"] },
   { labelKey: "resourceVault", href: "/resource-vault", icon: Archive },
   { labelKey: "coworkingLab", href: "#", icon: Building2 },
 ];

@@ -4,10 +4,13 @@ import { useState } from "react";
 
 import { formatDistanceToNow } from "date-fns";
 import { ChevronDown, Pin, ThumbsDown, ThumbsUp } from "lucide-react";
+import { useLocale, useTranslations } from "next-intl";
 
+import type { Locale } from "@/i18n/config";
 import { cn } from "@/lib/utils";
 import type { DiscussionComment } from "@/redux/features/discussion/discussionApi";
 
+import { DATE_FNS_LOCALES } from "../_lib/dateLocale";
 import Avatar from "./Avatar";
 import { useDashboard } from "../dashboard/_hooks/useDashboard";
 
@@ -22,6 +25,8 @@ interface ForumPostProps {
 const actionClassName = "flex cursor-pointer items-center gap-1 text-xs text-ink-muted hover:text-primary";
 
 const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
+  const t = useTranslations("Dashboard.forum.post");
+  const locale = useLocale() as Locale;
   const { name, profilePicture } = useDashboard();
   const [isReplying, setIsReplying] = useState(false);
   const [showReplies, setShowReplies] = useState(false);
@@ -52,17 +57,17 @@ const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
         {comment.pinned && (
           <p className="mb-0.5 flex items-center gap-1 text-[11px] text-ink-muted">
             <Pin className="size-3 text-ink" />
-            Pinned by Growth Space
+            {t("pinned")}
           </p>
         )}
 
         <p className="flex flex-wrap items-center gap-2">
           <span className="text-md text-ink">{comment.author.name}</span>
           {comment.staffPost && (
-            <span className="rounded-md bg-tint px-2 py-0.5 text-[11px] font-medium text-primary">Staff Post</span>
+            <span className="rounded-md bg-tint px-2 py-0.5 text-[11px] font-medium text-primary">{t("staff")}</span>
           )}
           <span className="text-[11px] text-ink-muted">
-            {formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true })}
+            {formatDistanceToNow(new Date(comment.createdAt), { addSuffix: true, locale: DATE_FNS_LOCALES[locale] })}
           </span>
         </p>
 
@@ -73,7 +78,7 @@ const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
             type="button"
             onClick={() => onLike(comment.id)}
             aria-pressed={comment.likedByMe}
-            aria-label={comment.likedByMe ? "Remove like" : "Like"}
+            aria-label={comment.likedByMe ? t("removeLike") : t("like")}
             className={cn(actionClassName, comment.likedByMe && "text-primary")}
           >
             <ThumbsUp className={cn("size-3.5", comment.likedByMe && "fill-current")} />
@@ -84,7 +89,7 @@ const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
             type="button"
             onClick={() => onDislike(comment.id)}
             aria-pressed={comment.dislikedByMe}
-            aria-label={comment.dislikedByMe ? "Remove dislike" : "Dislike"}
+            aria-label={comment.dislikedByMe ? t("removeDislike") : t("dislike")}
             className={cn(actionClassName, comment.dislikedByMe && "text-primary")}
           >
             <ThumbsDown className={cn("size-3.5", comment.dislikedByMe && "fill-current")} />
@@ -96,7 +101,7 @@ const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
               onClick={() => setIsReplying((open) => !open)}
               className={cn(actionClassName, "font-medium text-ink")}
             >
-              Reply
+              {t("reply")}
             </button>
           )}
 
@@ -108,7 +113,7 @@ const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
               className={cn(actionClassName, "font-medium text-primary")}
             >
               <ChevronDown className={cn("size-3.5 transition-transform", showReplies && "rotate-180")} />
-              {replyCount} {replyCount === 1 ? "reply" : "replies"}
+              {t("replyCount", { count: replyCount })}
             </button>
           )}
         </div>
@@ -125,10 +130,10 @@ const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
             <input
               value={replyText}
               onChange={(event) => setReplyText(event.target.value)}
-              placeholder={`Reply to ${comment.author.name}...`}
+              placeholder={t("replyTo", { name: comment.author.name })}
               maxLength={1000}
               autoFocus
-              aria-label={`Reply to ${comment.author.name}`}
+              aria-label={t("replyToLabel", { name: comment.author.name })}
               className="flex-1 border-b border-border bg-transparent pb-1.5 text-sm outline-none placeholder:text-muted-foreground focus:border-field-focus"
             />
             <button
@@ -136,7 +141,7 @@ const ForumPost = ({ comment, onReply, onLike, onDislike }: ForumPostProps) => {
               disabled={!replyText.trim()}
               className="cursor-pointer text-xs font-semibold text-primary disabled:cursor-not-allowed disabled:opacity-40"
             >
-              Reply
+              {t("reply")}
             </button>
           </form>
         )}

@@ -62,8 +62,7 @@ const LoginForm = () => {
               name="rememberMe"
               label={t("rememberMe")}
             />
-            {/* TODO: no password-reset flow exists yet. */}
-            <Link href="#" className="shrink-0 text-xs font-medium text-primary hover:opacity-80">
+            <Link href="/forgot-password" className="shrink-0 text-xs font-medium text-primary hover:opacity-80">
               {t("forgotPassword")}
             </Link>
           </div>

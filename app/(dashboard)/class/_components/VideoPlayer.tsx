@@ -3,11 +3,12 @@
 import { useEffect, useRef, useState } from "react";
 
 import { Check, SquarePlay } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 
 import { Button } from "@/components/ui/button";
 
-import { CLASS_COMPLETE, CLASS_INTRO, CURRENT_CLASS } from "../_constants";
+import { CLASS_INTRO_PROGRAM, CURRENT_CLASS } from "../_constants";
 import { getYouTubeId } from "../_lib/youtube";
 import { loadYouTubeApi, type YouTubePlayer } from "../_lib/youtubePlayer";
 import { QUIZ_PAGE_PATH } from "../quiz/_constants";
@@ -59,6 +60,7 @@ const NetworkBackground = () => (
 );
 
 const VideoPlayer = () => {
+  const t = useTranslations("Dashboard.class.video");
   const router = useRouter();
   const [hasJoined, setHasJoined] = useState(false);
   const [isEnded, setIsEnded] = useState(false);
@@ -121,22 +123,20 @@ const VideoPlayer = () => {
     <section>
       <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-black">
         {!videoId || loadFailed ? (
-          <p className="flex size-full items-center justify-center text-base text-white">
-            This class video is unavailable right now.
-          </p>
+          <p className="flex size-full items-center justify-center text-base text-white">{t("unavailable")}</p>
         ) : hasJoined ? (
           <div ref={containerRef} className="size-full [&>iframe]:size-full" />
         ) : (
           <div className="relative flex size-full flex-col items-center justify-center gap-8 bg-[radial-gradient(circle_at_20%_30%,rgba(45,212,191,0.14),transparent_40%),radial-gradient(circle_at_80%_70%,rgba(99,102,241,0.14),transparent_45%)] px-6 text-center text-white">
             <NetworkBackground />
-            <p className="relative text-sm text-white/80">{CLASS_INTRO.program}</p>
-            <p className="relative max-w-md text-xl font-semibold">{CLASS_INTRO.message}</p>
+            <p className="relative text-sm text-white/80">{CLASS_INTRO_PROGRAM}</p>
+            <p className="relative max-w-md text-xl font-semibold">{t("intro")}</p>
             <Button
               type="button"
               onClick={() => setHasJoined(true)}
               className="relative h-11 cursor-pointer gap-2 px-5 text-lg font-medium"
             >
-              {CLASS_INTRO.buttonLabel}
+              {t("join")}
               <SquarePlay className="size-5" />
             </Button>
           </div>
@@ -147,10 +147,10 @@ const VideoPlayer = () => {
             <span className="flex size-10 items-center justify-center rounded-full bg-emerald-700">
               <Check className="size-5" strokeWidth={3} />
             </span>
-            <p className="text-xl font-semibold">{CLASS_COMPLETE.title}</p>
-            <p className="text-sm text-white/80">{CLASS_COMPLETE.message}</p>
+            <p className="text-xl font-semibold">{t("completeTitle")}</p>
+            <p className="text-sm text-white/80">{t("completeMessage")}</p>
             <Button type="button" onClick={takeQuiz} className="mt-1 h-11 w-44 cursor-pointer text-base font-medium">
-              {CLASS_COMPLETE.quizLabel}
+              {t("takeQuiz")}
             </Button>
             <Button
               type="button"
@@ -159,12 +159,11 @@ const VideoPlayer = () => {
               className="h-11 w-44 cursor-pointer gap-2 border-white/60 bg-transparent text-base font-medium text-white hover:bg-white/10 hover:text-white"
             >
               <SquarePlay className="size-4" />
-              {CLASS_COMPLETE.replayLabel}
+              {t("replay")}
             </Button>
           </div>
         )}
       </div>
-
     </section>
   );
 };

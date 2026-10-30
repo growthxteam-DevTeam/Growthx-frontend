@@ -1,12 +1,17 @@
 "use client";
 
-import PageHeader from "../../_components/PageHeader";
-import { COMMUNITY } from "../_constants";
+import { useTranslations } from "next-intl";
 
-const CommunityHeader = () => (
-  <PageHeader>
-    <h1 className="text-2xl font-bold text-foreground">{COMMUNITY.title}</h1>
-  </PageHeader>
-);
+import PageHeader from "../../_components/PageHeader";
+
+const CommunityHeader = () => {
+  const t = useTranslations("Dashboard.community");
+
+  return (
+    <PageHeader>
+      <h1 className="text-2xl font-bold text-foreground">{t("title")}</h1>
+    </PageHeader>
+  );
+};
 
 export default CommunityHeader;

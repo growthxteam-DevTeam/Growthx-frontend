@@ -39,10 +39,20 @@ What exists:
   emailed after the backend confirms payment.
 - `app/(auth)/create-password/` and `app/(auth)/login/` — emailed GS code -> set password -> log in; a login
   stores the JWT with `setCredentials` and redirects to `/dashboard`.
+- `app/(auth)/forgot-password/` and `app/(auth)/reset-password/` — the login page's "Forgot password?" link -> email -> emailed
+  link `/reset-password?token=...` -> new password -> `/login`. `authApi` has `forgotPassword` / `resetPassword`; the
+  forgot page shows the same "check your email" state whether or not the account exists.
 - `app/(dashboard)/` — logged-in area. `layout.tsx` -> `DashboardShell` (redirects to `/login` when
   `auth.token` is empty, which also handles logout) + `Sidebar`. `dashboard/` is the home page; its content
   (program, schedule, announcements, progress) is placeholder data in `dashboard/_constants`, and the badge and
   to-do illustrations are lucide stand-ins until the artwork exists.
+- **Dashboard translations.** Every dashboard string lives under the `Dashboard.*` namespaces in `messages/en.json` and
+  `messages/fr.json` (keep both in sync, same keys and `{placeholders}`); components use `useTranslations`. Placeholder
+  data in `_constants` holds ids/numbers, not text, and the component looks the text up by id (e.g. `cards.<id>.title`).
+  Program names ("Zero to Launch") and people's names stay as-is in every language. Dates and months follow the locale
+  (`Intl`, `DATE_FNS_LOCALES` in `(dashboard)/_lib/dateLocale.ts`, the calendar's `locale` prop). The language switcher is
+  in `HeaderAccount`. Not translated because they come from the backend: quiz content, API error messages, and the
+  resource vault's article titles/summaries.
 - `app/(dashboard)/resource-vault/` — category tabs (Pre-seed, Pitch, Raise, Pricing) plus a debounced search, backed by
   `GET /resources` (`redux/features/resources/resourcesApi.ts`). Cards link out (`target="_blank"`) to the publisher's own
   site. Typing searches the whole vault and ignores the tab; the "Based on your profile" chips are still placeholders.
@@ -55,7 +65,7 @@ What exists:
   `CURRENT_CLASS.id` is the discussion thread key. `(dashboard)/_components/Avatar.tsx` is the shared avatar.
 - `app/(root)/example/` — empty skeleton folders only, no `page.tsx`; a template for new slices.
 - Redux has only `auth` (persisted via redux-persist) and `apiSlice`. Endpoints: `authApi` (`login`,
-  `adminLogin`), `applicationsApi` (`submitApplication`, `createPassword`), `discussionApi` (comments, likes),
+  `forgotPassword`, `resetPassword`, `adminLogin`), `applicationsApi` (`submitApplication`, `createPassword`), `discussionApi` (comments, likes),
   `adminBannerApi` (banner CRUD). A 401 from any endpoint except `login` clears the session and sends the user to
   `/login`. The admin login/banner side has no UI or backend route yet.
 - Metadata in `app/layout.tsx` is still create-next-app defaults; `README.md` is the create-next-app default.

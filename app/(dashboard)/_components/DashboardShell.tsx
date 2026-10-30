@@ -20,7 +20,7 @@ const DashboardShell = ({ children }: { children: ReactNode }) => {
   if (!token) return null;
 
   return (
-    <div className="flex h-screen overflow-hidden bg-card">
+    <div className="flex h-screen overflow-hidden bg-background">
       {/* Sidebar handles both desktop (left column) and mobile (fixed bottom nav) layouts */}
       <Sidebar />
       <main className="min-w-0 flex-1 overflow-y-auto px-4 py-4 pb-24 mt-0 lg:px-8 lg:py-6 lg:mt-6 lg:pb-6">

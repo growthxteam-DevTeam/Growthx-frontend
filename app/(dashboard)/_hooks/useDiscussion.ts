@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import { useTranslations } from "next-intl";
 import { toast } from "sonner";
 
 import { getApiErrorMessage } from "@/lib/api-error";
@@ -18,6 +19,7 @@ import { DISCUSSION_PAGE_SIZE, DISCUSSION_POLL_INTERVAL_MS } from "../_constants
 // One comment thread, keyed by `classId`. Polling (not websockets) keeps it reasonably live
 // without extra infrastructure. Shared by the class page and the Discussion Forum page.
 export const useDiscussion = (classId: string) => {
+  const t = useTranslations("Dashboard.forum.errors");
   const [limit, setLimit] = useState(DISCUSSION_PAGE_SIZE);
   const [sort, setSort] = useState<CommentSort>("newest");
 
@@ -38,7 +40,7 @@ export const useDiscussion = (classId: string) => {
       await postComment({ classId, content, parentId }).unwrap();
       return true;
     } catch (error) {
-      toast.error(getApiErrorMessage(error, "Could not post your comment. Please try again."));
+      toast.error(getApiErrorMessage(error, t("post")));
       return false;
     }
   };
@@ -47,7 +49,7 @@ export const useDiscussion = (classId: string) => {
     try {
       await toggle({ classId, commentId }).unwrap();
     } catch (error) {
-      toast.error(getApiErrorMessage(error, "Could not save your reaction. Please try again."));
+      toast.error(getApiErrorMessage(error, t("react")));
     }
   };
 
