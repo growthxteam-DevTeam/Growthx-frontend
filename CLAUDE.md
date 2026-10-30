@@ -19,8 +19,8 @@ There is no test setup in this project.
 - warning: `app/layout.tsx` unused `runtimeEnv` (the `window.__ENV__` script is commented out)
 - warning: `redux/features/api/apiSlice.ts:28` (`window.location.href` redirect on 401)
 
-`npx tsc --noEmit` has 1 known error: `lucide-react` no longer exports `Youtube`
-(`app/(dashboard)/resource-vault/_constants/index.ts`).
+`npx tsc --noEmit` currently reports 0 errors (the old `lucide-react` `Youtube` import error went away when the resource
+vault's placeholder cards were replaced).
 
 ## State of the repo
 
@@ -43,6 +43,9 @@ What exists:
   `auth.token` is empty, which also handles logout) + `Sidebar`. `dashboard/` is the home page; its content
   (program, schedule, announcements, progress) is placeholder data in `dashboard/_constants`, and the badge and
   to-do illustrations are lucide stand-ins until the artwork exists.
+- `app/(dashboard)/resource-vault/` — category tabs (Pre-seed, Pitch, Raise, Pricing) plus a debounced search, backed by
+  `GET /resources` (`redux/features/resources/resourcesApi.ts`). Cards link out (`target="_blank"`) to the publisher's own
+  site. Typing searches the whole vault and ignores the tab; the "Based on your profile" chips are still placeholders.
 - `app/(dashboard)/class/` — "Go to Class" target: video end -> "Lesson complete" overlay -> "Take Quiz" opens
   `class/quiz/` (questions come from `GET /quizzes/:quizId`, submit posts to the backend which grades and saves the
   score; `QUIZ_ID` in `quiz/_constants` must match a backend quiz id). YouTube embed (`CURRENT_CLASS.videoUrl` in

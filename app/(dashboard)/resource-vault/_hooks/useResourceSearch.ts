@@ -2,40 +2,44 @@
 
 import { useEffect, useState } from "react";
 
-import { RESOURCES } from "../_constants";
+import { useGetResourcesQuery, type ResourceCategory } from "@/redux/features/resources/resourcesApi";
 
-// TODO: stands in for a request to a resource-matching endpoint; swap the timer for the real call.
-const SEARCH_DELAY_MS = 900;
-const MIN_KEYWORD_LENGTH = 4;
+import { RESOURCE_TABS } from "../_constants";
 
-const matchResources = (term: string) => {
-  if (!term) return RESOURCES;
-
-  const keywords = term.toLowerCase().split(/\s+/).filter((word) => word.length >= MIN_KEYWORD_LENGTH);
-  const needles = keywords.length > 0 ? keywords : [term.toLowerCase()];
-
-  return RESOURCES.filter((resource) => {
-    const haystack = `${resource.title} ${resource.tag} ${resource.sourceLabel}`.toLowerCase();
-    return needles.some((needle) => haystack.includes(needle));
-  });
-};
+const SEARCH_DEBOUNCE_MS = 400;
 
 export const useResourceSearch = () => {
+  const [category, setCategory] = useState<ResourceCategory>(RESOURCE_TABS[0].id);
   const [query, setQuery] = useState("");
   const [settledQuery, setSettledQuery] = useState("");
 
   useEffect(() => {
-    const next = query.trim();
-    const timer = setTimeout(() => setSettledQuery(next), next ? SEARCH_DELAY_MS : 0);
+    const timer = setTimeout(() => setSettledQuery(query.trim()), SEARCH_DEBOUNCE_MS);
     return () => clearTimeout(timer);
   }, [query]);
 
-  const term = query.trim() ? settledQuery : "";
+  // Typing searches the whole vault; the tab only applies while the search box is empty.
+  const isSearchingAll = Boolean(settledQuery);
+  const { data, isFetching, isError, refetch } = useGetResourcesQuery({
+    category: isSearchingAll ? undefined : category,
+    q: settledQuery || undefined,
+  });
+
+  const selectCategory = (next: ResourceCategory) => {
+    setQuery("");
+    setSettledQuery("");
+    setCategory(next);
+  };
 
   return {
     query,
     setQuery,
-    isSearching: Boolean(query.trim()) && query.trim() !== settledQuery,
-    resources: matchResources(term),
+    category,
+    selectCategory,
+    isSearchingAll,
+    isLoading: isFetching || query.trim() !== settledQuery,
+    isError,
+    refetch,
+    resources: data ?? [],
   };
 };

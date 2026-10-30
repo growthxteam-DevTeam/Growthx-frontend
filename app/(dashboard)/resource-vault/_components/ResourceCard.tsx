@@ -2,46 +2,73 @@
 
 import { useState } from "react";
 
-import { Bookmark, Sparkles } from "lucide-react";
+import { Bookmark, ExternalLink, Newspaper, SquarePlay } from "lucide-react";
+import Image from "next/image";
 
 import { cn } from "@/lib/utils";
+import type { Resource } from "@/redux/features/resources/resourcesApi";
 
-import type { ResourceItem } from "../_types";
+const formatDate = (iso: string | null) =>
+  iso ? new Date(iso).toLocaleDateString("en", { month: "short", day: "numeric", year: "numeric" }) : null;
 
 // Bookmarks are local to this session until a saved-resources endpoint exists.
-const ResourceCard = ({ resource }: { resource: ResourceItem }) => {
+const ResourceCard = ({ resource, tag }: { resource: Resource; tag?: string }) => {
   const [saved, setSaved] = useState(false);
-  const SourceIcon = resource.sourceIcon;
+  const SourceIcon = resource.type === "video" ? SquarePlay : Newspaper;
+  const badge = resource.type === "video" ? "Video" : resource.readMinutes ? `${resource.readMinutes} min read` : "Article";
+  const published = formatDate(resource.publishedAt);
 
   return (
-    <article className="rounded-lg border border-border bg-card p-5">
+    <article className="relative rounded-lg border border-border bg-card p-5 transition-colors hover:border-primary/40">
       <div className="flex items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-2">
           <span className="flex size-7 shrink-0 items-center justify-center rounded-md bg-tint-strong text-primary">
             <SourceIcon className="size-4" />
           </span>
-          <span className="truncate text-sm text-muted-foreground">{resource.sourceLabel}</span>
+          <span className="truncate text-sm text-muted-foreground">{resource.source}</span>
         </div>
-        <span className="shrink-0 text-xs font-medium text-muted-foreground">{resource.typeBadge}</span>
+        <span className="shrink-0 text-xs font-medium text-muted-foreground">{badge}</span>
       </div>
 
-      <h3 className="mt-3 text-lg font-bold text-foreground">{resource.title}</h3>
+      <div className="mt-3 flex items-start gap-4">
+        <div className="min-w-0 flex-1">
+          {/* Reading happens on the publisher's site, so the whole card (stretched link) opens it in a new tab. */}
+          <h3 className="text-lg font-bold text-foreground">
+            <a
+              href={resource.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="after:absolute after:inset-0 after:rounded-lg focus-visible:outline-none focus-visible:after:ring-2 focus-visible:after:ring-primary"
+            >
+              {resource.title}
+              <span className="sr-only"> (opens {resource.source} in a new tab)</span>
+            </a>
+          </h3>
+          {resource.summary && <p className="mt-2 line-clamp-2 text-sm text-muted-foreground">{resource.summary}</p>}
+        </div>
 
-      {resource.recommended && (
-        <p className="mt-2 flex items-center gap-1.5 text-sm font-semibold text-primary">
-          <Sparkles className="size-3.5 shrink-0" />
-          Recommended for you, based on your profile
-        </p>
-      )}
+        {resource.imageUrl && (
+          <div className="relative hidden h-16 w-24 shrink-0 overflow-hidden rounded-md bg-muted sm:block">
+            <Image src={resource.imageUrl} alt="" fill sizes="96px" unoptimized className="object-cover" />
+          </div>
+        )}
+      </div>
 
-      <div className="mt-3 flex items-center justify-between">
-        <span className="rounded-full bg-tint px-3 py-1 text-xs font-semibold text-primary">{resource.tag}</span>
+      <div className="mt-3 flex items-center justify-between gap-3">
+        <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+          {tag && <span className="rounded-full bg-tint px-3 py-1 font-semibold text-primary">{tag}</span>}
+          <span className="flex items-center gap-1 font-medium text-foreground">
+            Read on {resource.source}
+            <ExternalLink className="size-3" />
+          </span>
+          {published && <span>{published}</span>}
+        </div>
         <button
           type="button"
           onClick={() => setSaved((value) => !value)}
           aria-pressed={saved}
           aria-label={saved ? "Remove bookmark" : "Save resource"}
-          className="cursor-pointer text-muted-foreground hover:text-primary"
+          className="relative z-10 shrink-0 cursor-pointer text-muted-foreground hover:text-primary"
         >
           <Bookmark className={cn("size-4", saved && "fill-current text-primary")} />
         </button>

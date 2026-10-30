@@ -3,19 +3,23 @@
 import { Search } from "lucide-react";
 import { toast } from "sonner";
 
-import { PROFILE_TAGS, RESOURCE_VAULT, SKELETON_SUBTITLE_WIDTHS } from "../_constants";
+import { cn } from "@/lib/utils";
+
+import { PROFILE_TAGS, RESOURCE_TABS, RESOURCE_VAULT, SKELETON_SUBTITLE_WIDTHS } from "../_constants";
 import { useResourceSearch } from "../_hooks/useResourceSearch";
 import ResourceCard from "./ResourceCard";
 import ResourceCardSkeleton from "./ResourceCardSkeleton";
 
 const ResourceVaultFeed = () => {
-  const { query, setQuery, isSearching, resources } = useResourceSearch();
+  const { query, setQuery, category, selectCategory, isSearchingAll, isLoading, isError, refetch, resources } =
+    useResourceSearch();
+  const activeTab = RESOURCE_TABS.find((tab) => tab.id === category);
 
   return (
     <div>
       <h2 className="text-2xl font-bold text-primary">{RESOURCE_VAULT.headline}</h2>
 
-      {isSearching && (
+      {isLoading && query.trim() && (
         <p role="status" className="mt-4 text-sm text-muted-foreground">
           {RESOURCE_VAULT.searchingMessage}
         </p>
@@ -50,7 +54,30 @@ const ResourceVaultFeed = () => {
         </button>
       </div>
 
-      {isSearching ? (
+      <div role="tablist" aria-label="Resource categories" className="mt-5 flex flex-wrap gap-2">
+        {RESOURCE_TABS.map((tab) => {
+          const isActive = !isSearchingAll && tab.id === category;
+          return (
+            <button
+              key={tab.id}
+              type="button"
+              role="tab"
+              aria-selected={isActive}
+              onClick={() => selectCategory(tab.id)}
+              className={cn(
+                "cursor-pointer rounded-full border px-4 py-1.5 text-sm font-semibold transition-colors",
+                isActive
+                  ? "border-primary bg-primary text-primary-foreground"
+                  : "border-border bg-card text-muted-foreground hover:text-primary",
+              )}
+            >
+              {tab.label}
+            </button>
+          );
+        })}
+      </div>
+
+      {isLoading ? (
         <ul aria-busy="true" aria-label="Loading resources" className="mt-6 flex flex-col gap-4">
           {SKELETON_SUBTITLE_WIDTHS.map((width) => (
             <li key={width}>
@@ -58,13 +85,20 @@ const ResourceVaultFeed = () => {
             </li>
           ))}
         </ul>
+      ) : isError ? (
+        <p role="alert" className="mt-6 text-sm text-muted-foreground">
+          We couldn&apos;t load resources right now.{" "}
+          <button type="button" onClick={refetch} className="cursor-pointer font-semibold text-primary hover:underline">
+            Try again
+          </button>
+        </p>
       ) : resources.length === 0 ? (
-        <p className="mt-6 text-sm text-muted-foreground">No resources match that search.</p>
+        <p className="mt-6 text-sm text-muted-foreground">No resources match that search yet. Try different words.</p>
       ) : (
         <ul className="mt-6 flex flex-col gap-4">
           {resources.map((resource) => (
             <li key={resource.id}>
-              <ResourceCard resource={resource} />
+              <ResourceCard resource={resource} tag={isSearchingAll ? undefined : activeTab?.label} />
             </li>
           ))}
         </ul>
