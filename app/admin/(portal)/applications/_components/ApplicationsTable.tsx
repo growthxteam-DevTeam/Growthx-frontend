@@ -93,7 +93,7 @@ const ApplicationsTable = () => {
                     <TableRow key={application.id}>
                       <TableCell className="px-4 py-3">
                         <div className="flex items-center gap-3">
-                          <Avatar name={applicationPortal.fullName} src={application.submit.passportPhotoUrl} />
+                          <Avatar name={applicationPortal.fullName} src={application.submit?.passportPhotoUrl} />
                           <div className="min-w-0">
                             <p className="truncate font-semibold text-primary">{applicationPortal.fullName}</p>
                             <p className="truncate text-xs text-muted-foreground">{applicationPortal.email}</p>

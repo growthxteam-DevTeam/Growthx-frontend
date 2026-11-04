@@ -144,9 +144,9 @@ const ApplicationDetailsDialog = ({ application, onClose }: ApplicationDetailsDi
           <DialogDescription>{application?.applicationPortal.fullName}</DialogDescription>
         </DialogHeader>
 
-        {application?.submit.passportPhotoUrl && (
+        {application?.submit?.passportPhotoUrl && (
           <Image
-            src={application.submit.passportPhotoUrl}
+            src={application.submit?.passportPhotoUrl}
             alt={t("photoAlt", {
               name: application.applicationPortal.fullName,
             })}

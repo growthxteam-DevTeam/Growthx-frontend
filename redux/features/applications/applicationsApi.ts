@@ -32,7 +32,8 @@ export interface ApplicationRecord {
     accessibilityNeed?: string;
     accessibilityNotes?: string;
   };
-  submit: {
+  // Absent on records saved without a passport photo.
+  submit?: {
     passportPhotoUrl?: string;
   };
   status: "pending" | "reviewed" | "accepted" | "rejected";
