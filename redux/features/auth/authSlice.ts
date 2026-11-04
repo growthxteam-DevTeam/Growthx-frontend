@@ -15,6 +15,9 @@ interface AuthState {
 
 }
 
+export const ADMIN_ROLE_TITLE = "Admin";
+export const APPLICANT_ROLE_TITLE = "Applicant";
+
 const initialState: AuthState = {
   token: null,
   user: null,
@@ -48,6 +51,8 @@ export const authSlice = createSlice({
     },
   },
 });
+
+export const selectIsAdmin = (state: { auth: AuthState }) => state.auth.user?.role.title === ADMIN_ROLE_TITLE;
 
 export const { setCredentials, logout } = authSlice.actions;
 

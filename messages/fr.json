@@ -45,21 +45,21 @@
   },
   "PaymentSuccess": {
     "title": "Paiement reçu",
-    "description": "Merci ! Nous confirmons votre paiement. Dans quelques minutes, nous vous enverrons par e-mail un lien avec votre code GS pour configurer votre compte Growth Space.",
-    "hint": "Vous ne le voyez pas ? Vérifiez vos courriers indésirables.",
-    "login": "Aller à la connexion"
+    "description": "Merci ! Nous confirmons votre paiement auprès de Bachs. Votre tableau de bord se débloque dès la confirmation, en général en moins d'une minute.",
+    "hint": "Vous voyez toujours l'invite de paiement ? Patientez un instant : elle disparaît d'elle-même une fois le paiement confirmé.",
+    "login": "Retour au tableau de bord"
   },
   "PaymentCancelled": {
     "title": "Paiement non finalisé",
-    "description": "Aucun paiement n'a été effectué. Votre candidature est enregistrée : utilisez le lien de paiement de votre e-mail dès que vous serez prêt(e) à la finaliser.",
-    "home": "Retour à l'accueil"
+    "description": "Aucun paiement n'a été effectué. Vous pouvez payer quand vous le souhaitez depuis votre tableau de bord.",
+    "home": "Retour au tableau de bord"
   },
   "CreatePassword": {
-    "congrats": "Paiement confirmé. Bienvenue dans la cohorte",
+    "congrats": "Vous êtes invité(e). Bienvenue dans la cohorte",
     "title": "Créer un mot de passe",
     "subtitle": "Définissez un mot de passe robuste pour sécuriser votre compte Growth Space.",
     "gsCode": "Saisissez votre code GS",
-    "gsCodeHint": "Ce code vous a été envoyé dans votre e-mail de confirmation de paiement",
+    "gsCodeHint": "Ce code vous a été envoyé dans votre e-mail d'invitation",
     "password": "Mot de passe",
     "confirmPassword": "Confirmer le mot de passe",
     "showPassword": "Afficher le mot de passe",
@@ -238,11 +238,9 @@
     },
     "submitted": {
       "title": "Candidature envoyée",
-      "description": "Nous vous avons envoyé un lien de paiement par e-mail. Finalisez votre paiement pour recevoir votre code GS et accéder à votre tableau de bord.",
-      "payNow": "Payer maintenant",
-      "payHint": "Vous ne trouvez pas l'e-mail ? Utilisez ce bouton ou vérifiez vos courriers indésirables.",
+      "description": "Merci pour votre candidature. Nous examinerons votre profil et vous enverrons les prochaines étapes par e-mail, surveillez donc votre boîte de réception.",
       "toastTitle": "Candidature envoyée",
-      "toastDescription": "Consultez votre e-mail pour trouver votre lien de paiement.",
+      "toastDescription": "Consultez votre e-mail pour connaître les prochaines étapes une fois votre profil examiné.",
       "rows": {
         "business": "Entreprise",
         "operating": "Ancienneté",
@@ -736,6 +734,111 @@
         },
         "deleteAccount": "Supprimer le compte",
         "logout": "Se déconnecter"
+      }
+    },
+    "paymentModal": {
+      "title": "Finalisez votre paiement pour continuer",
+      "description": "Votre place chez Growth X est réservée, mais les frais du programme n'ont pas encore été réglés. Payez en toute sécurité avec Bachs pour débloquer votre tableau de bord.",
+      "pay": "Payer maintenant",
+      "redirecting": "Redirection vers le paiement...",
+      "logout": "Se déconnecter",
+      "error": "Nous n'avons pas pu lancer votre paiement. Veuillez réessayer."
+    }
+  },
+  "Admin": {
+    "login": {
+      "title": "Connexion administrateur",
+      "subtitle": "Réservé à l'équipe. Connectez-vous pour examiner les candidatures et envoyer des invitations.",
+      "email": "Adresse e-mail",
+      "password": "Mot de passe",
+      "showPassword": "Afficher le mot de passe",
+      "hidePassword": "Masquer le mot de passe",
+      "submit": "Se connecter",
+      "submitting": "Connexion...",
+      "welcomeToast": "Connecté",
+      "error": "Une erreur est survenue lors de la connexion. Veuillez réessayer."
+    },
+    "shell": {
+      "title": "Admin",
+      "logout": "Se déconnecter"
+    },
+    "applications": {
+      "title": "Candidatures",
+      "subtitle": "Consultez ce que chaque candidat a soumis, puis envoyez-lui une invitation avec son code GS ou refusez sa candidature.",
+      "count": "{count, plural, one {# candidature} other {# candidatures}}",
+      "empty": "Aucune candidature pour le moment.",
+      "loadError": "Impossible de charger les candidatures.",
+      "retry": "Réessayer",
+      "columns": {
+        "applicant": "Candidat",
+        "business": "Entreprise",
+        "program": "Programme",
+        "applied": "Reçue le",
+        "status": "Statut",
+        "actions": "Actions"
+      },
+      "status": {
+        "pending": "En attente",
+        "reviewed": "Examinée",
+        "accepted": "Invité(e)",
+        "rejected": "Refusée"
+      },
+      "invitedOn": "Invitation envoyée le {date}",
+      "accountCreated": "Compte créé",
+      "view": "Voir",
+      "invite": "Envoyer l'invitation",
+      "resend": "Renvoyer l'invitation",
+      "inviting": "Envoi...",
+      "inviteSent": "Invitation envoyée à {email}",
+      "inviteError": "L'invitation n'a pas pu être envoyée. Veuillez réessayer.",
+      "pagination": {
+        "pageOf": "Page {page} sur {total}",
+        "previous": "Page précédente",
+        "next": "Page suivante"
+      },
+      "reject": "Refuser",
+      "rejectSent": "E-mail de refus envoyé à {email}",
+      "rejectError": "La candidature n'a pas pu être refusée. Veuillez réessayer.",
+      "rejectDialog": {
+        "title": "Refuser cette candidature ?",
+        "description": "{name} ({email}) recevra un e-mail l'informant que sa candidature n'a pas été retenue. Vous pourrez toujours l'inviter plus tard.",
+        "cancel": "Annuler",
+        "confirm": "Refuser et envoyer l'e-mail",
+        "rejecting": "Refus en cours..."
+      }
+    },
+    "details": {
+      "title": "Détails de la candidature",
+      "notProvided": "Non renseigné",
+      "photoAlt": "Photo d'identité de {name}",
+      "sections": {
+        "portal": "Candidature",
+        "personal": "Informations personnelles",
+        "business": "Informations sur l'entreprise",
+        "who": "Qui vous êtes",
+        "accessibility": "Accessibilité et accompagnement"
+      },
+      "fields": {
+        "fullName": "Nom complet",
+        "email": "E-mail",
+        "program": "Programme",
+        "cohort": "Cohorte",
+        "title": "Titre",
+        "surname": "Nom de famille",
+        "firstName": "Prénom",
+        "businessName": "Nom de l'entreprise",
+        "dateOfBirth": "Date de naissance",
+        "gender": "Genre",
+        "businessDescription": "Activité de l'entreprise",
+        "operatingDuration": "En activité depuis",
+        "averageRevenue": "Revenu moyen",
+        "fullTimeCommitment": "Engagement à temps plein",
+        "challengeAndSkillGap": "Principal défi et lacune de compétences",
+        "cohortMotivation": "Pourquoi il/elle veut rejoindre",
+        "hasAccessibilityNeeds": "Besoins d'accessibilité",
+        "accessibilityNeed": "Type d'accompagnement",
+        "accessibilityNotes": "Notes",
+        "submitted": "Envoyée"
       }
     }
   }

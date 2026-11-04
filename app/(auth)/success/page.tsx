@@ -4,8 +4,9 @@ import { getTranslations } from "next-intl/server";
 
 import { buttonVariants } from "@/components/ui/button";
 
-// Bachs redirects here after checkout. The redirect alone proves nothing: the GS code is emailed
-// only once the backend has confirmed the payment with Bachs, so this page just tells them to wait.
+// Bachs redirects here after checkout. The redirect alone proves nothing: the dashboard's payment
+// modal only clears once the backend has confirmed the payment with Bachs, so this page just
+// sends them back to the dashboard.
 const PaymentSuccessPage = async () => {
   const t = await getTranslations("PaymentSuccess");
 
@@ -20,7 +21,7 @@ const PaymentSuccessPage = async () => {
         <p className="mt-3 max-w-md text-muted-foreground">{t("description")}</p>
         <p className="mt-3 text-sm text-muted-foreground">{t("hint")}</p>
 
-        <Link href="/login" className={buttonVariants({ size: "lg", className: "mt-6" })}>
+        <Link href="/dashboard" className={buttonVariants({ size: "lg", className: "mt-6" })}>
           {t("login")}
         </Link>
       </div>

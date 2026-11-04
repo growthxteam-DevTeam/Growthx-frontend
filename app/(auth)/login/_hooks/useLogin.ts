@@ -11,7 +11,7 @@ import { toast } from "sonner";
 import { getApiErrorMessage } from "@/lib/api-error";
 import { useAppDispatch } from "@/redux/app/hooks";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
-import { setCredentials } from "@/redux/features/auth/authSlice";
+import { APPLICANT_ROLE_TITLE, setCredentials } from "@/redux/features/auth/authSlice";
 
 import { loginSchema } from "../_constants";
 import type { LoginValues } from "../_types";
@@ -39,7 +39,7 @@ export const useLogin = () => {
       dispatch(
         setCredentials({
           token: data.accessToken,
-          user: { ...data.user, role: { title: "Applicant" } },
+          user: { ...data.user, role: { title: APPLICANT_ROLE_TITLE } },
         }),
       );
       toast.success(t("welcomeToast"));

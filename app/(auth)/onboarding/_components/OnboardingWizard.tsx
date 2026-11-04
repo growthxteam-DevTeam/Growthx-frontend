@@ -18,7 +18,6 @@ const OnboardingWizard = () => {
     setActiveTab,
     goToPreviousTab,
     submittedApplication,
-    paymentUrl,
     portalForm,
     onSubmitPortal,
     isPortalSubmitting,
@@ -74,7 +73,7 @@ const OnboardingWizard = () => {
       return submittedApplication ? (
         <>
           <ToastNotification title={t("toastTitle")} description={t("toastDescription")} type="success" />
-          <ApplicationSubmittedStep application={submittedApplication} paymentUrl={paymentUrl} />
+          <ApplicationSubmittedStep application={submittedApplication} />
         </>
       ) : null;
 

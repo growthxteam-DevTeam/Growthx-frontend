@@ -4,8 +4,8 @@ import { getTranslations } from "next-intl/server";
 
 import { buttonVariants } from "@/components/ui/button";
 
-// Bachs redirects here when the payer backs out of checkout. Nothing was charged and the application
-// is saved, so point them back at the payment link in their email.
+// Bachs redirects here when the payer backs out of checkout. Nothing was charged, so send them back
+// to the dashboard, where the payment modal is still waiting for them.
 const PaymentCancelledPage = async () => {
   const t = await getTranslations("PaymentCancelled");
 
@@ -19,7 +19,7 @@ const PaymentCancelledPage = async () => {
         <h1 className="mt-6 font-serif text-2xl font-bold text-primary sm:text-3xl">{t("title")}</h1>
         <p className="mt-3 max-w-md text-muted-foreground">{t("description")}</p>
 
-        <Link href="/" className={buttonVariants({ size: "lg", className: "mt-6" })}>
+        <Link href="/dashboard" className={buttonVariants({ size: "lg", className: "mt-6" })}>
           {t("home")}
         </Link>
       </div>

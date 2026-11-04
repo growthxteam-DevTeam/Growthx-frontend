@@ -1,10 +1,15 @@
 import { apiSlice } from "../api/apiSlice";
 
 export interface AdminLoginResponse {
-  accessToken: string;
-  admin: {
-    id: string;
-    email: string;
+  status: string;
+  statusCode: number;
+  data: {
+    accessToken: string;
+    admin: {
+      id: string;
+      name: string;
+      email: string;
+    };
   };
 }
 

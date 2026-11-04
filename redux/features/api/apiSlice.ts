@@ -21,10 +21,10 @@ const baseQueryWithReauth: BaseQueryFn<FetchArgs | string, unknown, FetchBaseQue
   const result = await rawBaseQuery(args, api, extraOptions);
 
   // A failed login is also a 401 — let the login form show the error instead of redirecting.
-  if (result.error?.status === 401 && api.endpoint !== "login") {
+  if (result.error?.status === 401 && api.endpoint !== "login" && api.endpoint !== "adminLogin") {
     api.dispatch(logout());
     if (typeof window !== "undefined") {
-      window.location.href = "/login";
+      window.location.href = window.location.pathname.startsWith("/admin") ? "/admin/login" : "/login";
     }
   }
 

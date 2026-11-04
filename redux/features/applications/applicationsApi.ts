@@ -43,8 +43,6 @@ interface SubmitApplicationResponse {
   status: string;
   statusCode: number;
   data: ApplicationRecord;
-  // Bachs hosted checkout; the same link is emailed to the applicant.
-  paymentUrl: string;
 }
 
 interface CreatePasswordRequest {
@@ -58,7 +56,20 @@ interface CreatePasswordResponse {
   message: string;
 }
 
-export const applicationsApi = apiSlice.enhanceEndpoints({ addTagTypes: ["Applications"] }).injectEndpoints({
+interface PaymentStatusResponse {
+  status: string;
+  statusCode: number;
+  data: { hasPaid: boolean };
+}
+
+interface CreatePaymentCheckoutResponse {
+  status: string;
+  statusCode: number;
+  // Bachs hosted checkout for the caller's program fee.
+  paymentUrl: string;
+}
+
+export const applicationsApi = apiSlice.enhanceEndpoints({ addTagTypes: ["Applications", "Payment"] }).injectEndpoints({
   endpoints: (builder) => ({
     // Body is FormData, not JSON — the onboarding wizard's final step can
     // attach a passport photo, and the backend (POST /applications) expects
@@ -81,7 +92,26 @@ export const applicationsApi = apiSlice.enhanceEndpoints({ addTagTypes: ["Applic
         body,
       }),
     }),
+
+    // JWT. The backend re-checks an in-flight Bachs checkout on each call, so this flips to paid
+    // even when the webhook is late.
+    getPaymentStatus: builder.query<PaymentStatusResponse, void>({
+      query: () => "/applications/me/payment",
+      providesTags: ["Payment"],
+    }),
+
+    createPaymentCheckout: builder.mutation<CreatePaymentCheckoutResponse, void>({
+      query: () => ({
+        url: "/applications/me/payment/checkout",
+        method: "POST",
+      }),
+    }),
   }),
 });
 
-export const { useSubmitApplicationMutation, useCreatePasswordMutation } = applicationsApi;
+export const {
+  useSubmitApplicationMutation,
+  useCreatePasswordMutation,
+  useGetPaymentStatusQuery,
+  useCreatePaymentCheckoutMutation,
+} = applicationsApi;
