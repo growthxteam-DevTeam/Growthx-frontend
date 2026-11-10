@@ -351,17 +351,13 @@
       },
       "announcements": {
         "title": "Annonces",
-        "message": "La prochaine journée portes ouvertes aura lieu au Kenya le 23/12/2026. Les fondateurs pourront présenter leur projet à des investisseurs."
+        "empty": "Aucune annonce pour le moment."
       },
       "todo": {
         "title": "À faire",
         "points": "{points} points",
-        "due": "30 sept. à 23 h 59 WAT",
-        "items": {
-          "quiz2": "Rendre le quiz 2",
-          "peerReviewAssignment": "Rendre le devoir d'évaluation par les pairs",
-          "peerReviewWeek1": "Évaluation par les pairs de la semaine 1"
-        }
+        "due": "À rendre le {date}",
+        "empty": "Rien à rendre pour le moment."
       },
       "credibility": {
         "title": "Votre parcours vers le badge de crédibilité prêt pour les investisseurs",
@@ -743,103 +739,6 @@
       "redirecting": "Redirection vers le paiement...",
       "logout": "Se déconnecter",
       "error": "Nous n'avons pas pu lancer votre paiement. Veuillez réessayer."
-    }
-  },
-  "Admin": {
-    "login": {
-      "title": "Connexion administrateur",
-      "subtitle": "Réservé à l'équipe. Connectez-vous pour examiner les candidatures et envoyer des invitations.",
-      "email": "Adresse e-mail",
-      "password": "Mot de passe",
-      "showPassword": "Afficher le mot de passe",
-      "hidePassword": "Masquer le mot de passe",
-      "submit": "Se connecter",
-      "submitting": "Connexion...",
-      "welcomeToast": "Connecté",
-      "error": "Une erreur est survenue lors de la connexion. Veuillez réessayer."
-    },
-    "shell": {
-      "title": "Admin",
-      "logout": "Se déconnecter"
-    },
-    "applications": {
-      "title": "Candidatures",
-      "subtitle": "Consultez ce que chaque candidat a soumis, puis envoyez-lui une invitation avec son code GS ou refusez sa candidature.",
-      "count": "{count, plural, one {# candidature} other {# candidatures}}",
-      "empty": "Aucune candidature pour le moment.",
-      "loadError": "Impossible de charger les candidatures.",
-      "retry": "Réessayer",
-      "columns": {
-        "applicant": "Candidat",
-        "business": "Entreprise",
-        "program": "Programme",
-        "applied": "Reçue le",
-        "status": "Statut",
-        "actions": "Actions"
-      },
-      "status": {
-        "pending": "En attente",
-        "reviewed": "Examinée",
-        "accepted": "Invité(e)",
-        "rejected": "Refusée"
-      },
-      "invitedOn": "Invitation envoyée le {date}",
-      "accountCreated": "Compte créé",
-      "view": "Voir",
-      "invite": "Envoyer l'invitation",
-      "resend": "Renvoyer l'invitation",
-      "inviting": "Envoi...",
-      "inviteSent": "Invitation envoyée à {email}",
-      "inviteError": "L'invitation n'a pas pu être envoyée. Veuillez réessayer.",
-      "pagination": {
-        "pageOf": "Page {page} sur {total}",
-        "previous": "Page précédente",
-        "next": "Page suivante"
-      },
-      "reject": "Refuser",
-      "rejectSent": "E-mail de refus envoyé à {email}",
-      "rejectError": "La candidature n'a pas pu être refusée. Veuillez réessayer.",
-      "rejectDialog": {
-        "title": "Refuser cette candidature ?",
-        "description": "{name} ({email}) recevra un e-mail l'informant que sa candidature n'a pas été retenue. Vous pourrez toujours l'inviter plus tard.",
-        "cancel": "Annuler",
-        "confirm": "Refuser et envoyer l'e-mail",
-        "rejecting": "Refus en cours..."
-      }
-    },
-    "details": {
-      "title": "Détails de la candidature",
-      "notProvided": "Non renseigné",
-      "photoAlt": "Photo d'identité de {name}",
-      "sections": {
-        "portal": "Candidature",
-        "personal": "Informations personnelles",
-        "business": "Informations sur l'entreprise",
-        "who": "Qui vous êtes",
-        "accessibility": "Accessibilité et accompagnement"
-      },
-      "fields": {
-        "fullName": "Nom complet",
-        "email": "E-mail",
-        "program": "Programme",
-        "cohort": "Cohorte",
-        "title": "Titre",
-        "surname": "Nom de famille",
-        "firstName": "Prénom",
-        "businessName": "Nom de l'entreprise",
-        "dateOfBirth": "Date de naissance",
-        "gender": "Genre",
-        "businessDescription": "Activité de l'entreprise",
-        "operatingDuration": "En activité depuis",
-        "averageRevenue": "Revenu moyen",
-        "fullTimeCommitment": "Engagement à temps plein",
-        "challengeAndSkillGap": "Principal défi et lacune de compétences",
-        "cohortMotivation": "Pourquoi il/elle veut rejoindre",
-        "hasAccessibilityNeeds": "Besoins d'accessibilité",
-        "accessibilityNeed": "Type d'accompagnement",
-        "accessibilityNotes": "Notes",
-        "submitted": "Envoyée"
-      }
     }
   }
 }

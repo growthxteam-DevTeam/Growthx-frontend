@@ -36,7 +36,7 @@ What exists:
 - `app/(auth)/success/` and `app/(auth)/cancel/` — Bachs redirects here after / when backing out of checkout (static pages;
   both link back to `/dashboard`, and the success page unlocks nothing by itself).
   Applying no longer takes payment: the submitted step says "we'll review your profile and email the next steps", and the
-  GS code is emailed when an admin sends the invite (see `app/admin/` below). Payment is the dashboard gate below.
+  GS code is emailed when an admin sends the invite (done in the separate [../growth-x-admin](../growth-x-admin/CLAUDE.md) app). Payment is the dashboard gate below.
 - **Payment gate.** `DashboardShell` renders `PaymentRequiredModal` (`(dashboard)/_components`), a shadcn `Dialog` that can't be
   dismissed (no close button, Escape/outside click ignored) while `GET /applications/me/payment` says `hasPaid: false`.
   `usePaymentGate` polls that every 10 s, so the modal clears itself once Bachs confirms; "Pay now" calls
@@ -49,7 +49,10 @@ What exists:
   forgot page shows the same "check your email" state whether or not the account exists.
 - `app/(dashboard)/` — logged-in area. `layout.tsx` -> `DashboardShell` (redirects to `/login` when
   `auth.token` is empty, which also handles logout) + `Sidebar`. `dashboard/` is the home page; its content
-  (program, schedule, announcements, progress) is placeholder data in `dashboard/_constants`, and the badge and
+  (program, schedule, announcements, progress) is partly live: the banner, calendar highlights, announcements and to-do
+  list come from `GET /dashboard` (`redux/features/dashboard/dashboardApi.ts`, read by the cards through
+  `dashboard/_hooks/useDashboardContent`; the admin portal manages that content per program + cohort). The action
+  cards and credibility progress are still placeholder data in `dashboard/_constants`, and the badge and
   to-do illustrations are lucide stand-ins until the artwork exists.
 - **Dashboard translations.** Every dashboard string lives under the `Dashboard.*` namespaces in `messages/en.json` and
   `messages/fr.json` (keep both in sync, same keys and `{placeholders}`); components use `useTranslations`. Placeholder
@@ -68,23 +71,13 @@ What exists:
   (`useDiscussion` + `redux/features/discussion/discussionApi.ts`, JWT-protected backend routes), and modules /
   previous-classes / assignment cards that are placeholder data (the assignment buttons don't upload anything yet).
   `CURRENT_CLASS.id` is the discussion thread key. `(dashboard)/_components/Avatar.tsx` is the shared avatar.
-- `app/admin/` — staff area, outside the `(auth)`/`(dashboard)` groups (own layout, `noindex`). `login/` is the admin
-  sign-in (`useAdminLoginMutation` -> `POST /admin/auth/login`; seeded credentials are in `growth-x-be/README.md`).
-  `(portal)/` wraps its pages in `AdminShell`, which sends anyone without an admin session to `/admin/login` (UI gate
-  only; the backend's admin JWT is the real protection). `(portal)/applications/` is the review table: every application
-  with a details dialog (all submitted fields) and a "Send invite" / "Resend invite" button
-  (`POST /admin/applications/:id/invite`, which emails the GS code) and a "Reject" button that opens a confirmation dialog
-  (`POST /admin/applications/:id/reject`, which emails a rejection and sets the status to `rejected`). `/admin` redirects to it. An admin session lives in
-  the same `auth` slice as an applicant's, told apart by `user.role.title` (`ADMIN_ROLE_TITLE`, `selectIsAdmin` in
-  `authSlice`); `DashboardShell` bounces admins to `/admin/applications`. Strings are under `Admin.*` in both locales.
 - `app/(root)/example/` — empty skeleton folders only, no `page.tsx`; a template for new slices.
 - Redux has only `auth` (persisted via redux-persist) and `apiSlice`. Endpoints: `authApi` (`login`,
-  `forgotPassword`, `resetPassword`, `adminLogin`), `applicationsApi` (`submitApplication`, `createPassword`), `discussionApi` (comments, likes),
-  `adminApi` (`getAdminApplications`, `inviteApplicant`, `rejectApplicant`), `adminBannerApi` (banner CRUD; no UI or backend route yet).
-  A 401 from any endpoint except `login`/`adminLogin` clears the session and sends the user to `/login` (or
-  `/admin/login` when on an `/admin` page).
+  `forgotPassword`, `resetPassword`), `applicationsApi` (`submitApplication`, `createPassword`), `discussionApi` (comments, likes),
+  A 401 from any endpoint except `login` clears the session and sends the user to `/login`.
 - Metadata in `app/layout.tsx` is still create-next-app defaults; `README.md` is the create-next-app default.
 
+The staff/admin portal is a separate app, [../growth-x-admin](../growth-x-admin/CLAUDE.md); nothing admin-related lives here.
 The matching backend is [../growth-x-be](../growth-x-be/CLAUDE.md); it exposes `POST /applications`,
 `POST /applications/create-password` (used by `app/(auth)/create-password`) and `POST /auth/login` (used by
 `app/(auth)/login`, which stores the JWT via `setCredentials`) plus the JWT-protected `/discussions/*` routes
@@ -109,7 +102,7 @@ State is Redux Toolkit + RTK Query, not React Query or server-component fetching
   `apiSlice.injectEndpoints` in a per-feature `*Api.ts`. Never create a second `createApi`.
 - `baseUrl` is `process.env.NEXT_PUBLIC_BASE_URL` (set in `.env.local` / `.env.production`; it must include the
   backend's `/api/v1` prefix). `prepareHeaders` attaches `auth.token`; a 401 dispatches `logout()` and redirects
-  to `/login` (`/admin/login` on admin pages).
+  to `/login`.
 - Use the typed `useAppDispatch` / `useAppSelector` from `redux/app/hooks.ts`, never the raw react-redux hooks.
 
 ### Runtime env

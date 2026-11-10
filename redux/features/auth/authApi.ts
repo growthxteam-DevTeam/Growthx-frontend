@@ -1,18 +1,5 @@
 import { apiSlice } from "../api/apiSlice";
 
-export interface AdminLoginResponse {
-  status: string;
-  statusCode: number;
-  data: {
-    accessToken: string;
-    admin: {
-      id: string;
-      name: string;
-      email: string;
-    };
-  };
-}
-
 export interface LoginResponse {
   status: string;
   statusCode: number;
@@ -56,13 +43,6 @@ export const authApi = apiSlice.injectEndpoints({
         body,
       }),
     }),
-    adminLogin: builder.mutation<AdminLoginResponse, { email: string; password: string }>({
-      query: (credentials) => ({
-        url: "/admin/auth/login",
-        method: "POST",
-        body: credentials,
-      }),
-    }),
   }),
 });
 
@@ -70,5 +50,4 @@ export const {
   useLoginMutation,
   useForgotPasswordMutation,
   useResetPasswordMutation,
-  useAdminLoginMutation,
 } = authApi;

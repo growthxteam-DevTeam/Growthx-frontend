@@ -351,17 +351,13 @@
       },
       "announcements": {
         "title": "Announcements",
-        "message": "The next open day will be happening in Kenya on 23/12/2026. Founders will have access to pitch to investors."
+        "empty": "No announcements right now."
       },
       "todo": {
         "title": "To-Do",
         "points": "{points} points",
-        "due": "Sep 30 at 11:59 WAT",
-        "items": {
-          "quiz2": "Turn in Quiz 2",
-          "peerReviewAssignment": "Turn in peer review assignment",
-          "peerReviewWeek1": "Peer review for week 1"
-        }
+        "due": "Due {date}",
+        "empty": "Nothing due right now."
       },
       "credibility": {
         "title": "Your path to investor-ready credibility badge",
@@ -743,103 +739,6 @@
       "redirecting": "Taking you to checkout...",
       "logout": "Log out",
       "error": "We couldn't start your payment. Please try again."
-    }
-  },
-  "Admin": {
-    "login": {
-      "title": "Admin sign in",
-      "subtitle": "Staff only. Sign in to review applications and send invites.",
-      "email": "Email Address",
-      "password": "Password",
-      "showPassword": "Show password",
-      "hidePassword": "Hide password",
-      "submit": "Sign in",
-      "submitting": "Signing in...",
-      "welcomeToast": "Signed in",
-      "error": "Something went wrong signing you in. Please try again."
-    },
-    "shell": {
-      "title": "Admin",
-      "logout": "Log out"
-    },
-    "applications": {
-      "title": "Applications",
-      "subtitle": "Review what each applicant submitted, then send them an invite with their GS code or reject them.",
-      "count": "{count, plural, one {# application} other {# applications}}",
-      "empty": "No applications yet.",
-      "loadError": "We couldn't load the applications.",
-      "retry": "Try again",
-      "columns": {
-        "applicant": "Applicant",
-        "business": "Business",
-        "program": "Program",
-        "applied": "Applied",
-        "status": "Status",
-        "actions": "Actions"
-      },
-      "status": {
-        "pending": "Pending",
-        "reviewed": "Reviewed",
-        "accepted": "Invited",
-        "rejected": "Rejected"
-      },
-      "invitedOn": "Invite sent {date}",
-      "accountCreated": "Account created",
-      "view": "View",
-      "invite": "Send invite",
-      "resend": "Resend invite",
-      "inviting": "Sending...",
-      "inviteSent": "Invite sent to {email}",
-      "inviteError": "The invite could not be sent. Please try again.",
-      "pagination": {
-        "pageOf": "Page {page} of {total}",
-        "previous": "Previous page",
-        "next": "Next page"
-      },
-      "reject": "Reject",
-      "rejectSent": "Rejection email sent to {email}",
-      "rejectError": "The applicant could not be rejected. Please try again.",
-      "rejectDialog": {
-        "title": "Reject this application?",
-        "description": "{name} ({email}) will be emailed that their application was not accepted. You can still invite them later.",
-        "cancel": "Cancel",
-        "confirm": "Reject and send email",
-        "rejecting": "Rejecting..."
-      }
-    },
-    "details": {
-      "title": "Application details",
-      "notProvided": "Not provided",
-      "photoAlt": "Passport photo of {name}",
-      "sections": {
-        "portal": "Application",
-        "personal": "Personal information",
-        "business": "Business basics",
-        "who": "Who you are",
-        "accessibility": "Accessibility and support"
-      },
-      "fields": {
-        "fullName": "Full name",
-        "email": "Email",
-        "program": "Program",
-        "cohort": "Cohort",
-        "title": "Title",
-        "surname": "Surname",
-        "firstName": "First name",
-        "businessName": "Business name",
-        "dateOfBirth": "Date of birth",
-        "gender": "Gender",
-        "businessDescription": "What the business does",
-        "operatingDuration": "Operating for",
-        "averageRevenue": "Average revenue",
-        "fullTimeCommitment": "Full-time commitment",
-        "challengeAndSkillGap": "Biggest challenge and skill gap",
-        "cohortMotivation": "Why they want to join",
-        "hasAccessibilityNeeds": "Accessibility needs",
-        "accessibilityNeed": "Type of support",
-        "accessibilityNotes": "Notes",
-        "submitted": "Submitted"
-      }
     }
   }
 }

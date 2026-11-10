@@ -5,7 +5,6 @@ import { useEffect, type ReactNode } from "react";
 import { useRouter } from "next/navigation";
 
 import { useAppSelector } from "@/redux/app/hooks";
-import { selectIsAdmin } from "@/redux/features/auth/authSlice";
 
 import PaymentRequiredModal from "./PaymentRequiredModal";
 import Sidebar from "./Sidebar";
@@ -13,16 +12,13 @@ import Sidebar from "./Sidebar";
 const DashboardShell = ({ children }: { children: ReactNode }) => {
   const router = useRouter();
   const token = useAppSelector((state) => state.auth.token);
-  const isAdmin = useAppSelector(selectIsAdmin);
 
-  // Also covers logout: clearing the token sends the user back to the login page. An admin session
-  // has no learner account behind it, so it goes to the admin area instead.
+  // Also covers logout: clearing the token sends the user back to the login page.
   useEffect(() => {
     if (!token) router.replace("/login");
-    else if (isAdmin) router.replace("/admin/applications");
-  }, [token, isAdmin, router]);
+  }, [token, router]);
 
-  if (!token || isAdmin) return null;
+  if (!token) return null;
 
   return (
     <div className="flex h-screen overflow-hidden bg-background">
